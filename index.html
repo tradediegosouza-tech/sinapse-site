@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinapse | Reels prontos para psicólogos, terapeutas e mentores</title>
+<meta name="description" content="Reels criados por IA a partir de livros reais de neurociência e comportamento. Conteúdo educativo, sem promessas. Você só aprova no Telegram. Planos a partir de R$ 197/mês.">
+<meta property="og:title" content="Sinapse | Reels prontos para o seu perfil">
+<meta property="og:description" content="Conteúdo que fala com o cérebro do seu público. Você só aprova.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aisinapse.com.br/">
+<meta name="theme-color" content="#0B0F14">
+<link rel="canonical" href="https://aisinapse.com.br/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%235EEAD4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230B0F14'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0F14;--bg2:#0E131A;--card:#121821;--line:#1F2833;--line2:#2A3441;--tx:#E8ECF1;--tx2:#B6C0CC;--tx3:#8A96A5;--ac:#5EEAD4;--ac2:#5fc6ef;--gold:#FBBF24}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:var(--ac)}a:hover{color:#99F6E4}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.eyebrow{margin:0 0 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac)}
+h1,h2,h3{font-family:'Sora',sans-serif}
+h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacing:-.02em}
+.lead{margin:0 0 56px;color:var(--tx2);max-width:640px;font-size:18px}
+.btn{display:inline-block;color:#0B0F14;background:var(--ac);padding:17px 30px;border-radius:999px;text-decoration:none;font-weight:500;font-size:17px;text-align:center}
+.btn:hover{color:#0B0F14;background:#99F6E4}
+.btn-o{display:inline-block;color:var(--tx);border:1px solid var(--line2);padding:17px 30px;border-radius:999px;text-decoration:none;font-size:17px;text-align:center}
+.btn-o:hover{color:var(--tx);border-color:var(--ac)}
+.alt{background:var(--bg2);border-top:1px solid #161E29;border-bottom:1px solid #161E29}
+.grid{display:grid;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.card h3{margin:8px 0 0;font-weight:600;font-size:20px}
+.card p{margin:0;color:var(--tx2);font-size:16px}
+.chk{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.chk li{display:flex;gap:12px;align-items:flex-start}
+.chk svg{flex:none;margin-top:3px}
+@keyframes snpSpin{to{transform:rotate(360deg)}}
+@keyframes snpPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.snp-orbit{transform-origin:200px 200px;animation:snpSpin 38s linear infinite}
+.snp-orbit2{transform-origin:200px 200px;animation:snpSpin 54s linear infinite reverse}
+.snp-core{transform-origin:200px 200px;animation:snpPulse 4.5s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.snp-orbit,.snp-orbit2,.snp-core{animation:none}html{scroll-behavior:auto}}
+.snp-in{min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--line2);background:var(--card);color:var(--tx);font:400 16px 'IBM Plex Sans',sans-serif;width:100%}
+.snp-in:focus{outline:2px solid var(--ac);outline-offset:1px}
+#snpBtn[disabled]{opacity:.7;cursor:wait}
+.plan{background:var(--card);border:1px solid var(--line2);border-radius:28px;padding:36px 32px;display:flex;flex-direction:column;gap:18px;position:relative}
+.plan.hot{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 30px 80px rgba(94,234,212,.08)}
+.tag{position:absolute;top:-14px;left:28px;background:var(--gold);color:#0B0F14;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.price{display:flex;align-items:baseline;gap:8px}
+.price b{font-family:'Sora',sans-serif;font-weight:700;font-size:54px;line-height:1}
+.price span{color:var(--tx3)}
+@media (max-width:640px){
+ h1{font-size:40px!important}
+ h2{font-size:30px!important}
+ section{padding-top:64px!important;padding-bottom:56px!important}
+ .snp-card{position:static!important;width:100%!important;margin-top:12px}
+ header nav{gap:14px!important}
+ .navlink{display:none}
+ .price b{font-size:44px}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap" style="padding-top:22px;padding-bottom:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #161E29">
+ <a href="#" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--tx)" aria-label="Sinapse, início">
+  <svg width="34" height="34" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M71 27C61 16 35 18 32 33C29.5 45 40 48.5 44 49.5" stroke="#5EEAD4" stroke-width="9" stroke-linecap="round"/><path d="M56 50.5C60 51.5 71 55 68 67C65 82 39 84 29 73" stroke="#2DD4BF" stroke-width="9" stroke-linecap="round"/><circle cx="50" cy="50" r="13" fill="#5EEAD4"/><circle cx="50" cy="50" r="4.6" fill="#0B0F14"/></svg>
+  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em">SINAPSE</span>
+ </a>
+ <nav aria-label="Seções" style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-size:15px">
+  <a class="navlink" href="#metodo" style="color:var(--tx2);text-decoration:none">O método</a>
+  <a class="navlink" href="#base" style="color:var(--tx2);text-decoration:none">A base</a>
+  <a class="navlink" href="#entrega" style="color:var(--tx2);text-decoration:none">O que entrega</a>
+  <a href="#planos" style="color:var(--tx2);text-decoration:none">Planos</a>
+  <a href="#planos" style="color:#0B0F14;background:var(--ac);padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:500">Quero a Sinapse</a>
+ </nav>
+</header>
+
+<main>
+<section class="wrap" style="padding-top:88px;padding-bottom:96px;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+ <div style="flex:999 1 520px;min-width:0">
+  <p style="margin:0 0 22px;display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);border:1px solid #1F3A38;border-radius:999px;padding:7px 16px"><span style="width:7px;height:7px;border-radius:50%;background:var(--ac)"></span>Psicólogos · Terapeutas · Mentores</p>
+  <h1 style="margin:0 0 24px;font-weight:700;font-size:64px;line-height:1.04;letter-spacing:-.03em">Conteúdo que fala com o <span style="color:var(--ac)">cérebro</span> do seu público.</h1>
+  <p style="margin:0 0 36px;font-size:20px;color:var(--tx2);max-width:560px">Imagine abrir o Telegram de manhã e o Reel do dia já estar lá, pronto, com roteiro, narração e legenda. A Sinapse transforma livros reais de neurociência e comportamento em conteúdo para o seu perfil. Você só aprova.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:14px">
+   <a href="#planos" class="btn">Ver os planos</a>
+   <a href="#chamar" class="btn-o">Quero um Reel de amostra grátis</a>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)">
+   <div><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:26px">Todo dia</div><div style="font-size:14px;color:var(--tx3)">um Reel pronto para aprovar</div></div>
+   <div><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:26px">1 toque</div><div style="font-size:14px;color:var(--tx3)">para aprovar pelo Telegram</div></div>
+   <div><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:26px">0 prompts</div><div style="font-size:14px;color:var(--tx3)">você não escreve nada</div></div>
+  </div>
+ </div>
+ <div style="flex:1 1 380px;min-width:0;position:relative;display:flex;justify-content:center">
+  <svg viewBox="0 0 400 400" style="width:100%;max-width:440px;height:auto;display:block" role="img" aria-label="A Sinapse: um núcleo de luz com órbitas, como um átomo e um neurônio ao mesmo tempo"><defs><radialGradient id="snpGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#5EEAD4" stop-opacity=".35"/><stop offset="1" stop-color="#5EEAD4" stop-opacity="0"/></radialGradient><radialGradient id="snpCore" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#CCFBF1"/><stop offset=".55" stop-color="#5EEAD4"/><stop offset="1" stop-color="#0F766E"/></radialGradient></defs><circle cx="200" cy="200" r="190" fill="url(#snpGlow)"/><circle cx="200" cy="200" r="170" fill="none" stroke="#1F2833"/><circle cx="200" cy="200" r="122" fill="none" stroke="#1F3A38" stroke-dasharray="3 6"/><g class="snp-orbit"><ellipse cx="200" cy="200" rx="160" ry="58" fill="none" stroke="#5EEAD4" stroke-opacity=".55" stroke-width="1.4" transform="rotate(30 200 200)"/><circle cx="338" cy="280" r="6" fill="#5EEAD4"/></g><g class="snp-orbit2"><ellipse cx="200" cy="200" rx="160" ry="58" fill="none" stroke="#5fc6ef" stroke-opacity=".5" stroke-width="1.4" transform="rotate(-30 200 200)"/><circle cx="62" cy="280" r="5" fill="#5fc6ef"/></g><g class="snp-orbit"><ellipse cx="200" cy="200" rx="58" ry="160" fill="none" stroke="#99F6E4" stroke-opacity=".35" stroke-width="1.2"/><circle cx="200" cy="40" r="4" fill="#99F6E4"/></g><g stroke="#2A3441"><line x1="40" y1="90" x2="92" y2="120"/><line x1="92" y1="120" x2="70" y2="170"/><line x1="330" y1="70" x2="300" y2="112"/><line x1="300" y1="112" x2="352" y2="140"/><line x1="320" y1="350" x2="278" y2="318"/><line x1="60" y1="345" x2="104" y2="322"/></g><g fill="#5EEAD4" fill-opacity=".7"><circle cx="40" cy="90" r="3"/><circle cx="92" cy="120" r="3.5"/><circle cx="70" cy="170" r="2.5"/><circle cx="330" cy="70" r="3"/><circle cx="300" cy="112" r="3.5"/><circle cx="352" cy="140" r="2.5"/><circle cx="320" cy="350" r="3"/><circle cx="278" cy="318" r="3.5"/><circle cx="60" cy="345" r="3"/><circle cx="104" cy="322" r="2.5"/></g><g class="snp-core"><circle cx="200" cy="200" r="54" fill="#5EEAD4" fill-opacity=".12"/></g><circle cx="200" cy="200" r="38" fill="url(#snpCore)"/><circle cx="200" cy="200" r="9" fill="#0B0F14" fill-opacity=".85"/></svg>
+  <div class="snp-card" aria-hidden="true" style="position:absolute;left:0;bottom:-18px;width:270px;background:var(--card);border:1px solid var(--line2);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+   <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--tx3)"><span style="width:8px;height:8px;border-radius:50%;background:#4ADE80"></span>Telegram · Sinapse</div>
+   <div style="background:#1A222D;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.45">O Reel de hoje está pronto: <strong style="color:var(--ac)">"Por que seu cérebro adia tarefas"</strong></div>
+   <div style="display:flex;gap:8px"><span style="flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--ac);color:#0B0F14;font:500 14px 'IBM Plex Sans',sans-serif">Aprovar</span><span style="flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line2);border-radius:10px;color:var(--tx);font:500 14px 'IBM Plex Sans',sans-serif">Ajustar</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="alt">
+ <div class="wrap" style="padding-top:26px;padding-bottom:26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3)">
+  <span>Neurociência</span><span style="color:var(--ac)">·</span><span>Psicologia positiva</span><span style="color:var(--ac)">·</span><span>Comportamento</span><span style="color:var(--ac)">·</span><span>Persuasão ética</span><span style="color:var(--ac)">·</span><span>Hábitos</span>
+ </div>
+</section>
+
+<section id="metodo" class="wrap" style="padding-top:112px;padding-bottom:96px">
+ <p class="eyebrow">O método</p>
+ <h2 style="max-width:760px">Todo conteúdo nasce de um problema real e termina numa solução.</h2>
+ <p class="lead">É assim que o cérebro presta atenção: primeiro sente a dor, depois procura a saída. Cada Reel da Sinapse segue esse caminho.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#10151C">
+  <div style="padding:32px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">0 a 3 segundos</span><h3 style="margin:0;font-weight:600;font-size:24px">O gancho</h3><p style="margin:0;color:var(--tx2);font-size:16px">A dor do público, dita do jeito que ele sente. Ninguém passa o dedo.</p><div style="margin-top:auto;height:4px;border-radius:4px;background:var(--gold)"></div></div>
+  <div style="padding:32px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ac)">O meio</span><h3 style="margin:0;font-weight:600;font-size:24px">A solução</h3><p style="margin:0;color:var(--tx2);font-size:16px">O que dizem os livros e a ciência, em linguagem simples, com um passo para aplicar hoje.</p><div style="margin-top:auto;height:4px;border-radius:4px;background:var(--ac)"></div></div>
+  <div style="padding:32px 28px;display:flex;flex-direction:column;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ac2)">O final</span><h3 style="margin:0;font-weight:600;font-size:24px">A chamada</h3><p style="margin:0;color:var(--tx2);font-size:16px">"Comente PALAVRA" ou "salve para depois". O público responde e o perfil cresce.</p><div style="margin-top:auto;height:4px;border-radius:4px;background:var(--ac2)"></div></div>
+ </div>
+</section>
+
+<section id="base" class="alt">
+ <div class="wrap" style="padding-top:112px;padding-bottom:112px;display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+  <div style="flex:1 1 380px;min-width:0">
+   <p class="eyebrow">A base</p>
+   <h2 style="margin-bottom:20px">Uma biblioteca de verdade por trás de cada frase.</h2>
+   <p style="margin:0 0 24px;color:var(--tx2);font-size:18px">A Sinapse não inventa. Ela estuda livros reais de neurociência, psicologia e comportamento, e só cita o que está na biblioteca.</p>
+   <div style="border-left:2px solid var(--ac);padding:4px 0 4px 18px;font-size:16px">Nada aqui é promessa de cura ou de resultado. É <strong style="color:var(--ac)">conteúdo educativo</strong>, explicado com fonte. Para psicólogos, o tom segue as orientações de publicidade do CFP.</div>
+  </div>
+  <div style="flex:1 1 460px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Atenção</div><div style="font-size:14px;color:var(--tx3)">O que faz o cérebro parar e olhar</div></div>
+   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Hábitos</div><div style="font-size:14px;color:var(--tx3)">Pequenos passos que mudam a rotina</div></div>
+   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Emoções</div><div style="font-size:14px;color:var(--tx3)">Como sentimos antes de pensar</div></div>
+   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Otimismo aprendido</div><div style="font-size:14px;color:var(--tx3)">A psicologia positiva aplicada</div></div>
+   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Decisão</div><div style="font-size:14px;color:var(--tx3)">Por que escolhemos o que escolhemos</div></div>
+   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Presença</div><div style="font-size:14px;color:var(--tx3)">Sair do automático e viver o agora</div></div>
+   <div style="background:var(--card);border:1px solid #1F3A38;border-radius:16px;padding:18px 20px;grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center"><div><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Histórias que o cérebro reconhece</div><div style="font-size:14px;color:var(--tx3)">Arquétipos e narrativas que prendem do início ao fim</div></div><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ac)">+ dezenas de livros na biblioteca</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="como" class="wrap" style="padding-top:112px;padding-bottom:96px">
+ <p class="eyebrow">Como funciona</p>
+ <h2 style="margin-bottom:56px">Do livro ao seu perfil, em 4 passos.</h2>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px">
+  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">01</span><h3 style="margin:0;font-weight:600;font-size:21px">Estuda</h3><p style="margin:0;color:var(--tx2);font-size:16px">Lê a biblioteca e separa o que resolve a dor do seu público.</p></div>
+  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">02</span><h3 style="margin:0;font-weight:600;font-size:21px">Cria</h3><p style="margin:0;color:var(--tx2);font-size:16px">Monta cena, narração, legendas e texto na tela, no formato problema e solução.</p></div>
+  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">03</span><h3 style="margin:0;font-weight:600;font-size:21px">Você aprova</h3><p style="margin:0;color:var(--tx2);font-size:16px">O conteúdo chega no seu Telegram. Um toque e está aprovado.</p></div>
+  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">04</span><h3 style="margin:0;font-weight:600;font-size:21px">Aprende</h3><p style="margin:0;color:var(--tx2);font-size:16px">Guarda o que foi postado, lê os resultados e melhora a cada semana.</p></div>
+ </div>
+</section>
+
+<section id="entrega" class="wrap" style="padding-top:32px;padding-bottom:112px">
+ <h2 style="margin-bottom:14px">O que a Sinapse entrega</h2>
+ <p class="lead" style="margin-bottom:44px">Tudo pronto para postar, com o padrão visual da sua marca.</p>
+ <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 9l5 3-5 3z"/></svg><h3>Reels prontos</h3><p>Cena, narração natural, legendas e texto na tela.</p></div>
+  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M20 7v10"/></svg><h3>Stories</h3><p>Para manter o público aquecido entre um Reel e outro.</p></div>
+  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><h3>Aprovação no Telegram</h3><p>Você vê, aprova ou pede ajuste. Sem planilha, sem reunião.</p></div>
+  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10M9 20V4M15 20v-8M21 20v-5"/></svg><h3>Estratégia semanal</h3><p>Análise dos resultados e plano da semana para o perfil crescer.</p></div>
+ </div>
+</section>
+
+<section id="planos" class="alt">
+ <div class="wrap" style="padding-top:112px;padding-bottom:112px">
+  <p class="eyebrow">Planos</p>
+  <h2 style="max-width:760px">Escolha o ritmo do seu perfil.</h2>
+  <p class="lead" style="margin-bottom:64px">Mês a mês, sem multa (aviso de 30 dias). Garantia de 7 dias: se não gostar, devolvemos o valor.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:stretch">
+
+   <div class="plan">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3)">Essencial</div>
+    <div class="price"><b>R$ 197</b><span>/mês</span></div>
+    <p style="margin:0;color:var(--tx2)">Para quem quer presença constante sem gastar tempo criando.</p>
+    <ul class="chk">
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>3 Reels por semana, com roteiro, narração e legendas</li>
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Aprovação com um toque no Telegram</li>
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Tudo baseado em livros reais</li>
+    </ul>
+    <a class="btn-o" style="margin-top:auto" target="_blank" rel="noopener" href="https://wa.me/5511971125781?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Sinapse%20e%20quero%20o%20plano%20Essencial%20(R%24%20197).">Quero o Essencial</a>
+   </div>
+
+   <div class="plan hot">
+    <span class="tag">Só 3 vagas</span>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ac)">Fundador</div>
+    <div class="price"><b>R$ 497</b><span>/mês</span></div>
+    <p style="margin:0;color:var(--tx2)">A Sinapse inteira trabalhando para o seu perfil, todo dia. Valor de lançamento para os 3 primeiros.</p>
+    <ul class="chk">
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>1 Reel por dia, com roteiro, narração e legendas</li>
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Stories diários para manter o público aquecido</li>
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Estrategista semanal: análise e plano da semana</li>
+     <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Aprovação com um toque no Telegram</li>
+    </ul>
+    <a class="btn" style="margin-top:auto" target="_blank" rel="noopener" href="https://wa.me/5511971125781?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Sinapse%20e%20quero%20uma%20vaga%20no%20plano%20Fundador%20(R%24%20497).">Garantir minha vaga de Fundador</a>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<section id="chamar" class="wrap" style="padding-top:96px">
+ <div style="background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:44px 32px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+  <div style="flex:1 1 320px;min-width:0">
+   <p class="eyebrow">Sem compromisso</p>
+   <h2 style="font-size:34px;line-height:1.15;margin-bottom:14px">Veja antes de decidir.</h2>
+   <p style="margin:0;color:var(--tx2)">Deixe seu contato e receba <strong style="color:var(--tx)">um Reel de amostra grátis</strong>, feito no tema do seu perfil. Se gostar, a gente conversa.</p>
+  </div>
+  <form id="snpForm" style="flex:1 1 380px;min-width:0;display:grid;gap:14px" novalidate>
+   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Seu nome<input name="nome" required autocomplete="name" class="snp-in"></label>
+   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">WhatsApp com DDD<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" class="snp-in"></label>
+   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Seu @ no Instagram<input name="instagram" placeholder="@seuperfil" class="snp-in"></label>
+   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Você é
+    <select name="profissao" class="snp-in"><option>Psicólogo(a)</option><option>Terapeuta</option><option>Mentor(a) ou coach</option><option>Outro profissional da saúde</option><option>Outro</option></select>
+   </label>
+   <button type="submit" id="snpBtn" style="min-height:52px;border:0;border-radius:999px;background:var(--ac);color:#0B0F14;font:500 17px 'IBM Plex Sans',sans-serif;cursor:pointer">Quero meu Reel de amostra</button>
+   <p id="snpMsg" role="status" aria-live="polite" style="margin:0;min-height:22px;font-size:15px"></p>
+   <p style="margin:0;font-size:12.5px;color:var(--tx3)">Usamos seu contato só para falar sobre a Sinapse. Veja a <a href="https://n8n.produtodesaude.com.br/webhook/sinapse-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+  </form>
+ </div>
+</section>
+
+<section id="contato" class="wrap" style="padding-top:120px;padding-bottom:120px;text-align:center">
+ <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="display:block;margin:0 auto 28px"><circle cx="50" cy="50" r="46" stroke="#1F3A38" stroke-width="1.5"/><ellipse cx="50" cy="50" rx="40" ry="15" stroke="#5EEAD4" stroke-opacity=".6" stroke-width="1.5" transform="rotate(30 50 50)"/><ellipse cx="50" cy="50" rx="40" ry="15" stroke="#5fc6ef" stroke-opacity=".5" stroke-width="1.5" transform="rotate(-30 50 50)"/><circle cx="50" cy="50" r="10" fill="#5EEAD4"/></svg>
+ <h2 style="margin:0 auto 20px;font-size:50px;line-height:1.08;max-width:780px">Quer a Sinapse criando para o seu perfil?</h2>
+ <p style="margin:0 auto 36px;color:var(--tx2);font-size:19px;max-width:560px">Fale com a gente e veja o sistema funcionando ao vivo. Planos a partir de R$ 197/mês.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+  <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5511971125781?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Sinapse%20e%20quero%20saber%20mais.">Chamar no WhatsApp</a>
+  <a class="btn-o" target="_blank" rel="noopener" href="https://instagram.com/ai.sinapse">Seguir @ai.sinapse</a>
+ </div>
+</section>
+</main>
+
+<footer style="border-top:1px solid var(--line)">
+ <div class="wrap" style="padding-top:32px;padding-bottom:32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--tx3)">
+  <span>© 2026 Sinapse · <a href="https://n8n.produtodesaude.com.br/webhook/sinapse-privacidade" target="_blank" rel="noopener">Política de Privacidade</a></span>
+  <span>Conteúdo educativo feito com IA. Nunca promessa de cura ou de resultado.</span>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var LEAD='https://n8n.produtodesaude.com.br/webhook/sinapse-lead';
+ var f=document.getElementById('snpForm'),b=document.getElementById('snpBtn'),m=document.getElementById('snpMsg');
+ var q=new URLSearchParams(location.search);
+ var origem=q.get('utm_source')||(q.get('gclid')?'google_ads':'')||(document.referrer?'referencia':'direto');
+ if(q.get('utm_campaign'))origem+=' / '+q.get('utm_campaign');
+ origem='site aisinapse · '+origem;
+ f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=Object.fromEntries(new FormData(f).entries());
+  var tel=(d.whatsapp||'').replace(/\D/g,'');
+  if(!d.nome||tel.length<10){m.style.color='#FBBF24';m.textContent='Confira o nome e o WhatsApp com DDD.';return;}
+  d.origem=origem;
+  b.disabled=true;b.textContent='Enviando...';m.textContent='';
+  fetch(LEAD,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+   .then(function(r){return r.json()})
+   .then(function(j){
+    if(j&&j.ok){m.style.color='#5EEAD4';m.textContent='Recebido! A Sinapse vai chamar você no WhatsApp em breve.';f.reset();b.textContent='Enviado ✓';}
+    else throw 0;
+   })
+   .catch(function(){m.style.color='#FBBF24';m.textContent='Não deu certo agora. Tente de novo ou chame no WhatsApp.';b.disabled=false;b.textContent='Quero meu Reel de amostra';});
+ });
+})();
+</script>
+</body>
+</html>
