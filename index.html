@@ -53,10 +53,30 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
 .price{display:flex;align-items:baseline;gap:8px}
 .price b{font-family:'Sora',sans-serif;font-weight:700;font-size:54px;line-height:1}
 .price span{color:var(--tx3)}
+.reels{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,300px));gap:24px}
+.reels figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.reels video{width:100%;aspect-ratio:9/16;border-radius:20px;background:#000;border:1px solid var(--line2);display:block}
+.reels figcaption{font-size:15px;color:var(--tx2)}
+.passo{display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid var(--line2)}
+.passo span{font-family:'Sora',sans-serif;font-weight:300;font-size:40px;line-height:1;color:var(--ac)}
+.passo h3{margin:0;font-weight:600;font-size:21px}
+.passo p{margin:0;color:var(--tx2);font-size:16px}
+.faq{display:flex;flex-direction:column;gap:10px;max-width:820px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;min-height:56px;padding:14px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:'Sora',sans-serif;font-weight:600;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--ac);font-size:24px;font-weight:300}
+.faq details[open] summary::after{content:'–'}
+.faq details p{margin:0 0 18px;color:var(--tx2);font-size:16px}
 @media (max-width:640px){
  h1{font-size:40px!important}
  h2{font-size:30px!important}
- section{padding-top:64px!important;padding-bottom:56px!important}
+ section{padding-top:56px!important;padding-bottom:48px!important}
+ #quem img{width:140px!important}
+ .reels{grid-template-columns:1fr 1fr;gap:12px}
+ .reels figcaption{font-size:13px}
+ #quem>div{padding:24px!important}
+ .temas{display:none}
  .snp-card{position:static!important;width:100%!important;margin-top:12px}
  header nav{gap:14px!important}
  .navlink{display:none}
@@ -72,23 +92,23 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
   <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em">SINAPSE</span>
  </a>
  <nav aria-label="Seções" style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-size:15px">
-  <a class="navlink" href="#metodo" style="color:var(--tx2);text-decoration:none">O método</a>
-  <a class="navlink" href="#base" style="color:var(--tx2);text-decoration:none">A base</a>
-  <a class="navlink" href="#entrega" style="color:var(--tx2);text-decoration:none">O que entrega</a>
+  <a class="navlink" href="#reels" style="color:var(--tx2);text-decoration:none">Exemplos</a>
+  <a class="navlink" href="#como" style="color:var(--tx2);text-decoration:none">Como funciona</a>
+  <a class="navlink" href="#faq" style="color:var(--tx2);text-decoration:none">Dúvidas</a>
   <a href="#planos" style="color:var(--tx2);text-decoration:none">Planos</a>
   <a href="#planos" style="color:#0B0F14;background:var(--ac);padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:500">Quero a Sinapse</a>
  </nav>
 </header>
 
 <main>
-<section class="wrap" style="padding-top:88px;padding-bottom:96px;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
+<section class="wrap" style="padding-top:72px;padding-bottom:80px;display:flex;flex-wrap:wrap;gap:56px;align-items:center">
  <div style="flex:999 1 520px;min-width:0">
   <p style="margin:0 0 22px;display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);border:1px solid #1F3A38;border-radius:999px;padding:7px 16px"><span style="width:7px;height:7px;border-radius:50%;background:var(--ac)"></span>Psicólogos · Terapeutas · Mentores</p>
   <h1 style="margin:0 0 24px;font-weight:700;font-size:64px;line-height:1.04;letter-spacing:-.03em">Conteúdo que fala com o <span style="color:var(--ac)">cérebro</span> do seu público.</h1>
   <p style="margin:0 0 36px;font-size:20px;color:var(--tx2);max-width:560px">Imagine abrir o Telegram de manhã e o Reel do dia já estar lá, pronto, com roteiro, narração e legenda. A Sinapse transforma livros reais de neurociência e comportamento em conteúdo para o seu perfil. Você só aprova.</p>
   <div style="display:flex;flex-wrap:wrap;gap:14px">
-   <a href="#planos" class="btn">Ver os planos</a>
-   <a href="#chamar" class="btn-o">Quero um Reel de amostra grátis</a>
+   <a href="#chamar" class="btn">Quero um Reel de amostra grátis</a>
+   <a href="#reels" class="btn-o">Ver Reels de exemplo</a>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)">
    <div><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:26px">Todo dia</div><div style="font-size:14px;color:var(--tx3)">um Reel pronto para aprovar</div></div>
@@ -106,70 +126,42 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  </div>
 </section>
 
-<section class="alt">
+<section class="alt temas">
  <div class="wrap" style="padding-top:26px;padding-bottom:26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3)">
   <span>Neurociência</span><span style="color:var(--ac)">·</span><span>Psicologia positiva</span><span style="color:var(--ac)">·</span><span>Comportamento</span><span style="color:var(--ac)">·</span><span>Persuasão ética</span><span style="color:var(--ac)">·</span><span>Hábitos</span>
  </div>
 </section>
 
-<section id="metodo" class="wrap" style="padding-top:112px;padding-bottom:96px">
- <p class="eyebrow">O método</p>
- <h2 style="max-width:760px">Todo conteúdo nasce de um problema real e termina numa solução.</h2>
- <p class="lead">É assim que o cérebro presta atenção: primeiro sente a dor, depois procura a saída. Cada Reel da Sinapse segue esse caminho.</p>
- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#10151C">
-  <div style="padding:32px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">0 a 3 segundos</span><h3 style="margin:0;font-weight:600;font-size:24px">O gancho</h3><p style="margin:0;color:var(--tx2);font-size:16px">A dor do público, dita do jeito que ele sente. Ninguém passa o dedo.</p><div style="margin-top:auto;height:4px;border-radius:4px;background:var(--gold)"></div></div>
-  <div style="padding:32px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ac)">O meio</span><h3 style="margin:0;font-weight:600;font-size:24px">A solução</h3><p style="margin:0;color:var(--tx2);font-size:16px">O que dizem os livros e a ciência, em linguagem simples, com um passo para aplicar hoje.</p><div style="margin-top:auto;height:4px;border-radius:4px;background:var(--ac)"></div></div>
-  <div style="padding:32px 28px;display:flex;flex-direction:column;gap:12px"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ac2)">O final</span><h3 style="margin:0;font-weight:600;font-size:24px">A chamada</h3><p style="margin:0;color:var(--tx2);font-size:16px">"Comente PALAVRA" ou "salve para depois". O público responde e o perfil cresce.</p><div style="margin-top:auto;height:4px;border-radius:4px;background:var(--ac2)"></div></div>
+<section id="reels" class="wrap" style="padding-top:96px;padding-bottom:88px">
+ <p class="eyebrow">Exemplos reais</p>
+ <h2 style="max-width:760px">Veja um Reel feito pela Sinapse.</h2>
+ <p class="lead" style="margin-bottom:40px">Dois Reels de verdade, feitos para perfis de psicologia. Todos seguem o mesmo caminho: <strong style="color:var(--gold)">o gancho</strong> com a dor do público, <strong style="color:var(--ac)">a solução</strong> explicada com base nos livros e <strong style="color:var(--ac2)">a chamada</strong> no final.</p>
+ <div class="reels">
+  <figure><video controls playsinline preload="none" poster="reel-176.jpg" aria-label="Reel de exemplo: ansiedade antecipatória"><source src="reel-176.mp4" type="video/mp4"></video><figcaption>"Cansada de sofrer por cenários que ainda não aconteceram?"</figcaption></figure>
+  <figure><video controls playsinline preload="none" poster="reel-170.jpg" aria-label="Reel de exemplo: checar o celular"><source src="reel-170.mp4" type="video/mp4"></video><figcaption>"Você checa o celular dezenas de vezes esperando uma notícia ruim?"</figcaption></figure>
  </div>
+ <p style="margin:28px 0 0;color:var(--tx3);font-size:15px">Quer um assim no tema do <strong style="color:var(--tx)">seu</strong> perfil? <a href="#chamar">Peça seu Reel de amostra grátis</a>.</p>
 </section>
 
-<section id="base" class="alt">
- <div class="wrap" style="padding-top:112px;padding-bottom:112px;display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
-  <div style="flex:1 1 380px;min-width:0">
-   <p class="eyebrow">A base</p>
-   <h2 style="margin-bottom:20px">Uma biblioteca de verdade por trás de cada frase.</h2>
-   <p style="margin:0 0 24px;color:var(--tx2);font-size:18px">A Sinapse não inventa. Ela estuda livros reais de neurociência, psicologia e comportamento, e só cita o que está na biblioteca.</p>
-   <div style="border-left:2px solid var(--ac);padding:4px 0 4px 18px;font-size:16px">Nada aqui é promessa de cura ou de resultado. É <strong style="color:var(--ac)">conteúdo educativo</strong>, explicado com fonte. Para psicólogos, o tom segue as orientações de publicidade do CFP.</div>
-  </div>
-  <div style="flex:1 1 460px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Atenção</div><div style="font-size:14px;color:var(--tx3)">O que faz o cérebro parar e olhar</div></div>
-   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Hábitos</div><div style="font-size:14px;color:var(--tx3)">Pequenos passos que mudam a rotina</div></div>
-   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Emoções</div><div style="font-size:14px;color:var(--tx3)">Como sentimos antes de pensar</div></div>
-   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Otimismo aprendido</div><div style="font-size:14px;color:var(--tx3)">A psicologia positiva aplicada</div></div>
-   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Decisão</div><div style="font-size:14px;color:var(--tx3)">Por que escolhemos o que escolhemos</div></div>
-   <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px"><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Presença</div><div style="font-size:14px;color:var(--tx3)">Sair do automático e viver o agora</div></div>
-   <div style="background:var(--card);border:1px solid #1F3A38;border-radius:16px;padding:18px 20px;grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center"><div><div style="font-family:'Sora',sans-serif;font-weight:600;font-size:17px">Histórias que o cérebro reconhece</div><div style="font-size:14px;color:var(--tx3)">Arquétipos e narrativas que prendem do início ao fim</div></div><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ac)">+ dezenas de livros na biblioteca</span></div>
-  </div>
- </div>
-</section>
-
-<section id="como" class="wrap" style="padding-top:112px;padding-bottom:96px">
+<section id="como" class="alt">
+ <div class="wrap" style="padding-top:96px;padding-bottom:96px">
  <p class="eyebrow">Como funciona</p>
- <h2 style="margin-bottom:56px">Do livro ao seu perfil, em 4 passos.</h2>
- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px">
-  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">01</span><h3 style="margin:0;font-weight:600;font-size:21px">Estuda</h3><p style="margin:0;color:var(--tx2);font-size:16px">Lê a biblioteca e separa o que resolve a dor do seu público.</p></div>
-  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">02</span><h3 style="margin:0;font-weight:600;font-size:21px">Cria</h3><p style="margin:0;color:var(--tx2);font-size:16px">Monta cena, narração, legendas e texto na tela, no formato problema e solução.</p></div>
-  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">03</span><h3 style="margin:0;font-weight:600;font-size:21px">Você aprova</h3><p style="margin:0;color:var(--tx2);font-size:16px">O conteúdo chega no seu Telegram. Um toque e está aprovado.</p></div>
-  <div style="display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line2)"><span style="font-family:'Sora',sans-serif;font-weight:300;font-size:44px;line-height:1;color:var(--ac)">04</span><h3 style="margin:0;font-weight:600;font-size:21px">Aprende</h3><p style="margin:0;color:var(--tx2);font-size:16px">Guarda o que foi postado, lê os resultados e melhora a cada semana.</p></div>
+ <h2 style="margin-bottom:48px">Do livro ao seu perfil, em 4 passos.</h2>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px">
+  <div class="passo"><span>01</span><h3>Estuda</h3><p>Lê livros reais de neurociência, psicologia e comportamento e separa o que resolve a dor do seu público.</p></div>
+  <div class="passo"><span>02</span><h3>Cria</h3><p>Monta o Reel com cena, narração, legendas e texto na tela. Você não precisa aparecer nem gravar nada.</p></div>
+  <div class="passo"><span>03</span><h3>Você aprova</h3><p>O conteúdo chega no seu Telegram. Um toque para aprovar ou pedir ajuste.</p></div>
+  <div class="passo"><span>04</span><h3>Aprende</h3><p>Guarda o que foi postado, lê os resultados e melhora a cada semana.</p></div>
  </div>
-</section>
-
-<section id="entrega" class="wrap" style="padding-top:32px;padding-bottom:112px">
- <h2 style="margin-bottom:14px">O que a Sinapse entrega</h2>
- <p class="lead" style="margin-bottom:44px">Tudo pronto para postar, com o padrão visual da sua marca.</p>
- <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
-  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 9l5 3-5 3z"/></svg><h3>Reels prontos</h3><p>Cena, narração natural, legendas e texto na tela.</p></div>
-  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M20 7v10"/></svg><h3>Stories</h3><p>Para manter o público aquecido entre um Reel e outro.</p></div>
-  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><h3>Aprovação no Telegram</h3><p>Você vê, aprova ou pede ajuste. Sem planilha, sem reunião.</p></div>
-  <div class="card"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10M9 20V4M15 20v-8M21 20v-5"/></svg><h3>Estratégia semanal</h3><p>Análise dos resultados e plano da semana para o perfil crescer.</p></div>
+ <div style="margin-top:48px;border-left:2px solid var(--ac);padding:4px 0 4px 18px;font-size:16px;max-width:820px">A Sinapse não inventa: só cita o que está na biblioteca. Nada aqui é promessa de cura ou de resultado. É <strong style="color:var(--ac)">conteúdo educativo</strong>, explicado com fonte. Para psicólogos, o tom segue as orientações de publicidade do CFP.</div>
  </div>
 </section>
 
 <section id="planos" class="alt">
- <div class="wrap" style="padding-top:112px;padding-bottom:112px">
+ <div class="wrap" style="padding-top:96px;padding-bottom:96px">
   <p class="eyebrow">Planos</p>
   <h2 style="max-width:760px">Escolha o ritmo do seu perfil.</h2>
-  <p class="lead" style="margin-bottom:64px">Mês a mês, sem multa (aviso de 30 dias). Garantia de 7 dias: se não gostar, devolvemos o valor.</p>
+  <p class="lead" style="margin-bottom:48px">Mês a mês, sem multa (aviso de 30 dias). Garantia de 7 dias: se não gostar, devolvemos o valor.</p>
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:stretch">
 
    <div class="plan">
@@ -202,17 +194,16 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  </div>
 </section>
 
-<section id="chamar" class="wrap" style="padding-top:96px">
+<section id="chamar" class="wrap" style="padding-top:96px;scroll-margin-top:16px">
  <div style="background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:44px 32px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
   <div style="flex:1 1 320px;min-width:0">
    <p class="eyebrow">Sem compromisso</p>
    <h2 style="font-size:34px;line-height:1.15;margin-bottom:14px">Veja antes de decidir.</h2>
-   <p style="margin:0;color:var(--tx2)">Deixe seu contato e receba <strong style="color:var(--tx)">um Reel de amostra grátis</strong>, feito no tema do seu perfil. Se gostar, a gente conversa.</p>
+   <p style="margin:0;color:var(--tx2)">Deixe seu contato e receba <strong style="color:var(--tx)">um Reel de amostra grátis</strong>, feito no tema do seu perfil. São só 3 campos. Se gostar, a gente conversa.</p>
   </div>
   <form id="snpForm" style="flex:1 1 380px;min-width:0;display:grid;gap:14px" novalidate>
    <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Seu nome<input name="nome" required autocomplete="name" class="snp-in"></label>
    <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">WhatsApp com DDD<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" class="snp-in"></label>
-   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Seu @ no Instagram<input name="instagram" placeholder="@seuperfil" class="snp-in"></label>
    <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Você é
     <select name="profissao" class="snp-in"><option>Psicólogo(a)</option><option>Terapeuta</option><option>Mentor(a) ou coach</option><option>Outro profissional da saúde</option><option>Outro</option></select>
    </label>
@@ -223,7 +214,31 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  </div>
 </section>
 
-<section id="contato" class="wrap" style="padding-top:120px;padding-bottom:120px;text-align:center">
+<section id="quem" class="wrap" style="padding-top:96px;padding-bottom:24px">
+ <div style="display:flex;flex-wrap:wrap;gap:36px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:32px">
+  <img src="data:image/jpeg;base64,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" width="200" height="243" alt="Diego, criador da Sinapse" style="flex:none;width:200px;height:auto;border-radius:20px;object-fit:cover">
+  <div style="flex:1 1 320px;min-width:0">
+   <p class="eyebrow">Quem faz a Sinapse</p>
+   <h2 style="font-size:34px;line-height:1.15;margin-bottom:14px">Oi, eu sou o Diego.</h2>
+   <p style="margin:0 0 20px;color:var(--tx2)">Criei a Sinapse para que psicólogos, terapeutas e mentores tenham presença no Instagram sem perder horas criando conteúdo. A tecnologia faz o trabalho pesado, e sou eu quem acompanha cada cliente e responde você no WhatsApp.</p>
+   <a class="btn-o" target="_blank" rel="noopener" href="https://wa.me/5511971125781?text=Ol%C3%A1%20Diego!%20Vi%20o%20site%20da%20Sinapse%20e%20quero%20conversar.">Falar com o Diego no WhatsApp</a>
+  </div>
+ </div>
+</section>
+
+<section id="faq" class="wrap" style="padding-top:96px">
+ <p class="eyebrow">Dúvidas</p>
+ <h2 style="margin-bottom:32px">Perguntas frequentes</h2>
+ <div class="faq">
+  <details><summary>Preciso aparecer ou gravar vídeo?</summary><p>Não. A Sinapse monta o Reel com cena, narração, legendas e texto na tela. Você só aprova.</p></details>
+  <details><summary>O conteúdo respeita as regras do CFP?</summary><p>Sim. É conteúdo educativo, sem promessa de cura ou de resultado, e o tom segue as orientações de publicidade do CFP. E nada é postado sem a sua aprovação.</p></details>
+  <details><summary>Como eu aprovo os Reels?</summary><p>Pelo Telegram. O Reel chega pronto, e você toca em Aprovar ou pede um ajuste.</p></details>
+  <details><summary>Tem fidelidade? Posso cancelar?</summary><p>Não tem fidelidade: é mês a mês, sem multa, com aviso de 30 dias. E você tem garantia de 7 dias: se não gostar, devolvemos o valor.</p></details>
+  <details><summary>Como eu começo?</summary><p>Peça seu Reel de amostra grátis ou chame o Diego no WhatsApp. Vocês combinam o tema do seu perfil e os Reels passam a chegar no seu Telegram.</p></details>
+ </div>
+</section>
+
+<section id="contato" class="wrap" style="padding-top:96px;padding-bottom:104px;text-align:center">
  <svg width="64" height="64" viewBox="0 0 100 100" fill="none" aria-hidden="true" style="display:block;margin:0 auto 28px"><circle cx="50" cy="50" r="46" stroke="#1F3A38" stroke-width="1.5"/><ellipse cx="50" cy="50" rx="40" ry="15" stroke="#5EEAD4" stroke-opacity=".6" stroke-width="1.5" transform="rotate(30 50 50)"/><ellipse cx="50" cy="50" rx="40" ry="15" stroke="#5fc6ef" stroke-opacity=".5" stroke-width="1.5" transform="rotate(-30 50 50)"/><circle cx="50" cy="50" r="10" fill="#5EEAD4"/></svg>
  <h2 style="margin:0 auto 20px;font-size:50px;line-height:1.08;max-width:780px">Quer a Sinapse criando para o seu perfil?</h2>
  <p style="margin:0 auto 36px;color:var(--tx2);font-size:19px;max-width:560px">Fale com a gente e veja o sistema funcionando ao vivo. Planos a partir de R$ 197/mês.</p>
@@ -266,7 +281,93 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  });
 })();
 </script>
-<a href="https://wa.me/5511971125781?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Sinapse%20e%20quero%20saber%20mais%20sobre%20os%20Reels%20prontos." target="_blank" rel="noopener" aria-label="Falar com a Sinapse no WhatsApp" class="snp-wa"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-6 0-5.9 4.9-10.6 11-10.6s11 4.8 11 10.6-4.9 10.8-11 10.8zm6-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2s0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1.1 2.8 1.2 3 2.1 3.2 5.1 4.5c.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5s.3-1.3.2-1.5c0-.1-.3-.2-.6-.3z"/></svg><span>Falar no WhatsApp</span></a>
-<style>.snp-wa{position:fixed;right:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;border-radius:999px;background:#25D366;color:#fff;font:500 16px 'IBM Plex Sans',sans-serif;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35)}.snp-wa:hover{filter:brightness(1.05)}@media(max-width:480px){.snp-wa span{display:none}.snp-wa{padding:0;width:56px;justify-content:center}}</style>
+<!-- Chat da vendedora (Sinapse) — fala com /webhook/sinapse-chat; quando a pessoa está pronta, mostra o botão do WhatsApp do Diego -->
+<button type="button" id="snpChatBtn" class="snp-chat-btn" aria-controls="snpChat" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm3 6.5a1.5 1.5 0 1 0 0 .01Zm5 0a1.5 1.5 0 1 0 0 .01Zm5 0a1.5 1.5 0 1 0 0 .01Z"/></svg><span>Tirar dúvidas</span></button>
+<div id="snpChat" class="snp-chat" role="dialog" aria-label="Conversa com a Sinapse" hidden>
+ <header class="snp-chat-h">
+  <span class="snp-dot" aria-hidden="true"></span>
+  <div><b>Sinapse</b><small>assistente virtual do Diego · responde na hora</small></div>
+  <a class="snp-chat-hwa" target="_blank" rel="noopener" href="https://wa.me/5511971125781?text=Ol%C3%A1%20Diego!%20Vim%20pelo%20chat%20do%20site%20da%20Sinapse." aria-label="Falar com o Diego no WhatsApp"><svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.9C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4Z"/></svg><span>WhatsApp</span></a>
+  <button type="button" id="snpChatX" class="snp-chat-x" aria-label="Fechar conversa">×</button>
+ </header>
+ <div id="snpChatLog" class="snp-chat-log" aria-live="polite"></div>
+ <div id="snpChips" class="snp-chips">
+  <button type="button">Quanto custa?</button><button type="button">Como funciona?</button><button type="button">Quero o Reel de amostra</button>
+ </div>
+ <form id="snpChatF" class="snp-chat-f" autocomplete="off">
+  <input id="snpChatI" type="text" maxlength="600" placeholder="Escreva sua dúvida…" aria-label="Sua mensagem" required>
+  <button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5 3 10l12 2-12 2z"/></svg></button>
+ </form>
+ <a id="snpChatWa" class="snp-chat-wa" target="_blank" rel="noopener" href="https://wa.me/5511971125781?text=Ol%C3%A1!%20Vim%20pelo%20chat%20do%20site%20da%20Sinapse.">Prefere falar com o Diego? <u>WhatsApp</u></a>
+</div>
+<style>
+.snp-chat-btn{position:fixed;right:16px;bottom:16px;z-index:60;display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 22px 0 18px;border:0;border-radius:999px;background:var(--ac);color:#0B0F14;font:500 16px 'IBM Plex Sans',sans-serif;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.4)}
+.snp-chat-btn:hover{background:#99F6E4}
+.snp-chat{margin:0;padding:0;position:fixed;right:16px;bottom:84px;z-index:61;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 110px);display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line2);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.55);overflow:hidden;font-family:'IBM Plex Sans',sans-serif}
+.snp-chat[hidden]{display:none}
+.snp-chat-h{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 18px;border-bottom:1px solid var(--line)}
+.snp-chat-h b{display:block;font-family:'Sora',sans-serif;font-size:16px;color:var(--tx)}
+.snp-chat-h small{display:block;font-size:12.5px;color:var(--tx3);line-height:1.3}
+.snp-dot{width:10px;height:10px;flex:none;border-radius:50%;background:var(--ac);box-shadow:0 0 0 4px rgba(94,234,212,.15)}
+.snp-chat-h>div{min-width:0}
+.snp-chat-hwa{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border-radius:999px;background:#25D366;color:#fff!important;text-decoration:none;font-size:14px;font-weight:500}
+.snp-chat-hwa:hover{filter:brightness(1.05)}
+.snp-chat-x{flex:none;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--tx2);font-size:24px;line-height:1;cursor:pointer}
+.snp-chat-x:hover{background:var(--line)}
+.snp-chat-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.snp-m{max-width:86%;padding:10px 14px;border-radius:16px;font-size:15px;line-height:1.45;white-space:pre-line;word-wrap:break-word}
+.snp-m.ia{align-self:flex-start;background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-bottom-left-radius:6px}
+.snp-m.eu{align-self:flex-end;background:var(--ac);color:#0B0F14;border-bottom-right-radius:6px}
+.snp-m.dig{color:var(--tx3);font-style:italic}
+.snp-go{align-self:stretch;display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 18px;border-radius:999px;background:#25D366;color:#fff!important;text-decoration:none;font-weight:500;font-size:16px}
+.snp-go:hover{filter:brightness(1.05)}
+.snp-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 10px}
+.snp-chips button{min-height:36px;padding:0 14px;border:1px solid var(--line2);border-radius:999px;background:transparent;color:var(--tx2);font:14px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.snp-chips button:hover{border-color:var(--ac);color:var(--tx)}
+.snp-chat-f{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+.snp-chat-f input{flex:1;min-width:0;min-height:46px;padding:0 14px;border:1px solid var(--line2);border-radius:999px;background:var(--bg);color:var(--tx);font:15px 'IBM Plex Sans',sans-serif}
+.snp-chat-f input:focus{outline:2px solid var(--ac);outline-offset:1px}
+.snp-chat-f button{width:46px;height:46px;flex:none;border:0;border-radius:50%;background:var(--ac);color:#0B0F14;cursor:pointer}
+.snp-chat-f button:disabled{opacity:.5;cursor:default}
+.snp-chat-wa{display:block;padding:0 16px 12px;text-align:center;font-size:13px;color:var(--tx3)!important;text-decoration:none}
+.snp-chat-wa u{color:#25D366}
+@media(max-width:480px){
+ .snp-chat-btn span{display:none}.snp-chat-btn{padding:0;width:56px;justify-content:center}
+ .snp-chat-btn[aria-expanded="true"]{display:none}
+ .snp-chat{right:0;bottom:0;width:100vw;max-width:100vw;height:88vh;max-height:88vh;border-radius:20px 20px 0 0}
+}
+</style>
+<script>
+(function(){
+ var API='https://n8n.produtodesaude.com.br/webhook/sinapse-chat';
+ var WA='https://wa.me/5511971125781?text=';
+ var btn=document.getElementById('snpChatBtn'),box=document.getElementById('snpChat'),x=document.getElementById('snpChatX');
+ var log=document.getElementById('snpChatLog'),f=document.getElementById('snpChatF'),inp=document.getElementById('snpChatI'),chips=document.getElementById('snpChips');
+ var sid='';
+ try{sid=sessionStorage.getItem('snp_sid')||'';}catch(e){}
+ if(!sid){sid='s'+Date.now().toString(36)+Math.random().toString(36).slice(2,10);try{sessionStorage.setItem('snp_sid',sid);}catch(e){}}
+ var q=new URLSearchParams(location.search);
+ var origem='chat do site · '+(q.get('utm_source')||(document.referrer?'referencia':'direto'))+(q.get('utm_campaign')?' / '+q.get('utm_campaign'):'');
+ var aberto=false,ocupado=false,comecou=false;
+ function add(txt,quem){var d=document.createElement('div');d.className='snp-m '+quem;d.textContent=txt;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+ function zap(texto){var a=document.createElement('a');a.className='snp-go';a.target='_blank';a.rel='noopener';a.href=WA+encodeURIComponent(texto||'Olá! Vim pelo chat do site da Sinapse.');a.innerHTML='<svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.9C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4Zm5.9-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.3-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8 0 1.6 1.2 3.2 1.4 3.4.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>Falar com o Diego no WhatsApp';log.appendChild(a);log.scrollTop=log.scrollHeight;}
+ function abrir(v){aberto=v;box.hidden=!v;btn.setAttribute('aria-expanded',String(v));if(v){if(!comecou){comecou=true;add('Oi! 👋 Tire suas dúvidas sobre a Sinapse por aqui. Pode perguntar o que quiser.','ia');}setTimeout(function(){inp.focus();},50);}}
+ btn.addEventListener('click',function(){abrir(!aberto);});
+ x.addEventListener('click',function(){abrir(false);btn.focus();});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&aberto)abrir(false);});
+ function enviar(txt){
+  txt=String(txt||'').trim();if(!txt||ocupado)return;
+  ocupado=true;chips.style.display='none';add(txt,'eu');inp.value='';f.querySelector('button').disabled=true;
+  var dig=add('Sinapse está digitando…','ia dig');
+  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sid:sid,texto:txt,origem:origem})})
+   .then(function(r){return r.json();})
+   .then(function(j){dig.remove();if(!j||!j.ok)throw 0;add(j.resposta,'ia');if(j.whatsapp)zap(j.wa_texto);})
+   .catch(function(){dig.remove();add('Não consegui responder agora. Fala direto com o Diego no WhatsApp:','ia');zap('Olá! Vim pelo site da Sinapse e quero tirar uma dúvida.');})
+   .then(function(){ocupado=false;f.querySelector('button').disabled=false;inp.focus();});
+ }
+ f.addEventListener('submit',function(e){e.preventDefault();enviar(inp.value);});
+ chips.addEventListener('click',function(e){if(e.target.tagName==='BUTTON')enviar(e.target.textContent);});
+})();
+</script>
 </body>
 </html>
