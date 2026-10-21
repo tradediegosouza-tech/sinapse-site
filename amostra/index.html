@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seu Reel grátis | Sinapse</title>
-<meta name="description" content="Responda 4 perguntas rápidas e receba, de presente, 1 Reel pronto no tema do seu perfil. Sem compromisso.">
+<meta name="description" content="Responda 5 perguntas rápidas e receba, aqui mesmo, 1 Reel pronto com a cara do seu perfil. Sem compromisso.">
 <meta property="og:title" content="Seu Reel grátis, pronto para postar">
-<meta property="og:description" content="4 perguntas rápidas. A Sinapse cria 1 Reel no tema do seu perfil, de presente.">
+<meta property="og:description" content="A Sinapse lê o seu perfil e cria 1 Reel com a sua cara, de presente. Entrega aqui mesmo.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://aisinapse.com.br/amostra/">
 <meta name="theme-color" content="#0B0F14">
+<meta property="og:url" content="https://aisinapse.com.br/amostra/">
 <link rel="canonical" href="https://aisinapse.com.br/amostra/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%235EEAD4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230B0F14'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@ fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1715800203298037&ev=PageView&noscript=1"></noscript>
 <style>
-:root{--bg:#0B0F14;--bg2:#0E131A;--card:#121821;--line:#1F2833;--line2:#2A3441;--tx:#E8ECF1;--tx2:#B6C0CC;--tx3:#8A96A5;--ac:#5EEAD4;--ac2:#5fc6ef;--err:#FCA5A5}
+:root{--bg:#0B0F14;--bg2:#0E131A;--card:#121821;--line:#1F2833;--line2:#2A3441;--tx:#E8ECF1;--tx2:#B6C0CC;--tx3:#8A96A5;--ac:#5EEAD4;--ac2:#5fc6ef;--err:#FCA5A5;--warn:#FCD34D}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;background:var(--bg);color:var(--tx);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:var(--ac)}
@@ -33,14 +33,15 @@ a{color:var(--ac)}
 .passo-n{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3)}
 main{max-width:620px;margin:0 auto;padding:18px 16px 48px}
 .barra{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin:6px 0 30px}
-.barra i{display:block;height:100%;width:25%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:99px;transition:width .35s ease}
+.barra i{display:block;height:100%;width:20%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:99px;transition:width .35s ease}
 .eyebrow{margin:0 0 10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac)}
 h1{margin:0 0 10px;font-family:'Sora',sans-serif;font-weight:600;font-size:30px;line-height:1.18;letter-spacing:-.015em}
+h2{margin:26px 0 10px;font-family:'Sora',sans-serif;font-weight:600;font-size:20px}
 .sub{margin:0 0 26px;color:var(--tx2)}
 .etapa{display:none}
 .etapa.on{display:block;animation:entra .3s ease}
 @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.etapa.on{animation:none}.barra i{transition:none}}
+@media (prefers-reduced-motion:reduce){.etapa.on{animation:none}.barra i,.prog i{transition:none}}
 .ops{display:grid;gap:10px}
 .op{display:flex;align-items:center;gap:14px;width:100%;min-height:58px;padding:12px 18px;border-radius:16px;border:1px solid var(--line2);background:var(--card);color:var(--tx);font:500 16.5px 'IBM Plex Sans',sans-serif;text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
 .op:hover{border-color:#3B4A5C}
@@ -52,30 +53,64 @@ h1{margin:0 0 10px;font-family:'Sora',sans-serif;font-weight:600;font-size:30px;
 .chip[aria-pressed="true"]{border-color:var(--ac);background:#10201F;color:var(--ac)}
 label.campo{display:grid;gap:6px;font-size:14px;color:var(--tx2);margin-bottom:14px}
 .in{min-height:52px;padding:0 16px;border-radius:14px;border:1px solid var(--line2);background:var(--card);color:var(--tx);font:400 16px 'IBM Plex Sans',sans-serif;width:100%}
-.in:focus,.op:focus-visible,.chip:focus-visible,.btn:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.in:focus,.op:focus-visible,.chip:focus-visible,.btn:focus-visible,.link-btn:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .in.erro{border-color:var(--err)}
+.arroba{position:relative}
+.arroba span{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--tx3)}
+.arroba .in{padding-left:34px}
+.dica{font-size:13.5px;color:var(--tx3);margin:-6px 0 14px}
+.perfil{display:none;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1px solid var(--ac);background:#10201F;margin:4px 0 14px}
+.perfil.on{display:flex}
+.perfil img{width:52px;height:52px;border-radius:50%;object-fit:cover;background:var(--bg2);flex:none}
+.perfil b{display:block;font-weight:500}
+.perfil small{color:var(--tx2);font-size:14px}
+.aviso{display:none;padding:14px 16px;border-radius:14px;border:1px solid #5B4A1F;background:#1A160C;color:var(--warn);font-size:15px;margin:4px 0 14px}
+.aviso.on{display:block}
+.aviso .acoes{margin-top:12px}
+.foto{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--bg2);border:1px dashed var(--line2);margin:6px 0 4px;font-size:14.5px;color:var(--tx2)}
+.foto img{width:48px;height:48px;border-radius:12px;object-fit:cover;display:none}
+.foto img.on{display:block}
+.link-btn{background:none;border:0;padding:0;color:var(--ac);font:inherit;cursor:pointer;text-decoration:underline}
 .lgpd{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:14px;color:var(--tx2);cursor:pointer;margin:4px 0 18px}
 .lgpd input{flex:none;width:20px;height:20px;margin:2px 0 0;accent-color:var(--ac)}
 .acoes{display:flex;gap:10px;margin-top:22px}
-.btn{flex:1;min-height:56px;border:0;border-radius:999px;background:var(--ac);color:#0B0F14;font:500 17px 'IBM Plex Sans',sans-serif;cursor:pointer;text-decoration:none;display:grid;place-items:center}
+.btn{flex:1;min-height:56px;border:0;border-radius:999px;background:var(--ac);color:#0B0F14;font:500 17px 'IBM Plex Sans',sans-serif;cursor:pointer;text-decoration:none;display:grid;place-items:center;padding:0 18px;text-align:center}
+.btn.sec{background:transparent;border:1px solid var(--line2);color:var(--tx)}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 .btn.carregando{opacity:.75;cursor:wait}
 .voltar{flex:none;min-height:56px;padding:0 20px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--tx2);font:400 16px 'IBM Plex Sans',sans-serif;cursor:pointer}
 .msg{min-height:22px;margin:12px 0 0;font-size:15px;color:var(--err)}
 .resumo{margin:0 0 20px;padding:14px 16px;border-radius:14px;background:var(--bg2);border:1px dashed var(--line2);font-size:14.5px;color:var(--tx2)}
 .resumo b{color:var(--tx);font-weight:500}
+.achados{display:grid;gap:10px;margin:0 0 8px;padding:0;list-style:none}
+.achados li{padding:14px 16px;border-radius:14px;background:var(--card);border:1px solid var(--line2);font-size:15.5px;color:var(--tx2);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.achados li.on{opacity:1;transform:none}
+.achados li b{color:var(--tx);font-weight:500}
+.prog{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:14px 0 8px}
+.prog i{display:block;height:100%;width:4%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:99px;transition:width .8s ease}
+.etapas-v{display:grid;gap:6px;margin:12px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--tx3)}
+.etapas-v li:before{content:"○ ";color:var(--line2)}
+.etapas-v li.feito{color:var(--tx2)}
+.etapas-v li.feito:before{content:"✓ ";color:var(--ac)}
+.etapas-v li.agora{color:var(--tx)}
+.etapas-v li.agora:before{content:"● ";color:var(--ac)}
+.previa{position:relative;max-width:340px;margin:0 auto 18px}
+.video{display:block;width:100%;aspect-ratio:9/16;border-radius:18px;background:#000;border:1px solid var(--line2)}
+.marca{position:absolute;top:14px;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:999px;background:rgba(11,15,20,.72);color:var(--ac);font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
+.oferta{margin:22px 0 0;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line2)}
+.oferta p{margin:0 0 14px;color:var(--tx2)}
 .prova{margin-top:34px;display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--tx3)}
 .prova span{display:flex;align-items:center;gap:8px}
 .prova span:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ac)}
-.ok-ic{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#10201F;border:1px solid var(--ac);margin-bottom:18px}
 footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:var(--tx3)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (min-width:640px){h1{font-size:34px}main{padding-top:28px}}
 </style>
 </head>
 <body>
 <header class="top">
  <a class="logo" href="https://aisinapse.com.br/"><span class="dot"></span>SINAPSE</a>
- <span class="passo-n" id="passoN">Passo 1 de 4</span>
+ <span class="passo-n" id="passoN">Passo 1 de 5</span>
 </header>
 
 <main>
@@ -84,8 +119,8 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  <!-- 1 · Profissão -->
  <section class="etapa on" data-etapa="1">
   <p class="eyebrow">Seu Reel grátis</p>
-  <h1>Vamos criar 1 Reel para o seu perfil, de presente.</h1>
-  <p class="sub">4 perguntas rápidas. Para começar: qual é a sua área?</p>
+  <h1>Vamos criar 1 Reel com a cara do seu perfil, de presente.</h1>
+  <p class="sub">5 perguntas rápidas e o Reel fica pronto aqui mesmo. Para começar: qual é a sua área?</p>
   <div class="ops" data-campo="profissao">
    <button type="button" class="op" data-v="Psicólogo(a)"><span class="ic">🧠</span><span>Psicólogo(a)</span></button>
    <button type="button" class="op" data-v="Terapeuta"><span class="ic">🌿</span><span>Terapeuta</span></button>
@@ -131,28 +166,85 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   <div class="acoes"><button type="button" class="voltar" data-volta>Voltar</button></div>
  </section>
 
- <!-- 4 · Contato -->
+ <!-- 4 · Instagram (opcional) + foto/logo (opcional) -->
  <section class="etapa" data-etapa="4">
+  <p class="eyebrow">Passo 4 · opcional</p>
+  <h1>Qual é o seu @ no Instagram?</h1>
+  <p class="sub">A Sinapse lê o seu perfil para o Reel combinar com o que você já posta.</p>
+  <label class="campo" for="ig">Seu @ do Instagram</label>
+  <div class="arroba"><span>@</span><input class="in" id="ig" maxlength="40" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="seuperfil"></div>
+  <p class="dica" style="margin-top:8px">Funciona com perfil <b>profissional</b> (empresa ou criador de conteúdo).</p>
+  <div class="perfil" id="perfil" role="status" aria-live="polite"><img id="perfilFoto" alt=""><div><b id="perfilNome"></b><small id="perfilInfo"></small></div></div>
+  <div class="aviso" id="aviso" role="status" aria-live="polite">
+   Não encontramos esse @. Confere se digitou certo? Se o seu perfil for pessoal, tudo bem: o Reel sai pelo tema que você escolheu.
+   <div class="acoes"><button type="button" class="btn sec" id="corrigir">Corrigir o @</button><button type="button" class="btn sec" id="semIg">Seguir sem o @</button></div>
+  </div>
+
+  <h2>Foto ou logotipo <span style="color:var(--tx3);font-weight:400;font-size:15px">(opcional)</span></h2>
+  <div class="foto">
+   <img id="fotoPrev" alt="Prévia da sua foto">
+   <div><span id="fotoTxt">Se o seu perfil for encontrado, usamos a foto dele no final do Reel.</span><br>
+    <label class="link-btn" for="fotoArq">Enviar outra foto ou o logotipo</label>
+    <input type="file" id="fotoArq" accept="image/*" class="vh">
+    <button type="button" class="link-btn" id="fotoTirar" style="display:none;margin-left:10px">Remover</button>
+   </div>
+  </div>
+
+  <div class="acoes"><button type="button" class="voltar" data-volta>Voltar</button><button type="button" class="btn" id="seguir4">Continuar</button></div>
+  <p class="msg" id="msg4" role="status" aria-live="polite"></p>
+ </section>
+
+ <!-- 5 · Contato -->
+ <section class="etapa" data-etapa="5">
   <p class="eyebrow">Último passo</p>
-  <h1>Para onde enviamos o seu Reel?</h1>
+  <h1>Quase lá! Seu Reel começa assim que você confirmar.</h1>
   <p class="resumo" id="resumo"></p>
   <form id="form" novalidate>
    <label class="campo">Seu nome<input class="in" name="nome" id="nome" autocomplete="name" maxlength="80" required></label>
    <label class="campo">WhatsApp com DDD<input class="in" name="whatsapp" id="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" maxlength="20" required></label>
+   <input type="text" name="site" id="site" tabindex="-1" autocomplete="off" class="vh" aria-hidden="true">
    <label class="campo">E-mail<input class="in" name="email" id="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com" maxlength="120" required></label>
-   <label class="lgpd"><input type="checkbox" id="lgpd"><span>Autorizo a Sinapse a usar meus dados (nome, WhatsApp e e-mail) só para me enviar o Reel e falar sobre o serviço, conforme a LGPD. Posso pedir para apagar a qualquer momento. <a href="https://n8n.produtodesaude.com.br/webhook/sinapse-privacidade" target="_blank" rel="noopener">Política de Privacidade</a></span></label>
-   <div class="acoes"><button type="button" class="voltar" data-volta>Voltar</button><button type="submit" class="btn" id="enviar">Quero meu Reel grátis</button></div>
+   <label class="lgpd"><input type="checkbox" id="lgpd"><span>Autorizo a Sinapse a usar meus dados (nome, WhatsApp, e-mail, @ e foto enviada) só para criar e me enviar o Reel e falar sobre o serviço, conforme a LGPD. Posso pedir para apagar a qualquer momento. <a href="https://n8n.produtodesaude.com.br/webhook/sinapse-privacidade" target="_blank" rel="noopener">Política de Privacidade</a></span></label>
+   <div class="acoes"><button type="button" class="voltar" data-volta>Voltar</button><button type="submit" class="btn" id="enviar">Criar meu Reel agora</button></div>
    <p class="msg" id="msg" role="status" aria-live="polite"></p>
   </form>
  </section>
 
- <!-- Pronto -->
- <section class="etapa" data-etapa="5">
-  <div class="ok-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-  <p class="eyebrow">Pedido recebido</p>
-  <h1>Pronto! Agora é só mandar o “oi” no WhatsApp.</h1>
-  <p class="sub">A mensagem já vai escrita. É por lá que o Diego te envia o seu Reel.</p>
-  <a class="btn" id="abrirWa" target="_blank" rel="noopener" href="https://wa.me/5511971125781">Abrir o WhatsApp</a>
+ <!-- 6 · Fazendo -->
+ <section class="etapa" data-etapa="6">
+  <p class="eyebrow" id="fazEyebrow">Lendo o seu perfil</p>
+  <h1 id="fazTitulo">Seu Reel está sendo criado.</h1>
+  <p class="sub" id="fazSub">Leva poucos minutos. Pode deixar esta página aberta.</p>
+  <ul class="achados" id="achados" aria-live="polite"></ul>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+  <ul class="etapas-v" id="etapasV">
+   <li data-e="roteiro">Escrevendo o roteiro no seu tom</li>
+   <li data-e="voz">Gravando a narração</li>
+   <li data-e="cenas">Escolhendo as cenas (cada uma é conferida antes)</li>
+   <li data-e="montando">Montando o vídeo</li>
+  </ul>
+  <p class="dica" style="margin-top:18px" id="fazNota">Leva de 2 a 4 minutos. Se precisar sair, tudo bem: o Reel também chega no seu WhatsApp.</p>
+ </section>
+
+ <!-- 7 · Pronto -->
+ <section class="etapa" data-etapa="7">
+  <p class="eyebrow">Seu Reel está pronto</p>
+  <h1 id="prontoTitulo">Aqui está o seu presente.</h1>
+  <div class="previa"><video class="video" id="video" controls controlslist="nodownload noplaybackrate" disablepictureinpicture playsinline preload="metadata"></video><span class="marca">Prévia · Sinapse</span></div>
+  <a class="btn" id="receber" target="_blank" rel="noopener" href="#">Receber meu Reel em alta no WhatsApp</a>
+  <p class="dica" style="margin-top:10px;text-align:center">O arquivo pronto para postar, sem a marca de prévia, vai pelo WhatsApp.</p>
+  <div class="oferta">
+   <p><b style="color:var(--tx)">Gostou?</b> A Sinapse pode fazer Reels assim para o seu perfil toda semana, no seu tema e no seu tom. Você só aprova e posta.</p>
+   <a class="btn sec" id="quero" target="_blank" rel="noopener" href="#">Quero isso toda semana</a>
+  </div>
+ </section>
+
+ <!-- 8 · Em revisão -->
+ <section class="etapa" data-etapa="8">
+  <p class="eyebrow">Quase pronto</p>
+  <h1>Seu Reel está passando por uma revisão final.</h1>
+  <p class="sub">Queremos que ele saia perfeito para o seu perfil. Ele chega no seu WhatsApp em até 2 horas.</p>
+  <a class="btn" id="queroRev" target="_blank" rel="noopener" href="#">Falar com a Sinapse no WhatsApp</a>
  </section>
 
  <div class="prova" id="prova">
@@ -164,27 +256,32 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
 
 <script>
 (function(){
- var API='https://n8n.produtodesaude.com.br/webhook/sinapse-amostra';
+ // ====== Configuração ======
+ var BASE='https://n8n.produtodesaude.com.br/webhook/';
+ // WhatsApp do botão final: hoje o do Diego; quando a Meta liberar, trocar para o da Sinapse (5511997542320).
  var WA='5511971125781';
- var dados={profissao:'',tema:'',tom:''};
- var atual=1;
+ var ETAPAS_TOTAL=5;
+
+ var dados={profissao:'',tema:'',tom:'',ig:'',igOk:false,foto:''};
+ var atual=1,token='',timerStatus=null,inicio=0;
  var qs=new URLSearchParams(location.search);
  var origem=(qs.get('origem')||qs.get('utm_campaign')||qs.get('utm_source')||'site').slice(0,60);
- origem='site etapas · '+origem;
+ origem='amostra na hora · '+origem;
+ function $(id){return document.getElementById(id)}
+ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
  function ir(n){
   atual=n;
   document.querySelectorAll('.etapa').forEach(function(s){s.classList.toggle('on',+s.dataset.etapa===n)});
-  document.getElementById('barra').style.width=(Math.min(n,4)*25)+'%';
-  document.getElementById('passoN').textContent=n<5?('Passo '+n+' de 4'):'Pronto';
-  document.getElementById('prova').style.display=n<5?'flex':'none';
-  if(n===4){
-   document.getElementById('resumo').innerHTML='Seu Reel: <b>'+esc(dados.tema)+'</b> · tom <b>'+esc(dados.tom.toLowerCase())+'</b> · para <b>'+esc(dados.profissao.toLowerCase())+'</b>';
+  $('barra').style.width=(Math.min(n,ETAPAS_TOTAL)*100/ETAPAS_TOTAL)+'%';
+  $('passoN').textContent=n<=ETAPAS_TOTAL?('Passo '+n+' de '+ETAPAS_TOTAL):(n===7?'Pronto':'Criando');
+  $('prova').style.display=n<=ETAPAS_TOTAL?'flex':'none';
+  if(n===5){
+   $('resumo').innerHTML='Seu Reel: <b>'+esc(dados.tema)+'</b> · tom <b>'+esc(dados.tom.toLowerCase())+'</b> · para <b>'+esc(dados.profissao.toLowerCase())+'</b>'+(dados.igOk?' · perfil <b>@'+esc(dados.ig)+'</b>':'');
   }
   window.scrollTo(0,0);
   var foco=document.querySelector('.etapa.on h1');if(foco){foco.setAttribute('tabindex','-1');foco.focus({preventScroll:true});}
  }
- function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
  // Etapas 1 e 3: um toque escolhe e avança
  document.querySelectorAll('.ops').forEach(function(g){
@@ -198,13 +295,12 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  });
 
  // Etapa 2: chip ou texto livre
- var tema=document.getElementById('tema'),seguir2=document.getElementById('seguir2');
- document.getElementById('chips').addEventListener('click',function(e){
+ var tema=$('tema'),seguir2=$('seguir2');
+ $('chips').addEventListener('click',function(e){
   var c=e.target.closest('.chip');if(!c)return;
   document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed','false')});
   c.setAttribute('aria-pressed','true');
-  tema.value=c.textContent;
-  checaTema();
+  tema.value=c.textContent;checaTema();
  });
  tema.addEventListener('input',function(){
   document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x.textContent===tema.value?'true':'false')});
@@ -216,19 +312,87 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
 
  document.querySelectorAll('[data-volta]').forEach(function(b){b.addEventListener('click',function(){ir(atual-1)})});
 
+ // ====== Etapa 4: @ do Instagram (confere na hora) ======
+ var ig=$('ig'),igTimer=null,igUltimo='',seguir4=$('seguir4');
+ function limpaIg(v){return String(v||'').trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,'').replace(/^@/,'').replace(/[/?#].*$/,'').toLowerCase().replace(/[^a-z0-9._]/g,'').slice(0,30)}
+ function mostraPerfil(p){
+  $('perfilFoto').src=p.foto||'';$('perfilFoto').style.display=p.foto?'block':'none';
+  $('perfilNome').textContent='✅ Achamos: '+(p.nome||('@'+p.username));
+  $('perfilInfo').textContent='@'+p.username+(p.seguidores?' · '+p.seguidores+' seguidores':'');
+  $('perfil').classList.add('on');$('aviso').classList.remove('on');
+  if(!dados.foto){$('fotoTxt').textContent='Vamos usar a foto do seu perfil no final do Reel.';}
+ }
+ function conferirIg(){
+  var u=limpaIg(ig.value);
+  if(u===igUltimo)return;igUltimo=u;
+  dados.ig=u;dados.igOk=false;$('perfil').classList.remove('on');$('aviso').classList.remove('on');
+  if(u.length<3){return;}
+  seguir4.textContent='Conferindo o @...';seguir4.classList.add('carregando');
+  fetch(BASE+'sinapse-perfil',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({u:u})})
+   .then(function(r){return r.json()})
+   .then(function(p){
+    if(limpaIg(ig.value)!==u)return;
+    if(p&&p.achou){dados.igOk=true;mostraPerfil(p);}else{$('aviso').classList.add('on');}
+   })
+   .catch(function(){/* sem conexão: segue sem conferir */})
+   .then(function(){seguir4.textContent='Continuar';seguir4.classList.remove('carregando');});
+ }
+ ig.addEventListener('input',function(){clearTimeout(igTimer);igTimer=setTimeout(conferirIg,700)});
+ ig.addEventListener('blur',conferirIg);
+ $('corrigir').addEventListener('click',function(){$('aviso').classList.remove('on');ig.focus();ig.select();});
+ $('semIg').addEventListener('click',function(){dados.ig='';dados.igOk=false;ig.value='';igUltimo='';$('aviso').classList.remove('on');ir(5);});
+ seguir4.addEventListener('click',function(){
+  if(seguir4.classList.contains('carregando'))return;
+  if(ig.value.trim()&&!dados.igOk&&!$('aviso').classList.contains('on')){conferirIg();return;}
+  if(ig.value.trim()&&!dados.igOk){$('msg4').textContent='Corrija o @ ou toque em "Seguir sem o @".';return;}
+  $('msg4').textContent='';ir(5);
+ });
+
+ // Foto ou logotipo: reduz no próprio aparelho (máx. 512 px) antes de enviar
+ $('fotoArq').addEventListener('change',function(){
+  var f=this.files&&this.files[0];if(!f)return;
+  if(!/^image\//.test(f.type)){$('msg4').textContent='Envie uma imagem (JPG ou PNG).';return;}
+  var leitor=new FileReader();
+  leitor.onload=function(){
+   var img=new Image();
+   img.onload=function(){
+    var m=512,w=img.width,h=img.height,k=Math.min(1,m/Math.max(w,h));
+    var c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);
+    var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0,c.width,c.height);
+    dados.foto=c.toDataURL('image/jpeg',0.85);
+    $('fotoPrev').src=dados.foto;$('fotoPrev').classList.add('on');
+    $('fotoTxt').textContent='Foto pronta: ela vai no final do seu Reel.';$('fotoTirar').style.display='inline';
+   };
+   img.src=leitor.result;
+  };
+  leitor.readAsDataURL(f);
+ });
+ $('fotoTirar').addEventListener('click',function(){
+  dados.foto='';$('fotoArq').value='';$('fotoPrev').classList.remove('on');$('fotoTirar').style.display='none';
+  $('fotoTxt').textContent=dados.igOk?'Vamos usar a foto do seu perfil no final do Reel.':'Se o seu perfil for encontrado, usamos a foto dele no final do Reel.';
+ });
+
  // Máscara simples do WhatsApp
- var wa=document.getElementById('whatsapp');
+ var wa=$('whatsapp');
  wa.addEventListener('input',function(){
   var d=wa.value.replace(/\D/g,'');if(d.indexOf('55')===0&&d.length>11)d=d.slice(2);d=d.slice(0,11);
   var f=d;if(d.length>2)f='('+d.slice(0,2)+') '+d.slice(2);if(d.length>7)f='('+d.slice(0,2)+') '+d.slice(2,d.length-4)+'-'+d.slice(-4);
   wa.value=f;
  });
 
- // Envio
- var form=document.getElementById('form'),msg=document.getElementById('msg'),btn=document.getElementById('enviar');
+ function linkWa(texto){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(texto)}
+ function prepararBotoes(primeiroNome){
+  var t='Oi! Sou '+primeiroNome+' ('+dados.profissao.toLowerCase()+'). Vi o meu Reel sobre "'+dados.tema+'" e quero saber como ter Reels assim toda semana.';
+  $('quero').href=linkWa(t);
+  $('receber').href=linkWa('Oi! Sou '+primeiroNome+' ('+dados.profissao.toLowerCase()+'). Vi a prévia do meu Reel sobre "'+dados.tema+'" e quero receber o arquivo em alta para postar.');
+  $('queroRev').href=linkWa('Oi! Sou '+primeiroNome+' e pedi meu Reel grátis sobre "'+dados.tema+'". Ele está em revisão.');
+ }
+
+ // ====== Envio ======
+ var form=$('form'),msg=$('msg'),btn=$('enviar');
  form.addEventListener('submit',function(e){
   e.preventDefault();
-  var nome=document.getElementById('nome'),email=document.getElementById('email'),lgpd=document.getElementById('lgpd');
+  var nome=$('nome'),email=$('email'),lgpd=$('lgpd');
   [nome,wa,email].forEach(function(i){i.classList.remove('erro')});
   var tel=wa.value.replace(/\D/g,'');
   var problema='';
@@ -239,28 +403,71 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   if(problema){msg.textContent=problema;return;}
 
   msg.textContent='';
-  btn.classList.add('carregando');btn.disabled=true;btn.textContent='Enviando...';
-
-  var corpo={nome:nome.value.trim(),whatsapp:'55'+tel,email:email.value.trim(),profissao:dados.profissao,tema:dados.tema,tom:dados.tom,origem:origem,lgpd:true};
+  btn.classList.add('carregando');btn.disabled=true;btn.textContent='Lendo o seu perfil...';
+  var corpo={site:$('site').value,nome:nome.value.trim(),whatsapp:'55'+tel,email:email.value.trim(),profissao:dados.profissao,tema:dados.tema,tom:dados.tom,ig:dados.igOk?dados.ig:'',foto:dados.foto||'',origem:origem,lgpd:true};
   var primeiroNome=corpo.nome.split(' ')[0];
-  var texto='Oi, Diego! Sou '+primeiroNome+' ('+dados.profissao.toLowerCase()+') e quero meu Reel grátis sobre "'+dados.tema+'", num tom '+dados.tom.toLowerCase()+'.';
-  var linkWa='https://wa.me/'+WA+'?text='+encodeURIComponent(texto);
-  document.getElementById('abrirWa').href=linkWa;
-
+  prepararBotoes(primeiroNome);
   var idEvento='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
-  function concluir(){
-   try{fbq('track','Lead',{content_name:'Reel grátis',content_category:dados.profissao},{eventID:idEvento});}catch(_){}
-   ir(5);
-   setTimeout(function(){location.href=linkWa},900);
-  }
-  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(corpo),keepalive:true})
-   .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
-   .then(concluir)
+
+  fetch(BASE+'sinapse-amostra-agora',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(corpo)})
+   .then(function(r){return r.json().then(function(j){j._http=r.status;return j})})
+   .then(function(r){
+    try{fbq('track','Lead',{content_name:'Reel grátis na hora',content_category:dados.profissao},{eventID:idEvento});}catch(_){}
+    if(r&&r.ok&&r.token){
+     token=r.token;
+     mostrarAchados(r.achados||[],primeiroNome,!!r.achou_perfil);
+     ir(6);inicio=Date.now();acompanhar();
+    }else if(r&&r.motivo==='ja_pediu'){
+     $('prontoTitulo').textContent='Você já pediu o seu Reel grátis.';
+     if(r.video){mostrarVideo(r.video);ir(7);}else{ir(8);}
+    }else{
+     // limite do dia ou outro motivo: o pedido fica guardado e o Reel chega depois
+     ir(8);
+    }
+   })
    .catch(function(){
-    btn.classList.remove('carregando');btn.disabled=false;btn.textContent='Quero meu Reel grátis';
-    msg.innerHTML='Não consegui enviar agora. Tente de novo ou <a href="'+linkWa+'" target="_blank" rel="noopener">fale direto no WhatsApp</a>.';
+    btn.classList.remove('carregando');btn.disabled=false;btn.textContent='Criar meu Reel agora';
+    msg.innerHTML='Não consegui enviar agora. Tente de novo ou <a href="'+linkWa('Oi! Sou '+primeiroNome+' e quero meu Reel grátis sobre "'+dados.tema+'".')+'" target="_blank" rel="noopener">fale no WhatsApp</a>.';
    });
  });
+
+ function mostrarAchados(lista,primeiroNome,achou){
+  var ul=$('achados');ul.innerHTML='';
+  $('fazEyebrow').textContent=achou?'O que vimos no seu perfil':'O que o seu Reel vai trazer';
+  $('fazTitulo').textContent=primeiroNome+', seu Reel está sendo criado.';
+  lista.slice(0,3).forEach(function(t,i){
+   var li=document.createElement('li');li.innerHTML=esc(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');ul.appendChild(li);
+   setTimeout(function(){li.classList.add('on')},350+i*700);
+  });
+ }
+
+ var ORDEM=['roteiro','voz','cenas','montando'];
+ function marcarEtapa(e){
+  var idx=ORDEM.indexOf(e);
+  document.querySelectorAll('#etapasV li').forEach(function(li,i){li.className=i<idx?'feito':(i===idx?'agora':'')});
+ }
+ function acompanhar(){
+  clearTimeout(timerStatus);
+  fetch(BASE+'sinapse-amostra-status?t='+encodeURIComponent(token))
+   .then(function(r){return r.json()})
+   .then(function(s){
+    var seg=(Date.now()-inicio)/1000;
+    var pct=Math.min(95,Math.max(4,s&&s.pct?s.pct:seg/3.6));
+    $('prog').style.width=pct+'%';
+    if(s&&s.etapa)marcarEtapa(s.etapa);
+    if(s&&s.status==='pronto'&&s.video){$('prog').style.width='100%';marcarEtapa('fim');setTimeout(function(){mostrarVideo(s.video);ir(7);},500);return;}
+    if(s&&(s.status==='revisao'||s.status==='erro')){ir(8);return;}
+    if(seg>900){ir(8);return;}
+    timerStatus=setTimeout(acompanhar,5000);
+   })
+   .catch(function(){timerStatus=setTimeout(acompanhar,8000)});
+ }
+ function mostrarVideo(url){
+  var v=$('video');v.src=url;
+ }
+ $('video').addEventListener('contextmenu',function(e){e.preventDefault()});
+ function avisarWhats(){if(token){try{fetch(BASE+'sinapse-amostra-status?t='+encodeURIComponent(token)+'&whats=1',{keepalive:true})}catch(_){}}}
+ ['receber','quero','queroRev'].forEach(function(id){$(id).addEventListener('click',avisarWhats)});
 })();
 </script>
 </body>
