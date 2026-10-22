@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escolha seus 5 Reels | Sinapse</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0F14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%235EEAD4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230B0F14'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Pixel da Meta: só o pixel "Sinapse" (1715800203298037) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1715800203298037');fbq('track','PageView');
+</script>
+<style>
+:root{--bg:#0B0F14;--card:#121A22;--line:#22303C;--ink:#EEF4F2;--soft:#B6C4C0;--muted:#83948F;--acc:#5EEAD4;--acc-ink:#0B0F14;--warn:#F5B971;--display:"Sora",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.w{max-width:640px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) 60px}
+h1,h2{font-family:var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.1}
+.nav{padding:16px 0}.logo{font:700 20px var(--display)}.logo b{color:var(--acc)}
+.eb{display:block;font:600 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:18px 0 10px}
+.sub{color:var(--soft);margin:12px 0 0}
+.passos{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:p}
+.passos li{counter-increment:p;display:flex;gap:12px;align-items:flex-start;color:var(--soft);font-size:15px}
+.passos li::before{content:counter(p);flex:0 0 28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--acc);color:var(--acc-ink);font:700 14px var(--display)}
+.passos b{color:var(--ink)}
+form{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:18px}
+label,.lbl{display:block;font:600 15px var(--display);margin-bottom:6px}
+.hint{display:block;font:400 13px var(--sans);color:var(--muted);margin-top:2px}
+input[type=text],input[type=tel],textarea{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:13px 14px;font:16px var(--sans)}
+input:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{margin:0;font:500 15px var(--sans);cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--soft);transition:.15s}
+.chips input:checked+span{border-color:var(--acc);background:var(--acc);color:var(--acc-ink);font-weight:600}
+.chips input:focus-visible+span{outline:2px solid #fff;outline-offset:2px}
+.cont{font-size:14px;color:var(--muted);margin-top:8px}.cont b{color:var(--acc)}
+.btn{display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 22px;border-radius:14px;background:var(--acc);color:var(--acc-ink);font:700 18px var(--display);border:0;cursor:pointer;width:100%}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn[disabled]{opacity:.6;cursor:wait}
+.erro{color:var(--warn);font-size:14px;margin:0;min-height:1em}
+.ok{display:none;margin-top:22px;background:linear-gradient(160deg,#123A35,#0F1C24);border:1px solid #2A5A52;border-radius:20px;padding:20px}
+.ok p{margin:8px 0 0;color:var(--soft)}
+.ok a{color:var(--acc);font-weight:600}
+.dica{margin-top:26px;color:var(--soft);font-size:15px;border-top:1px solid var(--line);padding-top:18px}
+.dica b{color:var(--ink)}
+footer{color:var(--muted);font-size:13px;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="w">
+ <header class="nav"><span class="logo">Sin<b>a</b>pse</span></header>
+
+ <span class="eb">Pagamento feito? Agora é com a gente</span>
+ <h1>Escolha os temas dos seus 5 Reels</h1>
+ <p class="sub">Leva 1 minuto. Com essas respostas, a Sinapse cria os 5 vídeos prontos, com o seu nome e registro, e entrega em até 48 h no seu WhatsApp.</p>
+
+ <ol class="passos">
+  <li><span><b>Preencha abaixo</b>: seus dados, 5 temas e o tom.</span></li>
+  <li><span><b>Toque em enviar</b>: o WhatsApp abre com tudo escrito. É só mandar.</span></li>
+  <li><span><b>Receba em até 48 h</b>: 5 Reels prontos para postar, com 1 ajuste por vídeo se precisar.</span></li>
+ </ol>
+
+ <form id="f" novalidate>
+  <div>
+   <label for="nome">Seu nome como quer que apareça no vídeo</label>
+   <input type="text" id="nome" autocomplete="name" placeholder="Ex.: Dra. Ana Souza" required>
+  </div>
+  <div>
+   <label for="prof">Profissão e registro</label>
+   <input type="text" id="prof" placeholder="Ex.: Psicóloga · CRP 06/123456" required>
+   <span class="hint">Aparece na assinatura do vídeo. Terapeutas sem conselho podem colocar só a profissão.</span>
+  </div>
+  <div>
+   <span class="lbl" id="t-lbl">Marque 5 temas</span>
+   <div class="chips" role="group" aria-labelledby="t-lbl" id="temas"></div>
+   <div class="cont">Escolhidos: <b id="n">0</b> de 5</div>
+   <label for="outro" style="margin-top:12px">Outro tema? (opcional)</label>
+   <input type="text" id="outro" placeholder="Ex.: Maternidade e culpa">
+  </div>
+  <div>
+   <span class="lbl" id="tom-lbl">Tom dos vídeos</span>
+   <div class="chips" role="radiogroup" aria-labelledby="tom-lbl">
+    <label><input type="radio" name="tom" value="Acolhedor" checked><span>Acolhedor</span></label>
+    <label><input type="radio" name="tom" value="Direto"><span>Direto</span></label>
+    <label><input type="radio" name="tom" value="Didático"><span>Didático</span></label>
+   </div>
+  </div>
+  <div>
+   <label for="insta">Seu Instagram (opcional)</label>
+   <input type="text" id="insta" placeholder="@seuperfil">
+  </div>
+  <div>
+   <label for="obs">Algo que não pode faltar ou que quer evitar? (opcional)</label>
+   <textarea id="obs" rows="3" placeholder="Ex.: falar de forma leve, sem termos técnicos"></textarea>
+  </div>
+  <p class="erro" id="erro" role="alert"></p>
+  <button class="btn" type="submit" id="enviar">Enviar meus temas pelo WhatsApp</button>
+ </form>
+
+ <div class="ok" id="ok" role="status">
+  <h2 style="font-size:22px">Pronto! ✅</h2>
+  <p>Se o WhatsApp não abriu, <a id="link-wa" href="#" target="_blank" rel="noopener">toque aqui para enviar</a>. Assim que a mensagem chegar, confirmamos o pagamento e começamos os seus 5 Reels.</p>
+ </div>
+
+ <div class="dica">
+  <b>Como postar quando chegar:</b> salve o vídeo no celular → Instagram → <b>+</b> → Reel → escolha o vídeo → cole a legenda que mandamos junto → Compartilhar. Dica: poste 1 por dia, no horário em que seus pacientes mais usam o Instagram.
+ </div>
+
+ <footer>© 2026 Sinapse · Conteúdo educativo feito com IA, revisado antes da entrega. Nunca promete cura ou resultado. · <a href="/pacote/" style="color:var(--muted)">Voltar ao pacote</a></footer>
+</div>
+
+<script>
+var WA = '5511971125781';
+var TEMAS = ['Ansiedade','Apego ansioso','Autoestima','TDAH','Burnout','Luto','Relacionamentos','Autossabotagem','Depressão','Limites','Autocuidado','Terapia: como funciona'];
+var box = document.getElementById('temas'), n = document.getElementById('n');
+TEMAS.forEach(function(t){
+  var l = document.createElement('label');
+  l.innerHTML = '<input type="checkbox" value="'+t+'"><span>'+t+'</span>';
+  box.appendChild(l);
+});
+function marcados(){ return Array.prototype.map.call(box.querySelectorAll('input:checked'), function(i){return i.value;}); }
+box.addEventListener('change', function(e){
+  var m = marcados(), extra = document.getElementById('outro').value.trim() ? 1 : 0;
+  if (m.length + extra > 5) { e.target.checked = false; m = marcados(); document.getElementById('erro').textContent = 'São 5 temas no pacote. Desmarque um para trocar.'; }
+  else document.getElementById('erro').textContent = '';
+  n.textContent = m.length + extra;
+});
+document.getElementById('outro').addEventListener('input', function(){ n.textContent = marcados().length + (this.value.trim() ? 1 : 0); });
+
+document.getElementById('f').addEventListener('submit', function(e){
+  e.preventDefault();
+  var erro = document.getElementById('erro');
+  var nome = document.getElementById('nome').value.trim(), prof = document.getElementById('prof').value.trim();
+  var outro = document.getElementById('outro').value.trim();
+  var temas = marcados(); if (outro) temas.push(outro);
+  if (!nome) { erro.textContent = 'Falta o seu nome.'; document.getElementById('nome').focus(); return; }
+  if (!prof) { erro.textContent = 'Falta a profissão e o registro.'; document.getElementById('prof').focus(); return; }
+  if (temas.length !== 5) { erro.textContent = 'Escolha 5 temas (agora são ' + temas.length + ').'; return; }
+  erro.textContent = '';
+  var tom = document.querySelector('input[name=tom]:checked').value;
+  var insta = document.getElementById('insta').value.trim(), obs = document.getElementById('obs').value.trim();
+  var msg = 'Oi! Paguei o Pacote 5 Reels (R$ 47) e escolhi meus temas:\n\n'
+    + 'Nome: ' + nome + '\nProfissão/registro: ' + prof + '\n\n'
+    + 'Temas:\n' + temas.map(function(t,i){return (i+1)+'. '+t;}).join('\n') + '\n\n'
+    + 'Tom: ' + tom
+    + (insta ? '\nInstagram: ' + insta : '')
+    + (obs ? '\nObservação: ' + obs : '');
+  var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+  var b = document.getElementById('enviar'); b.disabled = true; b.textContent = 'Abrindo o WhatsApp…';
+  try { fbq('trackCustom', 'TemasEnviados', {content_name:'Pacote 5 Reels', value:47, currency:'BRL'}); } catch(x){}
+  document.getElementById('link-wa').href = url;
+  document.getElementById('ok').style.display = 'block';
+  window.open(url, '_blank', 'noopener');
+  setTimeout(function(){ b.disabled = false; b.textContent = 'Enviar de novo pelo WhatsApp'; }, 2500);
+  document.getElementById('ok').scrollIntoView({behavior:'smooth', block:'center'});
+});
+</script>
+</body>
+</html>
