@@ -19,8 +19,12 @@
 <!-- Pixel da Meta: só o pixel "Sinapse" (1715800203298037) -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1715800203298037');fbq('track','PageView');fbq('track','ViewContent',{content_name:'Pacote 5 Reels',value:47,currency:'BRL'});
+fbq('init','1715800203298037');fbq('track','PageView');
+var idVisita='vc-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+fbq('track','ViewContent',{content_name:'Pacote 5 Reels',value:47,currency:'BRL'},{eventID:idVisita});
 </script>
+<script src="/capi.js"></script>
+<script>setTimeout(function(){try{sinapseCapi('ViewContent',idVisita,{content_name:'Pacote 5 Reels',value:47});}catch(_){}},1500);</script>
 <style>
 :root{--bg:#0B0F14;--card:#121A22;--line:#22303C;--ink:#EEF4F2;--soft:#B6C4C0;--muted:#83948F;--acc:#5EEAD4;--acc-ink:#0B0F14;--warn:#F5B971;--display:"Sora",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
 *{box-sizing:border-box}

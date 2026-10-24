@@ -21,6 +21,7 @@
 fbq('init','1715800203298037');
 fbq('track','PageView');
 </script>
+<script src="/capi.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1715800203298037&ev=PageView&noscript=1"></noscript>
 <style>
 :root{--bg:#0B0F14;--bg2:#0E131A;--card:#121821;--line:#1F2833;--line2:#2A3441;--tx:#E8ECF1;--tx2:#B6C0CC;--tx3:#8A96A5;--ac:#5EEAD4;--ac2:#5fc6ef;--err:#FCA5A5;--warn:#FCD34D}
@@ -413,6 +414,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    .then(function(r){return r.json().then(function(j){j._http=r.status;return j})})
    .then(function(r){
     try{fbq('track','Lead',{content_name:'Reel grátis na hora',content_category:dados.profissao},{eventID:idEvento});}catch(_){}
+    try{sinapseCapi('Lead',idEvento,{content_name:'Reel grátis na hora'},{email:corpo.email,telefone:corpo.whatsapp,nome:corpo.nome});}catch(_){}
     if(r&&r.ok&&r.token){
      token=r.token;
      mostrarAchados(r.achados||[],primeiroNome,!!r.achou_perfil);
