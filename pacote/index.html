@@ -147,7 +147,7 @@ footer a{color:var(--muted)}
    <li>1 ajuste por vídeo, se precisar</li>
   </ul>
   <a class="btn cta" id="pagar" href="#" data-cta="oferta">Garantir meus 5 Reels por R$ 47</a>
-  <p style="margin:0;color:var(--soft);font-size:15px">Pagamento seguro pelo Mercado Pago. <b style="color:var(--ink)">Depois de pagar,</b> <a href="/pacote/comecar/" style="color:var(--acc);font-weight:600">toque aqui para escolher seus 5 temas →</a></p>
+  <p style="margin:0;color:var(--soft);font-size:15px">Pagamento seguro pela Cakto, no Pix ou cartão. <b style="color:var(--ink)">Depois de pagar,</b> <a href="/pacote/comecar/" style="color:var(--acc);font-weight:600">toque aqui para escolher seus 5 temas →</a></p>
   <div class="garantia"><span aria-hidden="true">🛡️</span><div><b style="color:var(--ink)">Garantia de 7 dias.</b> Não gostou dos Reels? Devolvemos 100% do valor.</div></div>
  </div>
 </div></section>
@@ -157,7 +157,7 @@ footer a{color:var(--muted)}
  <h2>Perguntas frequentes</h2>
  <details><summary>Preciso aparecer ou gravar?</summary><p>Não. O Reel usa cenas, narração e legenda. Você não aparece.</p></details>
  <details><summary>É mensalidade?</summary><p>Não. R$ 47 uma vez só, pelos 5 Reels. Se depois quiser Reels toda semana, tem os planos mensais, mas não é obrigatório.</p></details>
- <details><summary>O pagamento sai em nome de quem?</summary><p>O pagamento é feito pelo Mercado Pago, com o nome "Sinapse" na tela de pagamento. No comprovante pode aparecer o nome do responsável, Diego Mendes. Se tiver qualquer dúvida antes de pagar, chame no WhatsApp.</p></details>
+ <details><summary>O pagamento sai em nome de quem?</summary><p>O pagamento é feito pela Cakto, plataforma de pagamentos, com o nome "Sinapse" na tela de pagamento. Logo depois de pagar, você recebe por e-mail o link para escolher os seus 5 temas. Se tiver qualquer dúvida antes de pagar, chame no WhatsApp.</p></details>
  <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia: devolvemos o valor inteiro.</p></details>
  <details><summary>Segue as regras do CFP?</summary><p>É conteúdo educativo, sem promessa e sem diagnóstico. A decisão final de postar é sua.</p></details>
  <div class="fund"><div class="av" aria-hidden="true">DM</div><p><b style="color:var(--ink)">Diego Mendes, fundador da Sinapse.</b> Eu acompanho cada pacote e respondo pessoalmente no WhatsApp.</p></div>
@@ -168,17 +168,30 @@ footer a{color:var(--muted)}
 <div class="barra"><a class="btn cta" href="#oferta" data-cta="barra">Quero meus 5 Reels · R$ 47</a></div>
 
 <script>
-// CONFIG: quando o link de pagamento existir, cole aqui (Mercado Pago). Vazio = fecha pelo WhatsApp.
-var PAY_URL = 'https://mpago.la/33wnV2V';
+// CONFIG: checkout da Cakto (24/10). A Cakto dispara InitiateCheckout e Purchase pelo pixel + API de Conversões.
+var PAY_URL = 'https://pay.cakto.com.br/nfuxgwo_1238991';
 var WA = '5511971125781';
 (function(){
   var q = new URLSearchParams(location.search), origem = q.get('origem') || 'direto';
   var msg = 'Oi! Quero o pacote de 5 Reels prontos com meu nome e CRP (R$ 47). Origem: ' + origem;
-  var destino = PAY_URL || ('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg));
+  var destino;
+  if (PAY_URL) {
+    var u = new URL(PAY_URL);
+    u.searchParams.set('utm_source', q.get('utm_source') || (origem === 'direto' ? 'site' : 'meta'));
+    u.searchParams.set('utm_medium', q.get('utm_medium') || 'ads');
+    u.searchParams.set('utm_campaign', q.get('utm_campaign') || 'pacote47');
+    u.searchParams.set('utm_content', origem);
+    u.searchParams.set('sck', origem);
+    if (q.get('fbclid')) u.searchParams.set('fbclid', q.get('fbclid'));
+    destino = u.toString();
+  } else {
+    destino = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+  }
   var pagar = document.getElementById('pagar');
-  pagar.href = destino; pagar.target = '_blank'; pagar.rel = 'noopener';
+  pagar.href = destino;
   pagar.addEventListener('click', function(){
-    try { fbq('track', 'InitiateCheckout', {content_name:'Pacote 5 Reels', value:47, currency:'BRL'}); } catch(e){}
+    // evento próprio: o InitiateCheckout oficial vem da Cakto (evita contar em dobro)
+    try { fbq('trackCustom', 'CliqueComprar', {content_name:'Pacote 5 Reels', value:47, currency:'BRL', origem:origem}); } catch(e){}
   });
 })();
 </script>
