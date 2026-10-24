@@ -181,7 +181,7 @@ var WA = '5511971125781';
   var destino;
   if (PAY_URL) {
     var u = new URL(PAY_URL);
-    u.searchParams.set('utm_source', q.get('utm_source') || (origem === 'direto' ? 'site' : 'meta'));
+    u.searchParams.set('utm_source', q.get('utm_source') || (origem === 'direto' || origem.indexOf('site') === 0 ? 'site' : 'meta'));
     u.searchParams.set('utm_medium', q.get('utm_medium') || 'ads');
     u.searchParams.set('utm_campaign', q.get('utm_campaign') || 'pacote47');
     u.searchParams.set('utm_content', origem);
