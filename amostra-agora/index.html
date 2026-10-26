@@ -341,8 +341,8 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    .then(function(){seguir4.textContent='Continuar';seguir4.classList.remove('carregando');if(querSeguir){querSeguir=false;if(dados.igOk){$('msg4').textContent='';ir(5);}}});
  }
  ig.addEventListener('input',function(){clearTimeout(igTimer);igTimer=setTimeout(conferirIg,700)});
- ig.addEventListener('blur',conferirIg);
- seguir4.addEventListener('pointerdown',function(e){if(document.activeElement===ig)e.preventDefault();});
+ // 26/10: sem conferir no 'blur' — o cartão aparecia no meio do toque e empurrava o Continuar
+ seguir4.addEventListener('mousedown',function(e){e.preventDefault();});
  $('corrigir').addEventListener('click',function(){$('aviso').classList.remove('on');ig.focus();ig.select();});
  $('semIg').addEventListener('click',function(){dados.ig='';dados.igOk=false;ig.value='';igUltimo='';$('aviso').classList.remove('on');ir(5);});
  seguir4.addEventListener('click',function(){
