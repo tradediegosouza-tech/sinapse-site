@@ -74,6 +74,7 @@ section{padding:52px 0}
 .oferta .preco{justify-content:center}
 .oferta ul{list-style:none;margin:0;padding:0;text-align:left;display:flex;flex-direction:column;gap:6px;color:var(--soft)}
 .oferta ul li::before{content:"✓ ";color:var(--acc);font-weight:700}
+.gratis{display:block;text-align:center;color:var(--acc);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px;padding:6px 0}
 .garantia{display:flex;gap:12px;align-items:center;text-align:left;color:var(--soft);font-size:15px;max-width:520px}
 .garantia span{font-size:30px}
 details{border-bottom:1px solid var(--line);padding:15px 0}
@@ -104,6 +105,7 @@ footer a{color:var(--muted)}
    <div class="preco-box">
     <div class="preco"><strong>R$ 47</strong><span>pagamento único · Pix ou cartão</span></div>
     <a class="btn cta" href="#oferta" data-cta="hero">Quero meus 5 Reels</a>
+    <a class="gratis" data-amostra="hero" href="/amostra/?origem=pacote">Ainda em dúvida? Veja grátis um Reel com o seu nome primeiro →</a><!-- 26/10: ponte para a amostra (49% vira lead) -->
     <ul class="mini"><li>Entrega em até 48 h</li><li>Garantia de 7 dias</li><li>Sem mensalidade</li><li>+ Bônus: mini-aula</li></ul>
    </div>
   </div>
@@ -152,6 +154,7 @@ footer a{color:var(--muted)}
    <li><b>Bônus:</b> mini-aula em 3 vídeos (como postar, regras do CFP e próximos passos)</li>
   </ul>
   <a class="btn cta" id="pagar" href="#" data-cta="oferta">Garantir meus 5 Reels por R$ 47</a>
+  <a class="gratis" data-amostra="oferta" href="/amostra/?origem=pacote">Prefere ver antes? Receba grátis 1 Reel com o seu nome em 3 minutos →</a>
   <p style="margin:0;color:var(--soft);font-size:15px">Pagamento seguro pela Cakto, no Pix ou cartão. <b style="color:var(--ink)">Depois de pagar,</b> <a href="/pacote/comecar/" style="color:var(--acc);font-weight:600">toque aqui para escolher seus 5 temas →</a></p>
   <div class="garantia"><span aria-hidden="true">🛡️</span><div><b style="color:var(--ink)">Garantia de 7 dias.</b> Não gostou dos Reels? Devolvemos 100% do valor.</div></div>
  </div>
@@ -178,6 +181,7 @@ var PAY_URL = 'https://pay.cakto.com.br/nfuxgwo_1238991';
 var WA = '5511971125781';
 (function(){
   var q = new URLSearchParams(location.search), origem = q.get('origem') || 'direto';
+  document.querySelectorAll('[data-amostra]').forEach(function(a){a.href='/amostra/?origem=pacote-'+encodeURIComponent(origem)+'-'+a.getAttribute('data-amostra');a.addEventListener('click',function(){try{fbq('trackCustom','IrParaAmostra',{origem:origem});}catch(e){}});});
   var msg = 'Oi! Quero o pacote de 5 Reels prontos com meu nome e CRP (R$ 47). Origem: ' + origem;
   var destino;
   if (PAY_URL) {
