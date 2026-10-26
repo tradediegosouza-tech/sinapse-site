@@ -101,7 +101,7 @@ footer{color:var(--muted);font-size:13px;margin-top:30px}
    <textarea id="obs" rows="3" placeholder="Ex.: falar de forma leve, sem termos técnicos"></textarea>
   </div>
   <p class="erro" id="erro" role="alert"></p>
-  <button class="btn" type="submit" id="enviar">Enviar meus temas pelo WhatsApp</button>
+  <button class="btn" type="submit" id="enviar">Enviar meus temas pelo Direct do Instagram</button>
  </form>
 
  <div class="ok" id="ok" role="status">
@@ -154,7 +154,7 @@ document.getElementById('f').addEventListener('submit', function(e){
     + 'Tom: ' + tom
     + (insta ? '\nInstagram: ' + insta : '')
     + (obs ? '\nObservação: ' + obs : '');
-  var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+  var url = 'https://ig.me/m/ai.sinapse'; // 26/10: WhatsApp em análise; voltar para 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg) quando liberar
   var b = document.getElementById('enviar'); b.disabled = true; b.textContent = 'Abrindo o WhatsApp…';
   try { fbq('trackCustom', 'TemasEnviados', {content_name:'Pacote 5 Reels', value:47, currency:'BRL'}); } catch(x){}
   document.getElementById('link-wa').href = url;

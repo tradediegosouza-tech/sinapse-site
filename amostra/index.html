@@ -232,7 +232,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   <p class="eyebrow">Seu Reel está pronto</p>
   <h1 id="prontoTitulo">Aqui está o seu presente.</h1>
   <div class="previa"><video class="video" id="video" controls controlslist="nodownload noplaybackrate" disablepictureinpicture playsinline preload="metadata"></video><span class="marca">Prévia · Sinapse</span></div>
-  <a class="btn" id="receber" target="_blank" rel="noopener" href="#">Receber meu Reel em alta no WhatsApp</a>
+  <a class="btn" id="receber" target="_blank" rel="noopener" href="#">Receber meu Reel em alta pelo Direct</a>
   <p class="dica" style="margin-top:10px;text-align:center">O arquivo pronto para postar, sem a marca de prévia, vai pelo WhatsApp.</p>
   <div class="oferta">
    <p><b style="color:var(--tx)">Gostou?</b> A Sinapse pode fazer Reels assim para o seu perfil toda semana, no seu tema e no seu tom. Você só aprova e posta.</p>
@@ -245,7 +245,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   <p class="eyebrow">Quase pronto</p>
   <h1>Seu Reel está passando por uma revisão final.</h1>
   <p class="sub">Queremos que ele saia perfeito para o seu perfil. Ele chega no seu WhatsApp em até 2 horas.</p>
-  <a class="btn" id="queroRev" target="_blank" rel="noopener" href="#">Falar com a Sinapse no WhatsApp</a>
+  <a class="btn" id="queroRev" target="_blank" rel="noopener" href="#">Falar com a Sinapse no Direct do Instagram</a>
  </section>
 
  <div class="prova" id="prova">
@@ -381,7 +381,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   wa.value=f;
  });
 
- function linkWa(texto){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(texto)}
+ function linkWa(texto){return 'https://ig.me/m/ai.sinapse'} // 26/10: WhatsApp 97112 em análise na Meta; voltar para 'https://wa.me/'+WA+'?text='+encodeURIComponent(texto) quando liberar
  function prepararBotoes(primeiroNome){
   var t='Oi! Sou '+primeiroNome+' ('+dados.profissao.toLowerCase()+'). Vi o meu Reel sobre "'+dados.tema+'" e quero saber como ter Reels assim toda semana.';
   $('quero').href=linkWa(t);
@@ -429,7 +429,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    })
    .catch(function(){
     btn.classList.remove('carregando');btn.disabled=false;btn.textContent='Criar meu Reel agora';
-    msg.innerHTML='Não consegui enviar agora. Tente de novo ou <a href="'+linkWa('Oi! Sou '+primeiroNome+' e quero meu Reel grátis sobre "'+dados.tema+'".')+'" target="_blank" rel="noopener">fale no WhatsApp</a>.';
+    msg.innerHTML='Não consegui enviar agora. Tente de novo ou <a href="'+linkWa('Oi! Sou '+primeiroNome+' e quero meu Reel grátis sobre "'+dados.tema+'".')+'" target="_blank" rel="noopener">fale no Direct do Instagram</a>.';
    });
  });
 
