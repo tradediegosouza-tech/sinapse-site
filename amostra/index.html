@@ -77,7 +77,7 @@ label.campo{display:grid;gap:6px;font-size:14px;color:var(--tx2);margin-bottom:1
 .acoes{display:flex;gap:10px;margin-top:22px}
 .btn{flex:1;min-height:56px;border:0;border-radius:999px;background:var(--ac);color:#0B0F14;font:500 17px 'IBM Plex Sans',sans-serif;cursor:pointer;text-decoration:none;display:grid;place-items:center;padding:0 18px;text-align:center}
 .btn.sec{background:transparent;border:1px solid var(--line2);color:var(--tx)}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
 .btn.carregando{opacity:.75;cursor:wait}
 .voltar{flex:none;min-height:56px;padding:0 20px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--tx2);font:400 16px 'IBM Plex Sans',sans-serif;cursor:pointer}
 .msg{min-height:22px;margin:12px 0 0;font-size:15px;color:var(--err)}
@@ -150,7 +150,8 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   <label class="campo">Ou escreva com as suas palavras
    <input class="in" id="tema" maxlength="140" placeholder="Ex.: por que a gente se cobra tanto">
   </label>
-  <div class="acoes"><button type="button" class="voltar" data-volta>Voltar</button><button type="button" class="btn" id="seguir2" disabled>Continuar</button></div>
+  <div class="acoes"><button type="button" class="voltar" data-volta>Voltar</button><button type="button" class="btn" id="seguir2" aria-disabled="true">Continuar</button></div>
+  <p class="msg" id="msg2" role="status" aria-live="polite"></p>
  </section>
 
  <!-- 3 · Tom -->
@@ -307,14 +308,17 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x.textContent===tema.value?'true':'false')});
   checaTema();
  });
- function checaTema(){seguir2.disabled=tema.value.trim().length<3}
- seguir2.addEventListener('click',function(){dados.tema=tema.value.trim();ir(3)});
- tema.addEventListener('keydown',function(e){if(e.key==='Enter'&&!seguir2.disabled){e.preventDefault();seguir2.click()}});
+ function temaOk(){return tema.value.trim().length>=3}
+ function checaTema(){seguir2.setAttribute('aria-disabled',temaOk()?'false':'true');if(temaOk())$('msg2').textContent=''}
+ seguir2.addEventListener('click',function(){
+  if(!temaOk()){$('msg2').textContent='Escolha um tema ou escreva o seu 👆';tema.classList.add('erro');setTimeout(function(){tema.classList.remove('erro')},1500);return;}
+  $('msg2').textContent='';dados.tema=tema.value.trim();ir(3)});
+ tema.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();seguir2.click()}});
 
  document.querySelectorAll('[data-volta]').forEach(function(b){b.addEventListener('click',function(){ir(atual-1)})});
 
  // ====== Etapa 4: @ do Instagram (confere na hora) ======
- var ig=$('ig'),igTimer=null,igUltimo='',seguir4=$('seguir4');
+ var ig=$('ig'),igTimer=null,igUltimo='',seguir4=$('seguir4'),querSeguir=false;
  function limpaIg(v){return String(v||'').trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,'').replace(/^@/,'').replace(/[/?#].*$/,'').toLowerCase().replace(/[^a-z0-9._]/g,'').slice(0,30)}
  function mostraPerfil(p){
   $('perfilFoto').src=p.foto||'';$('perfilFoto').style.display=p.foto?'block':'none';
@@ -336,15 +340,18 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
     if(p&&p.achou){dados.igOk=true;mostraPerfil(p);}else{$('aviso').classList.add('on');}
    })
    .catch(function(){/* sem conexão: segue sem conferir */})
-   .then(function(){seguir4.textContent='Continuar';seguir4.classList.remove('carregando');});
+   .then(function(){seguir4.textContent='Continuar';seguir4.classList.remove('carregando');if(querSeguir){querSeguir=false;if(dados.igOk){$('msg4').textContent='';ir(5);}}});
  }
  ig.addEventListener('input',function(){clearTimeout(igTimer);igTimer=setTimeout(conferirIg,700)});
  ig.addEventListener('blur',conferirIg);
+ // o toque no Continuar não tira o foco do @ (sem 'blur'), então o cartão não empurra o botão antes do clique
+ seguir4.addEventListener('pointerdown',function(e){if(document.activeElement===ig)e.preventDefault();});
  $('corrigir').addEventListener('click',function(){$('aviso').classList.remove('on');ig.focus();ig.select();});
  $('semIg').addEventListener('click',function(){dados.ig='';dados.igOk=false;ig.value='';igUltimo='';$('aviso').classList.remove('on');ir(5);});
  seguir4.addEventListener('click',function(){
-  if(seguir4.classList.contains('carregando'))return;
-  if(ig.value.trim()&&!dados.igOk&&!$('aviso').classList.contains('on')){conferirIg();return;}
+  clearTimeout(igTimer);
+  if(seguir4.classList.contains('carregando')){querSeguir=true;return;}
+  if(ig.value.trim()&&!dados.igOk&&!$('aviso').classList.contains('on')){querSeguir=true;igUltimo='';conferirIg();if(!seguir4.classList.contains('carregando')){querSeguir=false;$('msg4').textContent='Confira o @ ou toque em "Seguir sem o @".';$('aviso').classList.add('on');}return;}
   if(ig.value.trim()&&!dados.igOk){$('msg4').textContent='Corrija o @ ou toque em "Seguir sem o @".';return;}
   $('msg4').textContent='';ir(5);
  });
