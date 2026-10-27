@@ -268,6 +268,9 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  var qs=new URLSearchParams(location.search);
  var origem=(qs.get('origem')||qs.get('utm_campaign')||qs.get('utm_source')||'site').slice(0,60);
  origem='amostra na hora · '+origem;
+ // 27/10: @ de quem veio do Direct (ManyChat põe ?dm={{Instagram Username}} no link do botão); serve para entregar o Reel sozinho no Direct
+ var igDm=String(qs.get('dm')||'').trim().replace(/^@/,'').toLowerCase().replace(/[^a-z0-9._]/g,'').slice(0,30);
+ if(/instagram_?username/.test(igDm)||igDm.length<3)igDm='';
  function $(id){return document.getElementById(id)}
  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
@@ -346,6 +349,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  seguir4.addEventListener('mousedown',function(e){e.preventDefault();});
  $('corrigir').addEventListener('click',function(){$('aviso').classList.remove('on');ig.focus();ig.select();});
  $('semIg').addEventListener('click',function(){dados.ig='';dados.igOk=false;ig.value='';igUltimo='';$('aviso').classList.remove('on');ir(5);});
+ if(igDm&&!ig.value){ig.value='@'+igDm;conferirIg();} // 27/10: já vem preenchido para quem veio do Direct
  seguir4.addEventListener('click',function(){
   clearTimeout(igTimer);
   if(seguir4.classList.contains('carregando')){querSeguir=true;return;}
@@ -410,7 +414,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
 
   msg.textContent='';
   btn.classList.add('carregando');btn.disabled=true;btn.textContent='Lendo o seu perfil...';
-  var corpo={site:$('site').value,nome:nome.value.trim(),whatsapp:'55'+tel,email:email.value.trim(),profissao:dados.profissao,tema:dados.tema,tom:dados.tom,ig:dados.igOk?dados.ig:'',foto:dados.foto||'',origem:origem,lgpd:true};
+  var corpo={site:$('site').value,nome:nome.value.trim(),whatsapp:'55'+tel,email:email.value.trim(),profissao:dados.profissao,tema:dados.tema,tom:dados.tom,ig:dados.igOk?dados.ig:'',ig_dm:igDm,foto:dados.foto||'',origem:origem,lgpd:true};
   var primeiroNome=corpo.nome.split(' ')[0];
   prepararBotoes(primeiroNome);
   var idEvento='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
