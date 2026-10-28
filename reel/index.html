@@ -35,9 +35,15 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
 .ig{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 20px;border-radius:999px;text-decoration:none;color:#fff;font:600 17px 'IBM Plex Sans',sans-serif;background:linear-gradient(90deg,#f58529,#dd2a7b 45%,#8134af 80%,#515bd4);box-shadow:0 8px 24px rgba(221,42,123,.25)}
 .ig:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
 .ig.clicou{opacity:.8}
-.nota{margin:10px 0 22px;text-align:center;font-size:14px;color:var(--tx3)}
-.video{position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:var(--card);border:1px solid var(--line2)}
+.nota{margin:10px 0 0;text-align:center;font-size:14px;color:var(--tx3)}
+.video{position:relative;width:100%;max-width:340px;margin:0 auto 22px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:var(--card);border:1px solid var(--line2)}
 .video video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.play{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%;border:0;padding:0;cursor:pointer;color:#fff;font:600 16px 'IBM Plex Sans',sans-serif;background:linear-gradient(180deg,rgba(11,15,20,.05) 40%,rgba(11,15,20,.75))}
+.play[hidden]{display:none}
+.play .tri{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,#f58529,#dd2a7b 50%,#8134af);box-shadow:0 8px 28px rgba(221,42,123,.45);position:relative}
+.play .tri:after{content:'';position:absolute;left:31px;top:24px;border-style:solid;border-width:15px 0 15px 24px;border-color:transparent transparent transparent #fff}
+.play .lbl{text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.play:focus-visible{outline:2px solid var(--ac);outline-offset:-4px}
 .espera{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--tx2);font-size:15px}
 .giro{width:34px;height:34px;margin:0 auto 12px;border-radius:50%;border:3px solid var(--line2);border-top-color:var(--ac);animation:gira 1s linear infinite}
 @keyframes gira{to{transform:rotate(360deg)}}
@@ -57,14 +63,15 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
 <main>
   <p class="eyebrow">Seu Reel de amostra</p>
   <h1>Seu Reel ficou pronto 🎬</h1>
-  <p class="sub">Assista aqui. Para receber o vídeo no seu Instagram e conversar com a gente, toque no botão.</p>
+  <p class="sub">Assista aqui. Depois, toque no botão para receber o vídeo no seu Instagram.</p>
+
+  <div class="video" id="caixaVideo">
+    <button class="play" id="play" type="button" aria-label="Assistir o seu Reel" hidden><span class="tri"></span><span class="lbl">Toque para assistir</span></button>
+    <div class="espera" id="espera"><div><div class="giro"></div>Carregando o seu Reel…</div></div>
+  </div>
 
   <a class="ig" id="botaoIg" href="https://ig.me/m/ai.sinapse" rel="noopener">📲 Receber meu Reel no Instagram</a>
   <p class="nota">Abre o Direct da <b>@ai.sinapse</b> no seu Instagram.</p>
-
-  <div class="video" id="caixaVideo">
-    <div class="espera" id="espera"><div><div class="giro"></div>Carregando o seu Reel…</div></div>
-  </div>
 
   <div class="pc" id="pc">
     <div class="qr" id="qr" aria-label="QR code para abrir esta página no celular"></div>
@@ -100,7 +107,7 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
   }
 
   function msg(texto) { espera.innerHTML = '<div>' + texto + '</div>'; espera.style.display = 'grid'; }
-  if (!t) { msg('Não achamos o seu Reel por este link. Toque no botão acima e fale com a gente no Direct.'); return; }
+  if (!t) { msg('Não achamos o seu Reel por este link. Toque no botão abaixo e fale com a gente no Direct.'); return; }
 
   var tentativas = 0;
   function buscar() {
@@ -110,20 +117,29 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
       .then(function (d) {
         if (d && d.ok && d.video) {
           var v = document.createElement('video');
-          v.src = d.video; v.controls = true; v.playsInline = true; v.preload = 'metadata';
+          // Capa: o próprio Reel parado em 1s (gancho escrito na tela) + play grande.
+          v.src = d.video + (d.video.indexOf('#') < 0 ? '#t=1' : ''); v.playsInline = true; v.preload = 'auto'; v.muted = false;
           v.setAttribute('playsinline', '');
           caixa.appendChild(v);
           espera.style.display = 'none';
+          var play = document.getElementById('play');
+          play.hidden = false;
+          play.addEventListener('click', function () {
+            play.hidden = true; v.controls = true;
+            try { v.currentTime = 0; } catch (e) {}
+            var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+            try { fbq('trackCustom', 'AssistiuReel'); } catch (e) {}
+          });
         } else if (d && d.ok && (d.status === 'fazendo') && tentativas < 40) {
           msg('<div class="giro"></div>Seu Reel ainda está sendo montado (' + (d.pct || 10) + '%)…');
           setTimeout(buscar, 8000);
         } else {
-          msg('Seu Reel está passando pela revisão final. Toque no botão acima e receba pelo Direct.');
+          msg('Seu Reel está passando pela revisão final. Toque no botão abaixo e receba pelo Direct.');
         }
       })
       .catch(function () {
         if (tentativas < 3) setTimeout(buscar, 3000);
-        else msg('Não conseguimos carregar o vídeo agora. Toque no botão acima e receba pelo Direct.');
+        else msg('Não conseguimos carregar o vídeo agora. Toque no botão abaixo e receba pelo Direct.');
       });
   }
   buscar();
