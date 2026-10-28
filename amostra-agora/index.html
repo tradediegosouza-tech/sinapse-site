@@ -215,7 +215,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  <section class="etapa" data-etapa="6">
   <p class="eyebrow" id="fazEyebrow">Lendo o seu perfil</p>
   <h1 id="fazTitulo">Seu Reel está sendo criado.</h1>
-  <p class="sub" id="fazSub">Leva poucos minutos. Pode deixar esta página aberta.</p>
+  <p class="sub" id="fazSub">Fica pronto em até 24 h. Você não precisa esperar nesta página.</p>
   <ul class="achados" id="achados" aria-live="polite"></ul>
   <div class="prog" aria-hidden="true"><i id="prog"></i></div>
   <ul class="etapas-v" id="etapasV">
@@ -224,7 +224,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    <li data-e="cenas">Escolhendo as cenas (cada uma é conferida antes)</li>
    <li data-e="montando">Montando o vídeo</li>
   </ul>
-  <p class="dica" style="margin-top:18px" id="fazNota">Leva de 2 a 4 minutos. Se precisar sair, tudo bem: o Reel também chega no seu Direct do Instagram. <a href="https://ig.me/m/ai.sinapse" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Toque aqui e mande um “oi” para @ai.sinapse</a> para garantir que ele chegue.</p><!-- 26/10: antes "chega no seu WhatsApp" -->
+  <p class="dica" style="margin-top:18px" id="fazNota">Seu Reel fica pronto em até 24 h e chega no seu Direct do Instagram. <a href="https://ig.me/m/ai.sinapse" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Toque aqui e mande um “oi” para @ai.sinapse</a> para garantir que ele chegue.</p><!-- 26/10: antes "chega no seu WhatsApp" -->
  </section>
 
  <!-- 7 · Pronto -->
@@ -244,7 +244,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  <section class="etapa" data-etapa="8">
   <p class="eyebrow">Quase pronto</p>
   <h1>Seu Reel está passando por uma revisão final.</h1>
-  <p class="sub">Queremos que ele saia perfeito para o seu perfil. Ele chega no seu Direct do Instagram assim que a revisão terminar. Para garantir, toque no botão abaixo e mande um “oi”.</p><!-- 26/10: antes "chega no seu WhatsApp em até 2 horas" -->
+  <p class="sub">Queremos que ele saia perfeito para o seu perfil. Ele chega no seu Direct do Instagram em até 24 h. Para garantir, toque no botão abaixo e mande um “oi”.</p><!-- 26/10: antes "chega no seu WhatsApp em até 2 horas" -->
   <a class="btn" id="queroRev" target="_blank" rel="noopener" href="#">Falar com a Sinapse no Direct do Instagram</a>
  </section>
 
@@ -467,7 +467,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
     if(s&&s.etapa)marcarEtapa(s.etapa);
     if(s&&s.status==='pronto'&&s.video){$('prog').style.width='100%';marcarEtapa('fim');setTimeout(function(){mostrarVideo(s.video);ir(7);},500);return;}
     if(s&&(s.status==='revisao'||s.status==='erro')){ir(8);return;}
-    if(seg>900){ir(8);return;}
+    if(seg>90){ir(8);return;}
     timerStatus=setTimeout(acompanhar,5000);
    })
    .catch(function(){timerStatus=setTimeout(acompanhar,8000)});
