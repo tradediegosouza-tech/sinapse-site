@@ -107,6 +107,9 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
 @media (min-width:640px){h1{font-size:34px}main{padding-top:28px}}
 .vsl{display:block;width:100%;max-width:340px;margin:6px auto 18px;aspect-ratio:9/16;border-radius:18px;background:#000;border:1px solid var(--line2);object-fit:cover}
 .vsl-cap{text-align:center;font-size:14px;color:var(--tx3);margin:-8px 0 18px}
+.trava .op{opacity:.35;pointer-events:none;filter:grayscale(1)}
+.aviso-trava{display:none;text-align:center;padding:14px;border:1px dashed var(--line2);border-radius:14px;color:var(--tx2);margin:0 0 14px;font-size:15px}
+.trava .aviso-trava{display:block}
 </style>
 </head>
 <body>
@@ -119,12 +122,13 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  <div class="barra" aria-hidden="true"><i id="barra"></i></div>
 
  <!-- 1 · Profissão -->
- <section class="etapa on" data-etapa="1">
+ <section class="etapa on trava" data-etapa="1" id="etapa1">
   <p class="eyebrow">Seu Reel grátis</p>
   <h1>Vamos criar 1 Reel com a cara do seu perfil, de presente.</h1>
   <video class="vsl" src="/midia/vsl/vsl-livia.mp4" poster="/midia/vsl/vsl-livia.jpg" controls playsinline preload="metadata"></video>
   <p class="vsl-cap">▶ 1 minuto com a Lívia, a IA da Sinapse</p>
   <p class="sub">5 perguntas rápidas e o seu Reel chega no Direct em até 24 h. Para começar: qual é a sua área?</p>
+  <p class="aviso-trava" id="avisoTrava">🔒 Assista ao vídeo da Lívia até o fim para liberar o seu Reel grátis.</p>
   <div class="ops" data-campo="profissao">
    <button type="button" class="op" data-v="Psicólogo(a)"><span class="ic">🧠</span><span>Psicólogo(a)</span></button>
    <button type="button" class="op" data-v="Terapeuta"><span class="ic">🌿</span><span>Terapeuta</span></button>
@@ -482,6 +486,22 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  $('video').addEventListener('contextmenu',function(e){e.preventDefault()});
  function avisarWhats(){if(token){try{fetch(BASE+'sinapse-amostra-status?t='+encodeURIComponent(token)+'&whats=1',{keepalive:true})}catch(_){}}}
  ['receber','quero','queroRev'].forEach(function(id){$(id).addEventListener('click',avisarWhats)});
+})();
+</script>
+<script>
+(function(){
+ var sec=document.getElementById('etapa1'),v=document.querySelector('video.vsl'),av=document.getElementById('avisoTrava');
+ function libera(){sec.classList.remove('trava');try{localStorage.setItem('vslVista','1')}catch(e){}}
+ try{if(localStorage.getItem('vslVista')==='1'){libera();return}}catch(e){}
+ if(!v){libera();return}
+ function visto(){var t=0;for(var i=0;i<v.played.length;i++)t+=v.played.end(i)-v.played.start(i);return t}
+ v.addEventListener('timeupdate',function(){
+  var d=v.duration||66,falta=Math.max(0,Math.ceil(d*0.9-visto()));
+  if(falta>0)av.textContent='🔒 Faltam '+falta+' s de vídeo para liberar o seu Reel grátis.';
+  else libera();
+ });
+ v.addEventListener('ended',function(){if(visto()>=(v.duration||66)*0.9)libera()});
+ v.addEventListener('error',libera);
 })();
 </script>
 </body>
