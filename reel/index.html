@@ -63,15 +63,17 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
 <main>
   <p class="eyebrow">Seu Reel de amostra</p>
   <h1>Seu Reel ficou pronto 🎬</h1>
-  <p class="sub">Assista aqui. Depois, toque no botão para receber o vídeo no seu Instagram.</p>
+  <p class="sub">Assista aqui. Depois, toque no botão e, no Instagram, em <b>Enviar</b>: o vídeo chega no seu Direct.</p>
 
   <div class="video" id="caixaVideo">
     <button class="play" id="play" type="button" aria-label="Assistir o seu Reel" hidden><span class="tri"></span><span class="lbl">Toque para assistir</span></button>
     <div class="espera" id="espera"><div><div class="giro"></div>Carregando o seu Reel…</div></div>
   </div>
 
+  <div id="blocoIg" hidden>
   <a class="ig" id="botaoIg" href="https://ig.me/m/ai.sinapse" rel="noopener">📲 Receber meu Reel no Instagram</a>
-  <p class="nota">Abre o Direct da <b>@ai.sinapse</b> no seu Instagram.</p>
+  <p class="nota">Abre o Direct da <b>@ai.sinapse</b>. Lá, <b>toque em Enviar</b> e o seu Reel chega na hora.</p>
+  </div>
 
   <div class="pc" id="pc">
     <div class="qr" id="qr" aria-label="QR code para abrir esta página no celular"></div>
@@ -107,7 +109,7 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
   }
 
   function msg(texto) { espera.innerHTML = '<div>' + texto + '</div>'; espera.style.display = 'grid'; }
-  if (!t) { msg('Não achamos o seu Reel por este link. Toque no botão abaixo e fale com a gente no Direct.'); return; }
+  if (!t) { msg('Este link é pessoal e não achamos um Reel nele. Confira o link do seu e-mail ou responda o e-mail que a gente te ajuda.'); return; }
 
   var tentativas = 0;
   function buscar() {
@@ -122,6 +124,8 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
           v.setAttribute('playsinline', '');
           caixa.appendChild(v);
           espera.style.display = 'none';
+          // 29/10 (Diego): o botão do Direct só aparece para quem tem o link pessoal com Reel pronto.
+          document.getElementById('blocoIg').hidden = false;
           var play = document.getElementById('play');
           play.hidden = false;
           play.addEventListener('click', function () {
@@ -134,12 +138,12 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
           msg('<div class="giro"></div>Seu Reel ainda está sendo montado (' + (d.pct || 10) + '%)…');
           setTimeout(buscar, 8000);
         } else {
-          msg('Seu Reel está passando pela revisão final. Toque no botão abaixo e receba pelo Direct.');
+          msg('Seu Reel está passando pela revisão final. Ele chega no seu e-mail assim que ficar pronto.');
         }
       })
       .catch(function () {
         if (tentativas < 3) setTimeout(buscar, 3000);
-        else msg('Não conseguimos carregar o vídeo agora. Toque no botão abaixo e receba pelo Direct.');
+        else msg('Não conseguimos carregar o vídeo agora. Tente de novo em alguns minutos.');
       });
   }
   buscar();
