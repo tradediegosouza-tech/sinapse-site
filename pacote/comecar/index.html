@@ -59,11 +59,11 @@ footer{color:var(--muted);font-size:13px;margin-top:30px}
 
  <span class="eb">Pagamento feito? Agora é com a gente</span>
  <h1>Escolha os temas dos seus 5 Reels</h1>
- <p class="sub">Leva 1 minuto. Com essas respostas, a Sinapse cria os 5 vídeos prontos, com o seu nome e registro, e entrega em até 48 h no seu WhatsApp.</p>
+ <p class="sub">Leva 1 minuto. Com essas respostas, a Sinapse cria os 5 vídeos prontos, com o seu nome e registro, e entrega em até 48 h no seu e-mail e no Direct do Instagram.</p>
 
  <ol class="passos">
   <li><span><b>Preencha abaixo</b>: seus dados, 5 temas e o tom.</span></li>
-  <li><span><b>Toque em enviar</b>: o WhatsApp abre com tudo escrito. É só mandar.</span></li>
+  <li><span><b>Toque em enviar</b>: seus temas chegam direto para a gente.</span></li>
   <li><span><b>Receba em até 48 h</b>: 5 Reels prontos para postar, com 1 ajuste por vídeo se precisar.</span></li>
  </ol>
 
@@ -76,6 +76,11 @@ footer{color:var(--muted);font-size:13px;margin-top:30px}
    <label for="prof">Profissão e registro</label>
    <input type="text" id="prof" placeholder="Ex.: Psicóloga · CRP 06/123456" required>
    <span class="hint">Aparece na assinatura do vídeo. Terapeutas sem conselho podem colocar só a profissão.</span>
+  </div>
+  <div>
+   <label for="email">Seu e-mail (é por ele que os vídeos chegam)</label>
+   <input type="email" id="email" autocomplete="email" placeholder="voce@email.com" required>
+   <span class="hint">Use o mesmo e-mail do pagamento, se puder.</span>
   </div>
   <div>
    <span class="lbl" id="t-lbl">Marque 5 temas</span>
@@ -101,12 +106,12 @@ footer{color:var(--muted);font-size:13px;margin-top:30px}
    <textarea id="obs" rows="3" placeholder="Ex.: falar de forma leve, sem termos técnicos"></textarea>
   </div>
   <p class="erro" id="erro" role="alert"></p>
-  <button class="btn" type="submit" id="enviar">Enviar meus temas pelo Direct do Instagram</button>
+  <button class="btn" type="submit" id="enviar">Enviar meus temas</button>
  </form>
 
  <div class="ok" id="ok" role="status">
   <h2 style="font-size:22px">Pronto! ✅</h2>
-  <p>Se o WhatsApp não abriu, <a id="link-wa" href="#" target="_blank" rel="noopener">toque aqui para enviar</a>. Assim que a mensagem chegar, confirmamos o pagamento e começamos os seus 5 Reels.</p>
+  <p>Recebemos os seus temas. Agora conferimos o pagamento e começamos os seus 5 Reels. Eles chegam em até 48 h no seu e-mail e no Direct do <a id="link-wa" href="https://ig.me/m/ai.sinapse" target="_blank" rel="noopener">@ai.sinapse</a>.</p>
  </div>
 
  <div class="dica">
@@ -140,28 +145,31 @@ document.getElementById('f').addEventListener('submit', function(e){
   e.preventDefault();
   var erro = document.getElementById('erro');
   var nome = document.getElementById('nome').value.trim(), prof = document.getElementById('prof').value.trim();
+  var email = document.getElementById('email').value.trim();
   var outro = document.getElementById('outro').value.trim();
   var temas = marcados(); if (outro) temas.push(outro);
   if (!nome) { erro.textContent = 'Falta o seu nome.'; document.getElementById('nome').focus(); return; }
   if (!prof) { erro.textContent = 'Falta a profissão e o registro.'; document.getElementById('prof').focus(); return; }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { erro.textContent = 'Confira o seu e-mail.'; document.getElementById('email').focus(); return; }
   if (temas.length !== 5) { erro.textContent = 'Escolha 5 temas (agora são ' + temas.length + ').'; return; }
   erro.textContent = '';
   var tom = document.querySelector('input[name=tom]:checked').value;
   var insta = document.getElementById('insta').value.trim(), obs = document.getElementById('obs').value.trim();
-  var msg = 'Oi! Paguei o Pacote 5 Reels (R$ 47) e escolhi meus temas:\n\n'
-    + 'Nome: ' + nome + '\nProfissão/registro: ' + prof + '\n\n'
-    + 'Temas:\n' + temas.map(function(t,i){return (i+1)+'. '+t;}).join('\n') + '\n\n'
-    + 'Tom: ' + tom
-    + (insta ? '\nInstagram: ' + insta : '')
-    + (obs ? '\nObservação: ' + obs : '');
-  var url = 'https://ig.me/m/ai.sinapse'; // 26/10: WhatsApp em análise; voltar para 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg) quando liberar
-  var b = document.getElementById('enviar'); b.disabled = true; b.textContent = 'Abrindo o WhatsApp…';
-  try { fbq('trackCustom', 'TemasEnviados', {content_name:'Pacote 5 Reels', value:47, currency:'BRL'}); } catch(x){}
-  document.getElementById('link-wa').href = url;
-  document.getElementById('ok').style.display = 'block';
-  window.open(url, '_blank', 'noopener');
-  setTimeout(function(){ b.disabled = false; b.textContent = 'Enviar de novo pelo WhatsApp'; }, 2500);
-  document.getElementById('ok').scrollIntoView({behavior:'smooth', block:'center'});
+  // 31/10 (pós-venda): os temas vão para o n8n (tabela Pacote - Temas dos clientes) e avisam o Diego. Antes abria o Direct vazio e os temas se perdiam.
+  var b = document.getElementById('enviar'); b.disabled = true; b.textContent = 'Enviando…';
+  fetch('https://n8n.produtodesaude.com.br/webhook/sinapse-pacote-temas', {
+    method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({nome: nome, profissao: prof, email: email, instagram: insta, temas: temas, tom: tom, obs: obs})
+  }).then(function(r){ return r.json().catch(function(){ return {ok: r.ok}; }); }).then(function(j){
+    if (!j || !j.ok) throw new Error((j && j.erro) || 'falhou');
+    try { fbq('trackCustom', 'TemasEnviados', {content_name:'Pacote 5 Reels', value:47, currency:'BRL'}); } catch(x){}
+    document.getElementById('f').style.display = 'none';
+    document.getElementById('ok').style.display = 'block';
+    document.getElementById('ok').scrollIntoView({behavior:'smooth', block:'center'});
+  }).catch(function(x){
+    erro.textContent = 'Não conseguimos enviar agora (' + x.message + '). Tente de novo ou fale com a gente no Direct do @ai.sinapse.';
+    b.disabled = false; b.textContent = 'Tentar de novo';
+  });
 });
 </script>
 </body>
