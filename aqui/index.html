@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sinapse · Estou aqui</title>
+<style>
+:root{--bg:#0B0F14;--card:#121821;--line:#1f2a36;--tx:#E6EDF3;--mut:#8b98a5;--ac:#40E0D0;--ok:#22c55e;--bad:#ef4444}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.45 system-ui,Segoe UI,Arial,sans-serif}
+.wrap{max-width:520px;margin:0 auto;padding:24px 16px 40px}
+h1{font-size:24px;margin:0 0 6px}
+.sub{color:var(--mut);margin:0 0 20px}
+button{font:inherit;font-weight:800;border:2px solid var(--line);border-radius:16px;padding:22px 16px;cursor:pointer;background:var(--card);color:var(--tx);width:100%;margin-bottom:12px;font-size:20px;text-align:left}
+button.fav{border-color:var(--ac)}
+button:disabled{opacity:.6;cursor:wait}
+#msg{min-height:26px;font-weight:700;margin-top:8px}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+.note{font-size:14px;color:var(--mut);margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📍 Estou aqui</h1>
+  <p class="sub">Toque no aparelho em que você está agora. O Claude lê isso no início da conversa e sabe por onde você fala.</p>
+  <button data-a="DESKTOP-JOONO1P">💻 PC principal</button>
+  <button data-a="DESKTOP-HVPKPQH">💻 Notebook Vaio</button>
+  <button data-a="IPHONE-DIEGO">📱 iPhone</button>
+  <div id="msg"></div>
+  <p class="note">Vale por 30 minutos. Trocou de aparelho? Toque de novo no aparelho novo. Não guarda nada além do nome do aparelho e da hora.</p>
+</div>
+<script>
+const URL_B='https://n8n.produtodesaude.com.br/webhook/sinapse-bussola';
+const btns=[...document.querySelectorAll('button')];
+const msg=document.getElementById('msg');
+let fav=null; try{fav=localStorage.getItem('sinapse_aparelho');}catch(e){}
+if(!fav && /iPhone|iPad/.test(navigator.userAgent)) fav='IPHONE-DIEGO';
+btns.forEach(b=>{ if(b.dataset.a===fav){ b.classList.add('fav'); b.parentNode.insertBefore(b, btns[0]); } });
+btns.forEach(b=>b.onclick=async()=>{
+  btns.forEach(x=>x.disabled=true); msg.className=''; msg.textContent='⏳ Avisando o Claude…';
+  try{
+    const r=await fetch(URL_B,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({k:'bussola-R4m8Qt',aparelho:b.dataset.a,ocioso_seg:0})});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    try{localStorage.setItem('sinapse_aparelho',b.dataset.a);}catch(e){}
+    const h=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+    msg.className='ok'; msg.textContent='✅ Pronto: '+b.textContent.trim()+' às '+h+'. Pode falar com o Claude.';
+  }catch(e){ msg.className='bad'; msg.textContent='❌ Não consegui avisar ('+e.message+'). Tente de novo.'; }
+  finally{ btns.forEach(x=>x.disabled=false); }
+});
+</script>
+</body>
+</html>
