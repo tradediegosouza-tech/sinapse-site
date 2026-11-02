@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seus Reels | Sinapse</title>
+<meta name="description" content="Sua área: os 5 Reels prontos com o seu nome e CRP.">
+<meta name="theme-color" content="#0B0F14">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%235EEAD4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230B0F14'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0F14;--bg2:#0E131A;--card:#121821;--line:#1F2833;--line2:#2A3441;--tx:#E8ECF1;--tx2:#B6C0CC;--tx3:#8A96A5;--ac:#5EEAD4;--ok:#10B981}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--tx);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.top{max-width:640px;margin:0 auto;padding:20px 16px 0}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--tx);font-family:'Sora',sans-serif;font-weight:700;font-size:18px;letter-spacing:.06em}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 5px rgba(94,234,212,.14)}
+main{max-width:640px;margin:0 auto;padding:22px 16px 48px}
+.eyebrow{margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac)}
+h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;line-height:1.2;letter-spacing:-.015em}
+.sub{margin:0 0 18px;color:var(--tx2)}
+.barra{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:0 0 6px}
+.barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--ok));transition:width .6s}
+.conta{margin:0 0 22px;font-size:14px;color:var(--tx3)}
+.lista{display:grid;gap:14px}
+.item{background:var(--card);border:1px solid var(--line2);border-radius:18px;overflow:hidden}
+.cab{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.num{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:700 15px 'Sora',sans-serif;background:var(--bg2);border:1px solid var(--line2);color:var(--tx2)}
+.item.pronto .num{background:var(--ok);border-color:var(--ok);color:#0B0F14}
+.tit{flex:1;min-width:0}
+.tit b{display:block;font-family:'Sora',sans-serif;font-weight:600;font-size:17px}
+.tit span{font-size:14px;color:var(--tx3)}
+.item.pronto .tit span{color:var(--ok)}
+.corpo{padding:0 16px 16px}
+.corpo video{display:block;width:100%;max-width:300px;margin:0 auto 14px;aspect-ratio:9/16;border-radius:14px;background:#000;border:1px solid var(--line2)}
+.acoes{display:flex;flex-wrap:wrap;gap:10px}
+.bt{flex:1 1 140px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);background:var(--bg2);color:var(--tx);font:600 15px 'IBM Plex Sans',sans-serif;text-decoration:none;cursor:pointer}
+.bt.pri{background:var(--ac);border-color:var(--ac);color:#0B0F14}
+.bt:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.bt[disabled]{opacity:.6;cursor:default}
+.ajuste{display:none;margin-top:12px}
+.ajuste.on{display:block}
+.ajuste textarea{width:100%;min-height:90px;padding:12px;border-radius:12px;border:1px solid var(--line2);background:var(--bg2);color:var(--tx);font:15px 'IBM Plex Sans',sans-serif;resize:vertical}
+.ajuste .bt{margin-top:8px;width:100%}
+.msg{margin:8px 0 0;font-size:14px;color:var(--tx2)}
+.msg.ok{color:var(--ok)}.msg.err{color:#F87171}
+.giro{width:18px;height:18px;border-radius:50%;border:2px solid var(--line2);border-top-color:var(--ac);animation:gira 1s linear infinite;flex:none}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.giro{animation:none}.barra i{transition:none}}
+.dicas{margin-top:28px;padding:18px;border-radius:18px;background:var(--bg2);border:1px solid var(--line)}
+.dicas h2{margin:0 0 10px;font-family:'Sora',sans-serif;font-size:18px;font-weight:600}
+.dicas ol{margin:0;padding-left:20px;color:var(--tx2);font-size:15px}
+.dicas li{margin:6px 0}
+.dicas b{color:var(--tx)}
+.aviso{padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--line2);text-align:center;color:var(--tx2)}
+.rodape{margin-top:30px;text-align:center;font-size:13.5px;color:var(--tx3)}
+.rodape a{color:var(--tx2)}
+</style>
+</head>
+<body>
+<div class="top"><a class="logo" href="https://aisinapse.com.br/"><span class="dot"></span>SINAPSE</a></div>
+<main>
+  <p class="eyebrow">Sua área · Pacote 5 Reels</p>
+  <h1 id="titulo">Carregando seus Reels…</h1>
+  <p class="sub" id="sub">Um instante.</p>
+  <div id="conteudo"></div>
+  <section class="dicas" id="dicas" hidden>
+    <h2>Como postar (leva 1 minuto)</h2>
+    <ol>
+      <li>Toque em <b>⬇️ Baixar</b> no Reel que quer postar.</li>
+      <li>No Instagram, toque em <b>+</b> → <b>Reel</b> e escolha o vídeo baixado.</li>
+      <li>Escreva uma legenda curta com uma pergunta para quem assiste.</li>
+      <li>Marque <b>@ai.sinapse</b> na legenda — assim a gente acompanha e te ajuda a melhorar.</li>
+      <li>Dica: poste 1 Reel a cada 2 ou 3 dias, não todos de uma vez.</li>
+    </ol>
+  </section>
+  <p class="rodape">Dúvida? Fale com a gente no Direct do <a href="https://www.instagram.com/ai.sinapse">@ai.sinapse</a>.</p>
+</main>
+<script>
+(function(){
+  var API = 'https://n8n.produtodesaude.com.br/webhook/';
+  var t = new URLSearchParams(location.search).get('t') || '';
+  var el = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+
+  function erro(texto){
+    el('titulo').textContent = 'Não encontramos sua área';
+    el('sub').textContent = '';
+    el('conteudo').innerHTML = '<div class="aviso">' + esc(texto) + '<br><br><a class="bt pri" href="https://ig.me/m/ai.sinapse">Falar no Direct</a></div>';
+  }
+
+  function carregar(){
+    if (!t) { erro('O link está incompleto. Abra pelo e-mail ou pela mensagem que você recebeu.'); return; }
+    fetch(API + 'sinapse-pacote-area?t=' + encodeURIComponent(t), { cache: 'no-store' })
+      .then(function(r){ return r.json(); })
+      .then(montar)
+      .catch(function(){ erro('Não conseguimos carregar agora. Tente de novo em alguns minutos.'); });
+  }
+
+  function montar(d){
+    if (!d || !d.ok) { erro('Esse link não é válido. Abra pelo e-mail ou pela mensagem que você recebeu.'); return; }
+    var prontos = d.prontos || 0;
+    el('titulo').textContent = (d.primeiro ? d.primeiro + ', s' : 'S') + 'eus 5 Reels';
+    el('sub').textContent = prontos === 5 ? 'Todos prontos! Baixe e poste no seu ritmo.'
+      : prontos === 0 ? 'Estamos produzindo com o seu nome e CRP. Os vídeos aparecem aqui assim que ficarem prontos (até 48 h).'
+      : 'Os que estão prontos já podem ser baixados. Os outros aparecem aqui em breve.';
+    var html = '<div class="barra" aria-hidden="true"><i style="width:' + (prontos * 20) + '%"></i></div>'
+      + '<p class="conta">' + prontos + ' de 5 prontos</p><div class="lista">';
+    (d.reels || []).forEach(function(r){
+      html += '<article class="item' + (r.pronto ? ' pronto' : '') + '"><div class="cab"><span class="num">' + r.numero + '</span>'
+        + '<div class="tit"><b>' + esc(r.tema) + '</b><span>' + (r.pronto ? 'Pronto ✓' : 'Em produção…') + '</span></div>'
+        + (r.pronto ? '' : '<span class="giro" aria-hidden="true"></span>') + '</div>';
+      if (r.pronto) {
+        html += '<div class="corpo"><video src="' + esc(r.video_url) + '" controls playsinline preload="metadata"></video>'
+          + '<div class="acoes"><a class="bt pri" href="' + esc(r.video_url) + '" download="Reel-' + r.numero + '.mp4">⬇️ Baixar</a>'
+          + '<button class="bt" type="button" data-aj="' + r.numero + '">✏️ Pedir ajuste</button></div>'
+          + '<div class="ajuste" id="aj' + r.numero + '"><label for="tx' + r.numero + '" class="msg">O que você quer mudar neste Reel? (você tem 1 ajuste por vídeo)</label>'
+          + '<textarea id="tx' + r.numero + '" maxlength="800" placeholder="Ex.: trocar a frase do início por…"></textarea>'
+          + '<button class="bt pri" type="button" data-env="' + r.numero + '">Enviar pedido de ajuste</button><p class="msg" id="ms' + r.numero + '" role="status"></p></div></div>';
+      }
+      html += '</article>';
+    });
+    html += '</div>';
+    el('conteudo').innerHTML = html;
+    el('dicas').hidden = prontos === 0;
+    if (prontos < 5) setTimeout(carregar, 60000);
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-aj]');
+    if (a) { el('aj' + a.getAttribute('data-aj')).classList.toggle('on'); return; }
+    var b = e.target.closest('[data-env]');
+    if (!b) return;
+    var n = b.getAttribute('data-env'), txt = el('tx' + n).value.trim(), ms = el('ms' + n);
+    if (txt.length < 5) { ms.className = 'msg err'; ms.textContent = 'Escreva o que quer mudar (pelo menos uma frase).'; return; }
+    b.disabled = true; b.textContent = 'Enviando…'; ms.className = 'msg'; ms.textContent = '';
+    fetch(API + 'sinapse-pacote-ajuste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ t: t, numero: Number(n), pedido: txt }) })
+      .then(function(r){ return r.json(); })
+      .then(function(r){
+        if (r && r.ok) { ms.className = 'msg ok'; ms.textContent = 'Pedido recebido ✓ Você recebe o Reel ajustado aqui e no e-mail em até 48 h.'; b.textContent = 'Enviado ✓'; el('tx' + n).disabled = true; }
+        else { throw 0; }
+      })
+      .catch(function(){ ms.className = 'msg err'; ms.textContent = 'Não foi agora. Tente de novo ou fale com a gente no Direct.'; b.disabled = false; b.textContent = 'Enviar pedido de ajuste'; });
+  });
+
+  carregar();
+})();
+</script>
+</body>
+</html>
