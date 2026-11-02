@@ -269,6 +269,10 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  var atual=1,token='',timerStatus=null,inicio=0;
  var qs=new URLSearchParams(location.search);
  var origem=(qs.get('origem')||qs.get('utm_campaign')||qs.get('utm_source')||'site').slice(0,60);
+ // 02/11: etiqueta do anúncio (link da Meta com utm_medium=paid e utm_content={{ad.name}})
+ var pago=/^(paid|cpc|pago)$/i.test(qs.get('utm_medium')||'');
+ if(pago)origem='anúncio · '+String(qs.get('utm_content')||qs.get('utm_campaign')||'meta').slice(0,50);
+ else if(qs.get('fbclid')&&!qs.get('origem'))origem+=' · clique fb/ig';
  origem='amostra na hora · '+origem;
  // 27/10: @ de quem veio do Direct (ManyChat põe ?dm={{Instagram Username}} no link do botão); serve para entregar o Reel sozinho no Direct
  var igDm=String(qs.get('dm')||'').trim().replace(/^@/,'').toLowerCase().replace(/[^a-z0-9._]/g,'').slice(0,30);
