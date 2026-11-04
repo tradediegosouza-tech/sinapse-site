@@ -293,7 +293,9 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  var dados={profissao:'',tema:'',tom:'',ig:'',igOk:false,foto:''};
  var atual=1,token='',timerStatus=null,inicio=0;
  var qs=new URLSearchParams(location.search);
- var origem=(qs.get('origem')||qs.get('utm_campaign')||qs.get('utm_source')||'site').slice(0,60);
+ var _rf=(document.referrer||'').toLowerCase(),_ua=navigator.userAgent||'';
+ var _orgRef=/instagram/.test(_rf)||/Instagram/.test(_ua)?'instagram-bio':/tiktok/.test(_rf)||/musical_ly|TikTok/i.test(_ua)?'tiktok':/youtube|youtu\.be/.test(_rf)?'youtube':/facebook|fb\./.test(_rf)||/FBAN|FBAV/.test(_ua)?'facebook':'';
+ var origem=(qs.get('origem')||qs.get('utm_campaign')||qs.get('utm_source')||_orgRef||'site').slice(0,60);
  // 02/11: etiqueta do anúncio (link da Meta com utm_medium=paid e utm_content={{ad.name}})
  var pago=/^(paid|cpc|pago)$/i.test(qs.get('utm_medium')||'');
  if(pago)origem='anúncio · '+String(qs.get('utm_content')||qs.get('utm_campaign')||'meta').slice(0,50);

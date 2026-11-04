@@ -86,6 +86,11 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  .price b{font-size:44px}
 }
 </style>
+<!-- Pixel da Meta: só o pixel "Sinapse" (1715800203298037) · 03/11: a home não tinha pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1715800203298037');fbq('track','PageView');
+</script>
 </head>
 <body>
 
@@ -110,7 +115,7 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
   <h1 style="margin:0 0 24px;font-weight:700;font-size:64px;line-height:1.04;letter-spacing:-.03em">Conteúdo que fala com o <span style="color:var(--ac)">cérebro</span> do seu público.</h1>
   <p style="margin:0 0 36px;font-size:20px;color:var(--tx2);max-width:560px">Imagine abrir o Telegram de manhã e o Reel do dia já estar lá, pronto, com roteiro, narração e legenda. A Sinapse transforma livros reais de neurociência e comportamento em conteúdo para o seu perfil. Você só aprova.</p>
   <div style="display:flex;flex-wrap:wrap;gap:14px">
-   <a href="#chamar" class="btn">Quero um Reel de amostra grátis</a>
+   <a href="/amostra-agora/?origem=site-home-topo" class="btn" style="background:#FFB547;color:#0B0F14">Quero um Reel de amostra grátis</a>
    <a href="#reels" class="btn-o">Ver Reels de exemplo</a>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid var(--line)">
@@ -202,18 +207,12 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
   <div style="flex:1 1 320px;min-width:0">
    <p class="eyebrow">Sem compromisso</p>
    <h2 style="font-size:34px;line-height:1.15;margin-bottom:14px">Veja antes de decidir.</h2>
-   <p style="margin:0;color:var(--tx2)">Deixe seu contato e receba <strong style="color:var(--tx)">um Reel de amostra grátis</strong>, feito no tema do seu perfil. São só 3 campos. Se gostar, a gente conversa.</p>
+   <p style="margin:0;color:var(--tx2)">Receba <strong style="color:var(--tx)">um Reel de amostra grátis</strong>, feito no tema do seu perfil e com o seu nome. Se gostar, a gente conversa.</p>
   </div>
-  <form id="snpForm" style="flex:1 1 380px;min-width:0;display:grid;gap:14px" novalidate>
-   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Seu nome<input name="nome" required autocomplete="name" class="snp-in"></label>
-   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">WhatsApp com DDD<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" class="snp-in"></label>
-   <label style="display:grid;gap:6px;font-size:14px;color:var(--tx2)">Você é
-    <select name="profissao" class="snp-in"><option>Psicólogo(a)</option><option>Terapeuta</option><option>Mentor(a) ou coach</option><option>Outro profissional da saúde</option><option>Outro</option></select>
-   </label>
-   <button type="submit" id="snpBtn" style="min-height:52px;border:0;border-radius:999px;background:var(--ac);color:#0B0F14;font:500 17px 'IBM Plex Sans',sans-serif;cursor:pointer">Quero meu Reel de amostra</button>
-   <p id="snpMsg" role="status" aria-live="polite" style="margin:0;min-height:22px;font-size:15px"></p>
-   <p style="margin:0;font-size:12.5px;color:var(--tx3)">Usamos seu contato só para falar sobre a Sinapse. Veja a <a href="https://n8n.produtodesaude.com.br/webhook/sinapse-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
-  </form>
+  <div style="flex:1 1 380px;min-width:0;display:grid;gap:12px">
+   <a class="btn" href="/amostra-agora/?origem=site-home" style="background:#FFB547;color:#0B0F14;text-align:center">Quero meu Reel de amostra grátis</a>
+   <p style="margin:0;font-size:14px;color:var(--tx3);text-align:center">5 perguntas rápidas · fica pronto em até 24 h · chega no seu Direct e no e-mail</p>
+  </div>
  </div>
 </section>
 
@@ -264,6 +263,7 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
 (function(){
  var LEAD='https://n8n.produtodesaude.com.br/webhook/sinapse-lead';
  var f=document.getElementById('snpForm'),b=document.getElementById('snpBtn'),m=document.getElementById('snpMsg');
+ if(!f)return; // 03/11: formulário antigo saiu; amostra é pela /amostra-agora/
  var q=new URLSearchParams(location.search);
  var origem=q.get('utm_source')||(q.get('gclid')?'google_ads':'')||(document.referrer?'referencia':'direto');
  if(q.get('utm_campaign'))origem+=' / '+q.get('utm_campaign');
@@ -291,7 +291,7 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  <header class="snp-chat-h">
   <span class="snp-dot" aria-hidden="true"></span>
   <div><b>Lívia</b><small>assistente de IA da Sinapse</small></div>
-  <a class="snp-chat-hwa" target="_blank" rel="noopener" href="https://ig.me/m/ai.sinapse" aria-label="Falar com o Diego no Direct da @ai.sinapse"><svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.9C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4Z"/></svg><span>WhatsApp</span></a>
+  <a class="snp-chat-hwa" target="_blank" rel="noopener" href="https://ig.me/m/ai.sinapse" aria-label="Falar com o Diego no Direct da @ai.sinapse"><svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.9C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4Z"/></svg><span>Direct</span></a>
   <button type="button" id="snpChatX" class="snp-chat-x" aria-label="Fechar conversa">×</button>
  </header>
  <div id="snpChatLog" class="snp-chat-log" aria-live="polite"></div>
@@ -354,7 +354,7 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
  var origem='chat do site · '+(q.get('utm_source')||(document.referrer?'referencia':'direto'))+(q.get('utm_campaign')?' / '+q.get('utm_campaign'):'');
  var aberto=false,ocupado=false,comecou=false;
  function add(txt,quem){var d=document.createElement('div');d.className='snp-m '+quem;d.textContent=txt;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
- function zap(texto){var a=document.createElement('a');a.className='snp-go';a.target='_blank';a.rel='noopener';a.href=WA+encodeURIComponent(texto||'Olá! Vim pelo chat do site da Sinapse.');a.innerHTML='<svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.9C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4Zm5.9-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.3-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8 0 1.6 1.2 3.2 1.4 3.4.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>Falar com o Diego no WhatsApp';log.appendChild(a);log.scrollTop=log.scrollHeight;}
+ function zap(texto){var a=document.createElement('a');a.className='snp-go';a.target='_blank';a.rel='noopener';a.href=WA+encodeURIComponent(texto||'Olá! Vim pelo chat do site da Sinapse.');a.innerHTML='<svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3Zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.6-5.9C5.3 10 10.1 5.3 16 5.3S26.7 10 26.7 15.8 21.9 26.4 16 26.4Zm5.9-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.3-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8 0 1.6 1.2 3.2 1.4 3.4.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>Falar com o Diego no Direct';log.appendChild(a);log.scrollTop=log.scrollHeight;}
  function abrir(v){aberto=v;box.hidden=!v;btn.setAttribute('aria-expanded',String(v));if(v){if(!comecou){comecou=true;add('Oi! 👋 Tire suas dúvidas sobre a Sinapse por aqui. Pode perguntar o que quiser.','ia');}setTimeout(function(){inp.focus();},50);}}
  btn.addEventListener('click',function(){abrir(!aberto);});
  x.addEventListener('click',function(){abrir(false);btn.focus();});
@@ -366,7 +366,7 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
   fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sid:sid,texto:txt,origem:origem})})
    .then(function(r){return r.json();})
    .then(function(j){dig.remove();if(!j||!j.ok)throw 0;add(j.resposta,'ia');if(j.whatsapp)zap(j.wa_texto);})
-   .catch(function(){dig.remove();add('Não consegui responder agora. Fala direto com o Diego no WhatsApp:','ia');zap('Olá! Vim pelo site da Sinapse e quero tirar uma dúvida.');})
+   .catch(function(){dig.remove();add('Não consegui responder agora. Fala direto com o Diego no Direct:','ia');zap('Olá! Vim pelo site da Sinapse e quero tirar uma dúvida.');})
    .then(function(){ocupado=false;f.querySelector('button').disabled=false;inp.focus();});
  }
  f.addEventListener('submit',function(e){e.preventDefault();enviar(inp.value);});
