@@ -39,6 +39,18 @@ main{max-width:620px;margin:0 auto;padding:18px 16px 48px}
 h1{margin:0 0 10px;font-family:'Sora',sans-serif;font-weight:600;font-size:30px;line-height:1.18;letter-spacing:-.015em}
 h2{margin:26px 0 10px;font-family:'Sora',sans-serif;font-weight:600;font-size:20px}
 .sub{margin:0 0 26px;color:var(--tx2)}
+.tempo{list-style:none;margin:18px 0 20px;padding:0;display:grid;gap:10px}
+.tempo li{display:grid;grid-template-columns:28px 1fr;column-gap:12px;align-items:start;color:var(--tx3)}
+.tempo li::before{content:"";grid-row:span 2;width:22px;height:22px;margin-top:2px;border-radius:50%;border:2px solid var(--line2)}
+.tempo li.feito::before{background:var(--ac);border-color:var(--ac);content:"✓";color:#0B0F14;font:700 13px/18px sans-serif;text-align:center}
+.tempo li.agora::before{border-color:var(--ac);box-shadow:0 0 0 4px rgba(94,234,212,.18);animation:pulsa 1.6s ease-in-out infinite}
+.tempo li b{color:var(--tx);font-weight:600}.tempo li.feito b,.tempo li.agora b{color:var(--tx)}
+.tempo li span{font-size:14px}
+@keyframes pulsa{50%{box-shadow:0 0 0 8px rgba(94,234,212,0)}}
+@media (prefers-reduced-motion:reduce){.tempo li.agora::before{animation:none}}
+.exemplos{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin:10px auto 0}
+.exemplos video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:#000;border:1px solid var(--line)}
+#oiDm{background:#FFB547;box-shadow:0 6px 24px rgba(255,181,71,.35)}
 .etapa{display:none}
 .etapa.on{display:block;animation:entra .3s ease}
 @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -213,20 +225,27 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   </form>
  </section>
 
- <!-- 6 · Fazendo -->
+ <!-- 6 · Pedido recebido (03/11: confirmação + linha do tempo real + 1 passo) -->
  <section class="etapa" data-etapa="6">
-  <p class="eyebrow" id="fazEyebrow">Lendo o seu perfil</p>
-  <h1 id="fazTitulo">Seu Reel está sendo criado.</h1>
-  <p class="sub" id="fazSub">Fica pronto em até 24 h. Você não precisa esperar nesta página.</p>
+  <p class="eyebrow">Seu Reel grátis</p>
+  <h1 id="fazTitulo">✅ Pedido recebido!</h1>
+  <p class="sub" id="resumoPedido" style="margin-bottom:8px"></p>
+  <ol class="tempo" aria-label="Andamento do seu Reel">
+   <li class="feito"><b>Pedido recebido</b><span>agora mesmo</span></li>
+   <li class="agora"><b>Em produção</b><span>roteiro, voz e cenas no seu tema · até 24 h</span></li>
+   <li><b>Pronto para você</b><span id="ondeChega">no seu Direct do Instagram e no e-mail</span></li>
+  </ol>
+  <a class="btn" id="oiDm" target="_blank" rel="noopener" href="https://ig.me/m/ai.sinapse">Mandar “oi” no Direct para receber</a>
+  <p class="dica" id="porque" style="margin-top:10px;text-align:center">É por lá que o seu vídeo chega. Um “oi” já basta.</p>
+  <button type="button" class="btn sec" id="salvarLink" style="margin-top:6px;width:100%">Copiar meu link pessoal</button>
+  <p class="dica" id="linkInfo" style="margin-top:10px;text-align:center">Quando o Reel ficar pronto, ele aparece nesse link. Pode fechar esta página tranquila.</p>
   <ul class="achados" id="achados" aria-live="polite"></ul>
-  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
-  <ul class="etapas-v" id="etapasV">
-   <li data-e="roteiro">Escrevendo o roteiro no seu tom</li>
-   <li data-e="voz">Gravando a narração</li>
-   <li data-e="cenas">Escolhendo as cenas (cada uma é conferida antes)</li>
-   <li data-e="montando">Montando o vídeo</li>
-  </ul>
-  <p class="dica" style="margin-top:18px" id="fazNota">Seu Reel fica pronto em até 24 h e chega no seu Direct do Instagram. <a href="https://ig.me/m/ai.sinapse" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Toque aqui e mande um “oi” para @ai.sinapse</a> para garantir que ele chegue.</p><!-- 26/10: antes "chega no seu WhatsApp" -->
+  <p class="eyebrow" style="margin-top:26px">Enquanto isso, veja como fica</p>
+  <div class="exemplos">
+   <video muted loop playsinline autoplay preload="none" poster="/reel-176.jpg" src="/reel-176-previa.mp4" aria-label="Reel de exemplo: ansiedade antecipatória"></video>
+   <video muted loop playsinline autoplay preload="none" poster="/reel-170.jpg" src="/reel-170-previa.mp4" aria-label="Reel de exemplo: checar o celular"></video>
+  </div>
+  <p class="dica" style="text-align:center;margin-top:8px">Exemplos feitos pela Sinapse. O seu vem com o seu nome e o seu tema.</p>
  </section>
 
  <!-- 7 · Pronto -->
@@ -242,12 +261,12 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   </div>
  </section>
 
- <!-- 8 · Em revisão -->
+ <!-- 8 · Pedido guardado (03/11) -->
  <section class="etapa" data-etapa="8">
-  <p class="eyebrow">Quase pronto</p>
-  <h1>Seu Reel está passando por uma revisão final.</h1>
-  <p class="sub">Queremos que ele saia perfeito para o seu perfil. Ele chega no seu Direct do Instagram em até 24 h. Para garantir, toque no botão abaixo e mande um “oi”.</p><!-- 26/10: antes "chega no seu WhatsApp em até 2 horas" -->
-  <a class="btn" id="queroRev" target="_blank" rel="noopener" href="#">Falar com a Sinapse no Direct do Instagram</a>
+  <p class="eyebrow">Pedido guardado</p>
+  <h1 id="revTitulo">Seu Reel já está na fila.</h1>
+  <p class="sub">Ele fica pronto em até 24 h e chega no seu Direct do Instagram e no e-mail. Para garantir a entrega pelo Direct, mande um “oi” para @ai.sinapse.</p>
+  <a class="btn" id="queroRev" target="_blank" rel="noopener" href="#">Mandar “oi” no Direct para receber</a>
  </section>
 
  <div class="prova" id="prova">
@@ -284,7 +303,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   atual=n;
   document.querySelectorAll('.etapa').forEach(function(s){s.classList.toggle('on',+s.dataset.etapa===n)});
   $('barra').style.width=(Math.min(n,ETAPAS_TOTAL)*100/ETAPAS_TOTAL)+'%';
-  $('passoN').textContent=n<=ETAPAS_TOTAL?('Passo '+n+' de '+ETAPAS_TOTAL):(n===7?'Pronto':'Criando');
+  $('passoN').textContent=n<=ETAPAS_TOTAL?('Passo '+n+' de '+ETAPAS_TOTAL):(n===7?'Pronto':'Pedido recebido');
   $('prova').style.display=n<=ETAPAS_TOTAL?'flex':'none';
   if(n===5){
    $('resumo').innerHTML='Seu Reel: <b>'+esc(dados.tema)+'</b> · tom <b>'+esc(dados.tom.toLowerCase())+'</b> · para <b>'+esc(dados.profissao.toLowerCase())+'</b>'+(dados.igOk?' · perfil <b>@'+esc(dados.ig)+'</b>':'');
@@ -433,6 +452,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
     try{sinapseCapi('Lead',idEvento,{content_name:'Reel grátis na hora'},{email:corpo.email,telefone:corpo.whatsapp,nome:corpo.nome});}catch(_){}
     if(r&&r.ok&&r.token){
      token=r.token;
+     prepararTela6(primeiroNome,corpo);
      mostrarAchados(r.achados||[],primeiroNome,!!r.achou_perfil);
      ir(6);inicio=Date.now();acompanhar();
     }else if(r&&r.motivo==='ja_pediu'){
@@ -449,10 +469,32 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    });
  });
 
+ function prepararTela6(primeiroNome,corpo){
+  $('fazTitulo').textContent='✅ Pedido recebido, '+primeiroNome+'!';
+  $('resumoPedido').innerHTML='Tema: <b>'+esc(dados.tema)+'</b>'+(dados.tom?' · tom <b>'+esc(dados.tom)+'</b>':'')+'.<br>Também mandamos tudo para <b>'+esc(corpo.email)+'</b>.';
+  var link='https://aisinapse.com.br/reel/?t='+encodeURIComponent(token);
+  var temIg=!!corpo.ig;
+  if(!temIg){
+   // sem @: o Reel chega por e-mail; o Direct vira opção
+   $('ondeChega').textContent='no seu e-mail ('+corpo.email+')';
+   $('oiDm').textContent='Também quero receber no Direct';
+   $('oiDm').style.background='transparent';$('oiDm').style.boxShadow='none';$('oiDm').style.border='1px solid var(--line2)';$('oiDm').style.color='var(--tx)';
+   $('porque').textContent='Seu Reel vai por e-mail. Se preferir o Direct, mande um “oi” para @ai.sinapse.';
+   var sl=$('salvarLink');sl.classList.remove('sec');sl.style.background='#FFB547';sl.style.boxShadow='0 6px 24px rgba(255,181,71,.35)';sl.style.color='#0B0F14';sl.style.border='0';
+   sl.parentNode.insertBefore(sl,$('oiDm'));
+  }
+  $('salvarLink').onclick=function(){
+   var b=this,t0=b.textContent;
+   function ok(){b.textContent='Link copiado ✓';try{fbq('trackCustom','CopiouLinkAmostra');}catch(_){}setTimeout(function(){b.textContent=t0},2500);}
+   function falha(){window.prompt('Copie o seu link pessoal:',link);}
+   if(navigator.share&&/Mobi|Android|iPhone/i.test(navigator.userAgent)){navigator.share({title:'Meu Reel da Sinapse',url:link}).then(ok).catch(function(){});return;}
+   if(navigator.clipboard){navigator.clipboard.writeText(link).then(ok,falha);}else{falha();}
+  };
+  $('oiDm').addEventListener('click',function(){try{fbq('trackCustom','OiDirectAmostra',{tem_ig:temIg});}catch(_){}});
+ }
+
  function mostrarAchados(lista,primeiroNome,achou){
   var ul=$('achados');ul.innerHTML='';
-  $('fazEyebrow').textContent=achou?'O que vimos no seu perfil':'O que o seu Reel vai trazer';
-  $('fazTitulo').textContent=primeiroNome+', seu Reel está sendo criado.';
   lista.slice(0,3).forEach(function(t,i){
    var li=document.createElement('li');li.innerHTML=esc(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');ul.appendChild(li);
    setTimeout(function(){li.classList.add('on')},350+i*700);
@@ -470,22 +512,19 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    .then(function(r){return r.json()})
    .then(function(s){
     var seg=(Date.now()-inicio)/1000;
-    var pct=Math.min(95,Math.max(4,s&&s.pct?s.pct:seg/3.6));
-    $('prog').style.width=pct+'%';
-    if(s&&s.etapa)marcarEtapa(s.etapa);
-    if(s&&s.status==='pronto'&&s.video){$('prog').style.width='100%';marcarEtapa('fim');setTimeout(function(){mostrarVideo(s.video);ir(7);},500);return;}
-    if(s&&(s.status==='revisao'||s.status==='erro')){ir(8);return;}
-    if(seg>90){ir(8);return;}
-    timerStatus=setTimeout(acompanhar,5000);
+    // 03/11: sem barra falsa. Se ficar pronto com a página aberta, mostra; senão segue avisando em silêncio por até 30 min.
+    if(s&&s.status==='pronto'&&s.video){mostrarVideo(s.video);ir(7);return;}
+    if(seg>1800)return;
+    timerStatus=setTimeout(acompanhar,seg<120?8000:20000);
    })
-   .catch(function(){timerStatus=setTimeout(acompanhar,8000)});
+   .catch(function(){timerStatus=setTimeout(acompanhar,20000)});
  }
  function mostrarVideo(url){
   var v=$('video');v.src=url;
  }
  $('video').addEventListener('contextmenu',function(e){e.preventDefault()});
  function avisarWhats(){if(token){try{fetch(BASE+'sinapse-amostra-status?t='+encodeURIComponent(token)+'&whats=1',{keepalive:true})}catch(_){}}}
- ['receber','quero','queroRev'].forEach(function(id){$(id).addEventListener('click',avisarWhats)});
+ ['receber','quero','queroRev','oiDm'].forEach(function(id){$(id).addEventListener('click',avisarWhats)});
 })();
 </script>
 </body>
