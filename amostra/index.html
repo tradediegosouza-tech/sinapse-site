@@ -232,13 +232,18 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   <p class="sub" id="resumoPedido" style="margin-bottom:8px"></p>
   <ol class="tempo" aria-label="Andamento do seu Reel">
    <li class="feito"><b>Pedido recebido</b><span>agora mesmo</span></li>
-   <li class="agora"><b>Em produção</b><span>roteiro, voz e cenas no seu tema · até 24 h</span></li>
+   <li class="agora"><b>Em produção</b><span>roteiro, voz e cenas no seu tema · os últimos ficaram prontos em menos de 2h30 (garantido em até 24 h)</span></li>
    <li><b>Pronto para você</b><span id="ondeChega">no seu Direct do Instagram e no e-mail</span></li>
   </ol>
   <a class="btn" id="oiDm" target="_blank" rel="noopener" href="https://ig.me/m/ai.sinapse">Mandar “oi” no Direct para receber</a>
   <p class="dica" id="porque" style="margin-top:10px;text-align:center">É por lá que o seu vídeo chega. Um “oi” já basta.</p>
   <button type="button" class="btn sec" id="salvarLink" style="margin-top:6px;width:100%">Copiar meu link pessoal</button>
   <p class="dica" id="linkInfo" style="margin-top:10px;text-align:center">Quando o Reel ficar pronto, ele aparece nesse link. Pode fechar esta página tranquila.</p>
+  <!-- 04/11 (Diego "ok oferta na amostra"): oferta do Pacote logo depois do pedido -->
+  <div class="oferta" style="margin-top:18px">
+   <p><b style="color:var(--tx)">Quer garantir mais 5 Reels assim?</b> Pacote 5 Reels com o seu nome e o seu registro, nos temas do seu público. R$ 47, pagamento único, garantia de 7 dias.</p>
+   <a class="btn sec" data-oferta="pedido" target="_blank" rel="noopener" href="/pacote/?origem=amostra-pedido">Ver o Pacote 5 Reels · R$ 47</a>
+  </div>
   <ul class="achados" id="achados" aria-live="polite"></ul>
   <p class="eyebrow" style="margin-top:26px">Enquanto isso, veja como fica</p>
   <div class="exemplos">
@@ -257,6 +262,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
   <p class="dica" style="margin-top:10px;text-align:center">O arquivo pronto para postar, sem a marca de prévia, vai pelo Direct do Instagram.</p><!-- 26/10: antes "vai pelo WhatsApp" -->
   <div class="oferta">
    <p><b style="color:var(--tx)">Gostou?</b> A Sinapse pode fazer Reels assim para o seu perfil toda semana, no seu tema e no seu tom. Você só aprova e posta.</p>
+   <a class="btn" data-oferta="pronto" target="_blank" rel="noopener" href="/pacote/?origem=amostra-pronto" style="margin-bottom:8px">🎬 Garantir mais 5 com o meu nome · R$ 47</a>
    <a class="btn sec" id="quero" target="_blank" rel="noopener" href="#">Quero isso toda semana</a>
   </div>
  </section>
@@ -529,5 +535,6 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
  ['receber','quero','queroRev','oiDm'].forEach(function(id){$(id).addEventListener('click',avisarWhats)});
 })();
 </script>
+<script>/* 04/11: clique na oferta do Pacote */document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-oferta]');if(a){try{fbq('trackCustom','CliqueOfertaPacote',{local:a.getAttribute('data-oferta'),pagina:'amostra',value:47,currency:'BRL'})}catch(_){}}},true);</script>
 </body>
 </html>
