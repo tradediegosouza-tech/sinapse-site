@@ -113,13 +113,16 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
       html += '<article class="item' + (r.pronto ? ' pronto' : '') + '"><div class="cab"><span class="num">' + r.numero + '</span>'
         + '<div class="tit"><b>' + esc(r.tema) + '</b><span>' + (r.pronto ? 'Pronto ✓' : 'Em produção…') + '</span></div>'
         + (r.pronto ? '' : '<span class="giro" aria-hidden="true"></span>') + '</div>';
+      var usado = (r.ajustes_usados || 0) >= (r.ajustes_limite || 1);
       if (r.pronto) {
         html += '<div class="corpo"><video src="' + esc(r.video_url) + '" controls playsinline preload="metadata"></video>'
           + '<div class="acoes"><a class="bt pri" href="' + esc(r.video_url) + '" download="Reel-' + r.numero + '.mp4">⬇️ Baixar</a>'
-          + '<button class="bt" type="button" data-aj="' + r.numero + '">✏️ Pedir ajuste</button></div>'
-          + '<div class="ajuste" id="aj' + r.numero + '"><label for="tx' + r.numero + '" class="msg">O que você quer mudar neste Reel? (você tem 1 ajuste por vídeo)</label>'
-          + '<textarea id="tx' + r.numero + '" maxlength="800" placeholder="Ex.: trocar a frase do início por…"></textarea>'
-          + '<button class="bt pri" type="button" data-env="' + r.numero + '">Enviar pedido de ajuste</button><p class="msg" id="ms' + r.numero + '" role="status"></p></div></div>';
+          + '<button class="bt" type="button" data-aj="' + r.numero + '">' + (usado ? '✓ Ajuste usado' : '✏️ Pedir ajuste') + '</button></div>'
+          + (usado
+            ? '<div class="ajuste" id="aj' + r.numero + '"><p class="msg">Você já usou o ajuste deste Reel. Se for um erro nosso (nome, CRP ou vídeo com defeito), fale com a gente no Direct que corrigimos sem custo.</p>' + PILOTO_HTML + '</div></div>'
+            : '<div class="ajuste" id="aj' + r.numero + '"><label for="tx' + r.numero + '" class="msg">O que você quer mudar neste Reel? Mande tudo de uma vez: cada Reel tem 1 ajuste incluído.</label>'
+              + '<textarea id="tx' + r.numero + '" maxlength="800" placeholder="Ex.: trocar a frase do início por…"></textarea>'
+              + '<button class="bt pri" type="button" data-env="' + r.numero + '">Enviar pedido de ajuste</button><p class="msg" id="ms' + r.numero + '" role="status"></p><div id="pl' + r.numero + '"></div></div></div>');
       }
       html += '</article>';
     });
@@ -129,6 +132,8 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
     if (prontos < 5) setTimeout(carregar, 60000);
   }
 
+  var PILOTO_URL = 'https://wa.me/5511971125781?text=Oi%2C%20Diego!%20Sou%20cliente%20do%20Pacote%205%20Reels%20e%20quero%20saber%20do%20Piloto%20Fundador.%20C%C3%B3digo%3A%20AREA-PILOTO';
+  var PILOTO_HTML = '<p class="msg">No <b>Piloto Fundador</b> os ajustes fazem parte do acompanhamento semanal, com Reels todos os dias.</p><a class="bt" target="_blank" rel="noopener" href="' + PILOTO_URL + '">💬 Quero saber do Piloto Fundador</a>';
   document.addEventListener('click', function(e){
     var a = e.target.closest('[data-aj]');
     if (a) { el('aj' + a.getAttribute('data-aj')).classList.toggle('on'); return; }
@@ -140,7 +145,8 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
     fetch(API + 'sinapse-pacote-ajuste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ t: t, numero: Number(n), pedido: txt }) })
       .then(function(r){ return r.json(); })
       .then(function(r){
-        if (r && r.ok) { ms.className = 'msg ok'; ms.textContent = 'Pedido recebido ✓ Você recebe o Reel ajustado aqui e no e-mail em até 48 h.'; b.textContent = 'Enviado ✓'; el('tx' + n).disabled = true; }
+        if (r && r.ok) { ms.className = 'msg ok'; ms.textContent = 'Pedido recebido ✓ Você recebe o Reel ajustado aqui e no e-mail em até 48 h.'; b.textContent = 'Enviado ✓'; el('tx' + n).disabled = true; if (r.recomendar) el('pl' + n).innerHTML = PILOTO_HTML; }
+        else if (r && r.limite) { ms.className = 'msg'; ms.textContent = r.msg || 'Você já usou o ajuste deste Reel.'; b.textContent = 'Ajuste já usado'; el('tx' + n).disabled = true; el('pl' + n).innerHTML = PILOTO_HTML; }
         else { throw 0; }
       })
       .catch(function(){ ms.className = 'msg err'; ms.textContent = 'Não foi agora. Tente de novo ou fale com a gente no Direct.'; b.disabled = false; b.textContent = 'Enviar pedido de ajuste'; });
