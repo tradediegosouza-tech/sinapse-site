@@ -89,7 +89,7 @@ h2{margin:0 0 16px;font-weight:600;font-size:44px;line-height:1.12;letter-spacin
 <!-- Pixel da Meta: só o pixel "Sinapse" (1715800203298037) · 03/11: a home não tinha pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1715800203298037');fbq('track','PageView');
+(function(){var u={};try{var k='sx_id',x=localStorage.getItem(k);if(!x){x='sx'+Date.now().toString(36)+Math.random().toString(36).slice(2,12);localStorage.setItem(k,x);}u.external_id=x;['em','ph','fn'].forEach(function(c){var v=localStorage.getItem('sx_'+c);if(/^[a-f0-9]{64}$/.test(v||''))u[c]=v;});}catch(e){}window.sinapseUD=u;})();fbq('init','1715800203298037',window.sinapseUD);fbq('track','PageView');
 </script>
 </head>
 <body>

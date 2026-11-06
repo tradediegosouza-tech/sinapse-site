@@ -16,7 +16,7 @@
 <!-- Pixel da Meta: só o pixel "Sinapse" (1715800203298037) -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1715800203298037');
+(function(){var u={};try{var k='sx_id',x=localStorage.getItem(k);if(!x){x='sx'+Date.now().toString(36)+Math.random().toString(36).slice(2,12);localStorage.setItem(k,x);}u.external_id=x;['em','ph','fn'].forEach(function(c){var v=localStorage.getItem('sx_'+c);if(/^[a-f0-9]{64}$/.test(v||''))u[c]=v;});}catch(e){}window.sinapseUD=u;})();fbq('init','1715800203298037',window.sinapseUD);
 fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1715800203298037&ev=PageView&noscript=1"></noscript>
