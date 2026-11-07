@@ -56,10 +56,9 @@ footer{color:var(--muted);font-size:13px;padding:24px 0 110px;border-top:1px sol
 <ul class="nada" aria-label="O que você não precisa fazer"><li>🎥 <s>Gravar de novo</s></li><li>✂️ <s>Editar</s></li><li>✍️ <s>Escrever roteiro</s></li><li>✅ Só aprovar</li></ul>
 <form class="form" id="pedido" novalidate>
 <b class="t" style="font-size:19px">Peça seu 1º vídeo grátis</b>
-<label>Link do anúncio (opcional)<input name="link_anuncio" type="url" inputmode="url" placeholder="Se o imóvel já está anunciado, cole o link"></label>
 <label>Destaques do imóvel<textarea name="descricao" required placeholder="Ex.: 3 quartos, varanda gourmet, R$ 650 mil, Jardim Europa"></textarea></label>
 <label>Seu nome<input name="nome" autocomplete="name" required></label>
-<label>CRECI<input name="creci" placeholder="Ex.: 123456-F"></label>
+<label>Seu Instagram (opcional)<input name="instagram" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@seuperfil"></label>
 <label>WhatsApp<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" required></label>
 <label>E-mail (o vídeo chega aqui)<input name="email" type="email" autocomplete="email" required></label>
 <label class="lg"><input type="checkbox" name="lgpd" required> Aceito receber o vídeo e contato da Sinapse sobre ele, conforme a LGPD.</label>
@@ -67,7 +66,7 @@ footer{color:var(--muted);font-size:13px;padding:24px 0 110px;border-top:1px sol
 <button class="btn" type="submit" id="enviar">Quero meu 1º vídeo grátis</button>
 <a class="alt quero" href="https://wa.me/5511971125781?text=SINAPSE%20IM%C3%93VEIS%3A%20quero%20meu%20primeiro%20v%C3%ADdeo%20gr%C3%A1tis">Prefere mandar as fotos pelo WhatsApp? Toque aqui</a>
 </form>
-<div class="ok2" id="ok2"><b class="t" style="font-size:20px">✅ Pedido recebido!</b><p style="margin:8px 0 0;color:var(--soft)">Agora é só mandar as fotos do imóvel pelo WhatsApp. O vídeo fica pronto em até 24 h depois das fotos.</p><a class="btn" id="mandaFotos" href="https://wa.me/5511971125781">Mandar as fotos no WhatsApp</a></div>
+<div class="ok2" id="ok2"><b class="t" style="font-size:20px">✅ Pedido recebido!</b><p style="margin:8px 0 0;color:var(--soft)">Agora é só mandar as fotos do imóvel pelo WhatsApp. O vídeo fica pronto em até 24 h depois das fotos.</p><a class="btn" id="mandaFotos" href="https://wa.me/5511971125781">Mandar as fotos no WhatsApp</a><p style="margin:12px 0 0;color:var(--soft);font-size:15px">Prefere o Instagram? <a id="direct" href="https://ig.me/m/ai.sinapse" style="color:inherit;font-weight:600">Mande as fotos no nosso Direct</a>.</p></div>
 <p class="nota">Sem cartão e sem compromisso.</p>
 
 <section><h2>Como funciona</h2>
@@ -91,10 +90,10 @@ footer{color:var(--muted);font-size:13px;padding:24px 0 110px;border-top:1px sol
 <div class="barra"><a class="btn" href="#pedido">Quero meu 1º vídeo grátis</a></div>
 <script>(function(){var o=new URLSearchParams(location.search).get('origem');document.querySelectorAll('.quero').forEach(function(b){if(o)b.href+='%20(origem%3A%20'+encodeURIComponent(o)+')';b.addEventListener('click',function(){try{fbq('track','Lead',{content_name:'Sinapse Imóveis',currency:'BRL',value:147});}catch(_){}});});})();</script>
 <script>(function(){var f=document.getElementById('pedido'),e=document.getElementById('erro'),bt=document.getElementById('enviar');var o=new URLSearchParams(location.search).get('origem')||'site';
-f.addEventListener('submit',function(ev){ev.preventDefault();e.style.display='none';var d={};new FormData(f).forEach(function(v,k){d[k]=v;});d.lgpd=f.lgpd.checked;d.origem=o;
+f.addEventListener('submit',function(ev){ev.preventDefault();e.style.display='none';var d={};new FormData(f).forEach(function(v,k){d[k]=v;});d.lgpd=f.lgpd.checked;d.origem=o;var ig=(d.instagram||'').trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,'').replace(/^@/,'').replace(/[\/?#].*$/,'');d.link_anuncio=ig?'https://www.instagram.com/'+ig+'/':'';delete d.instagram;
 var tel=(d.whatsapp||'').replace(/\D/g,'');
 if(!d.nome||tel.length<10||!/@/.test(d.email||'')||!d.lgpd){e.textContent='Preencha nome, WhatsApp, e-mail e marque o aceite.';e.style.display='block';return;}
-if((d.descricao||'').length<10&&!d.link_anuncio){e.textContent='Escreva os destaques do imóvel (quartos, valor, bairro).';e.style.display='block';return;}
+if((d.descricao||'').length<10){e.textContent='Escreva os destaques do imóvel (quartos, valor, bairro).';e.style.display='block';return;}
 bt.disabled=true;bt.textContent='Enviando…';
 fetch('https://n8n.produtodesaude.com.br/webhook/sinapse-imoveis',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json();}).then(function(j){if(!j||!j.ok)throw 0;try{fbq('track','Lead',{content_name:'Sinapse Imóveis',currency:'BRL',value:147});}catch(_){}f.style.display='none';document.getElementById('mandaFotos').href='https://wa.me/5511971125781?text='+encodeURIComponent('SINAPSE IMÓVEIS: pedido '+j.token+'. Vou mandar as fotos do imóvel.');document.getElementById('ok2').style.display='block';document.getElementById('ok2').scrollIntoView({behavior:'smooth',block:'center'});}).catch(function(){bt.disabled=false;bt.textContent='Quero meu 1º vídeo grátis';e.textContent='Não conseguimos enviar agora. Toque em "Prefere mandar as fotos pelo WhatsApp?" logo abaixo.';e.style.display='block';});});})();</script>
 </body>
