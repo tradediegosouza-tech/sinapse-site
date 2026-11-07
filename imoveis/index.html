@@ -64,14 +64,14 @@ footer{color:var(--muted);font-size:13px;padding:24px 0 110px;border-top:1px sol
 <label class="lg"><input type="checkbox" name="lgpd" required> Aceito receber o vídeo e contato da Sinapse sobre ele, conforme a LGPD.</label>
 <p class="erro" id="erro"></p>
 <button class="btn" type="submit" id="enviar">Quero meu 1º vídeo grátis</button>
-<a class="alt quero" href="https://wa.me/5511971125781?text=SINAPSE%20IM%C3%93VEIS%3A%20quero%20meu%20primeiro%20v%C3%ADdeo%20gr%C3%A1tis">Prefere mandar as fotos pelo WhatsApp? Toque aqui</a>
+<a class="alt" href="https://ig.me/m/ai.sinapse">Prefere pedir pelo Instagram? Chame no nosso Direct</a>
 </form>
-<div class="ok2" id="ok2"><b class="t" style="font-size:20px">✅ Pedido recebido!</b><p style="margin:8px 0 0;color:var(--soft)">Agora é só mandar as fotos do imóvel pelo WhatsApp. O vídeo fica pronto em até 24 h depois das fotos.</p><a class="btn" id="mandaFotos" href="https://wa.me/5511971125781">Mandar as fotos no WhatsApp</a><p style="margin:12px 0 0;color:var(--soft);font-size:15px">Prefere o Instagram? <a id="direct" href="https://ig.me/m/ai.sinapse" style="color:inherit;font-weight:600">Mande as fotos no nosso Direct</a>.</p></div>
+<div class="ok2" id="ok2"><b class="t" style="font-size:20px">✅ Pedido recebido!</b><p style="margin:8px 0 0;color:var(--soft)">Agora escolha as fotos do imóvel aqui mesmo (até 12). O vídeo chega no seu e-mail em até 24 h.</p><label class="btn" for="fotos" id="btFotos" style="cursor:pointer">📷 Escolher as fotos do imóvel</label><input id="fotos" type="file" accept="image/*" multiple hidden><p id="fstatus" style="margin:10px 0 0;font-weight:600"></p><p style="margin:12px 0 0;color:var(--soft);font-size:15px">Prefere o Instagram? <a href="https://ig.me/m/ai.sinapse" style="color:inherit;font-weight:600">Mande as fotos no nosso Direct</a>.</p></div>
 <p class="nota">Sem cartão e sem compromisso.</p>
 
 <section><h2>Como funciona</h2>
 <ol class="passos">
-<li><b>Peça e mande as fotos</b><p>Preencha o pedido e mande as fotos e vídeos do celular pelo WhatsApp, do jeito que estão.</p></li>
+<li><b>Peça e mande as fotos</b><p>Preencha o pedido e escolha as fotos do celular aqui mesmo na página, do jeito que estão.</p></li>
 <li><b>A gente faz tudo</b><p>Roteiro de venda, narração, legenda, música e a sua marca com nome e CRECI.</p></li>
 <li><b>Receba em até 24 h</b><p>Reel vertical pronto para Instagram, TikTok, Status e portais.</p></li>
 </ol></section>
@@ -95,6 +95,11 @@ var tel=(d.whatsapp||'').replace(/\D/g,'');
 if(!d.nome||tel.length<10||!/@/.test(d.email||'')||!d.lgpd){e.textContent='Preencha nome, WhatsApp, e-mail e marque o aceite.';e.style.display='block';return;}
 if((d.descricao||'').length<10){e.textContent='Escreva os destaques do imóvel (quartos, valor, bairro).';e.style.display='block';return;}
 bt.disabled=true;bt.textContent='Enviando…';
-fetch('https://n8n.produtodesaude.com.br/webhook/sinapse-imoveis',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json();}).then(function(j){if(!j||!j.ok)throw 0;try{fbq('track','Lead',{content_name:'Sinapse Imóveis',currency:'BRL',value:147});}catch(_){}f.style.display='none';document.getElementById('mandaFotos').href='https://wa.me/5511971125781?text='+encodeURIComponent('SINAPSE IMÓVEIS: pedido '+j.token+'. Vou mandar as fotos do imóvel.');document.getElementById('ok2').style.display='block';document.getElementById('ok2').scrollIntoView({behavior:'smooth',block:'center'});}).catch(function(){bt.disabled=false;bt.textContent='Quero meu 1º vídeo grátis';e.textContent='Não conseguimos enviar agora. Toque em "Prefere mandar as fotos pelo WhatsApp?" logo abaixo.';e.style.display='block';});});})();</script>
+fetch('https://n8n.produtodesaude.com.br/webhook/sinapse-imoveis',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json();}).then(function(j){if(!j||!j.ok)throw 0;try{fbq('track','Lead',{content_name:'Sinapse Imóveis',currency:'BRL',value:147});}catch(_){}f.style.display='none';window.__tok=j.token;document.getElementById('ok2').style.display='block';document.getElementById('ok2').scrollIntoView({behavior:'smooth',block:'center'});}).catch(function(){bt.disabled=false;bt.textContent='Quero meu 1º vídeo grátis';e.textContent='Não conseguimos enviar agora. Tente de novo ou chame no nosso Direct (link logo abaixo).';e.style.display='block';});});})();</script>
+<script>(function(){var i=document.getElementById('fotos'),st=document.getElementById('fstatus'),lb=document.getElementById('btFotos');if(!i)return;
+i.addEventListener('change',function(){var fs=[].slice.call(i.files||[]).filter(function(f){return /^image\//.test(f.type)||/\.(jpe?g|png|webp|heic)$/i.test(f.name);}).slice(0,12);if(!fs.length||!window.__tok)return;
+var fd=new FormData();fd.append('k','imr-6Tn4Vq');fd.append('token',window.__tok);fs.forEach(function(f){fd.append('fotos[]',f);});
+st.style.color='';st.textContent='Enviando '+fs.length+' foto(s)… não feche a página.';lb.style.pointerEvents='none';lb.style.opacity='.6';
+fetch('https://cenas.aisinapse.com.br/receber.php',{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(j){if(!j||!j.ok)throw 0;st.textContent='✅ '+j.total+' foto(s) recebida(s)! Seu vídeo chega no seu e-mail em até 24 h.';lb.textContent='➕ Mandar mais fotos';lb.style.pointerEvents='';lb.style.opacity='';try{fbq('trackCustom','FotosImovel',{total:j.total});}catch(_){}}).catch(function(){st.style.color='#FFB547';st.textContent='Não deu certo agora. Tente de novo ou mande pelo nosso Direct (link abaixo).';lb.style.pointerEvents='';lb.style.opacity='';});i.value='';});})();</script>
 </body>
 </html>
