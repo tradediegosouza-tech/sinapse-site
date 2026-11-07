@@ -140,6 +140,7 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    <button type="button" class="op" data-v="Terapeuta"><span class="ic">🌿</span><span>Terapeuta</span></button>
    <button type="button" class="op" data-v="Psicanalista"><span class="ic">🛋️</span><span>Psicanalista</span></button>
    <button type="button" class="op" data-v="Mentor(a) ou coach"><span class="ic">🧭</span><span>Mentor(a) ou coach</span></button>
+   <button type="button" class="op" data-v="Nutricionista"><span class="ic">🥗</span><span>Nutricionista</span></button>
    <button type="button" class="op" data-v="Outro profissional da saúde"><span class="ic">🩺</span><span>Outro profissional da saúde</span></button>
   </div>
  </section>
@@ -327,9 +328,16 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    g.querySelectorAll('.op').forEach(function(x){x.setAttribute('aria-pressed','false')});
    b.setAttribute('aria-pressed','true');
    dados[g.dataset.campo]=b.dataset.v;
+   if(g.dataset.campo==='profissao')trocaTemas(b.dataset.v);
    setTimeout(function(){ir(g.dataset.campo==='profissao'?2:4)},180);
   });
  });
+
+ // 07/11: temas da área escolhida (teste de nicho: nutricionistas)
+ var TEMAS_NUTRI=['Fome emocional','Dieta da moda','Intestino e humor','Reeducação alimentar','Ansiedade e comida','Rótulos dos alimentos','Sono e fome','Lanche no trabalho','Alimentação na menopausa'];
+ var TEMAS_PADRAO=Array.prototype.map.call(document.querySelectorAll('#chips .chip'),function(c){return c.textContent});
+ function trocaTemas(prof){var lista=/nutri/i.test(prof)?TEMAS_NUTRI:TEMAS_PADRAO;document.querySelectorAll('#chips .chip').forEach(function(c,i){if(lista[i])c.textContent=lista[i];});
+  var t=$('tema');if(t)t.placeholder=/nutri/i.test(prof)?'Ex.: por que a gente come quando está ansiosa':'Ex.: por que a gente se cobra tanto';}
 
  // Etapa 2: chip ou texto livre
  var tema=$('tema'),seguir2=$('seguir2');
