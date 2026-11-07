@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seus Reels | Sinapse</title>
-<meta name="description" content="Sua área: os 5 Reels prontos com o seu nome e CRP.">
+<meta name="description" content="Sua área: seus Reels prontos com o seu nome e CRP.">
 <meta name="theme-color" content="#0B0F14">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%235EEAD4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230B0F14'/%3E%3C/svg%3E">
@@ -63,7 +63,7 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
 <body>
 <div class="top"><a class="logo" href="https://aisinapse.com.br/"><span class="dot"></span>SINAPSE</a></div>
 <main>
-  <p class="eyebrow">Sua área · Pacote 5 Reels</p>
+  <p class="eyebrow" id="eyebrow">Sua área · Seus Reels</p>
   <h1 id="titulo">Carregando seus Reels…</h1>
   <p class="sub" id="sub">Um instante.</p>
   <div id="conteudo"></div>
@@ -103,12 +103,14 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
   function montar(d){
     if (!d || !d.ok) { erro('Esse link não é válido. Abra pelo e-mail ou pela mensagem que você recebeu.'); return; }
     var prontos = d.prontos || 0;
-    el('titulo').textContent = (d.primeiro ? d.primeiro + ', s' : 'S') + 'eus 5 Reels';
-    el('sub').textContent = prontos === 5 ? 'Todos prontos! Baixe e poste no seu ritmo.'
+    var total = Math.max(Number(d.total) || 0, (d.reels || []).length, 1);
+    el('eyebrow').textContent = 'Sua área · ' + total + ' Reels';
+    el('titulo').textContent = (d.primeiro ? d.primeiro + ', s' : 'S') + 'eus ' + total + ' Reels';
+    el('sub').textContent = prontos >= total ? 'Todos prontos! Baixe e poste no seu ritmo.'
       : prontos === 0 ? 'Estamos produzindo com o seu nome e CRP. Os vídeos aparecem aqui assim que ficarem prontos (até 48 h).'
       : 'Os que estão prontos já podem ser baixados. Os outros aparecem aqui em breve.';
-    var html = '<div class="barra" aria-hidden="true"><i style="width:' + (prontos * 20) + '%"></i></div>'
-      + '<p class="conta">' + prontos + ' de 5 prontos</p><div class="lista">';
+    var html = '<div class="barra" aria-hidden="true"><i style="width:' + Math.min(100, Math.round(prontos * 100 / total)) + '%"></i></div>'
+      + '<p class="conta">' + prontos + ' de ' + total + ' prontos</p><div class="lista">';
     (d.reels || []).forEach(function(r){
       html += '<article class="item' + (r.pronto ? ' pronto' : '') + '"><div class="cab"><span class="num">' + r.numero + '</span>'
         + '<div class="tit"><b>' + esc(r.tema) + '</b><span>' + (r.pronto ? 'Pronto ✓' : 'Em produção…') + '</span></div>'
@@ -129,7 +131,7 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
     html += '</div>';
     el('conteudo').innerHTML = html;
     el('dicas').hidden = prontos === 0;
-    if (prontos < 5) setTimeout(carregar, 60000);
+    if (prontos < total) setTimeout(carregar, 60000);
   }
 
   var PILOTO_URL = 'https://wa.me/5511971125781?text=Oi%2C%20Diego!%20Sou%20cliente%20do%20Pacote%205%20Reels%20e%20quero%20saber%20do%20Piloto%20Fundador.%20C%C3%B3digo%3A%20AREA-PILOTO';
