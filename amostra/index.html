@@ -535,8 +535,11 @@ footer{max-width:620px;margin:0 auto;padding:0 16px 32px;font-size:12.5px;color:
    })
    .catch(function(){timerStatus=setTimeout(acompanhar,20000)});
  }
+ // 11/11: vídeos moram na VPS; se faltar lá, volta para o link original.
+ function vpsUrl(u){return String(u||'').replace(/^(https?:\/\/(www\.)?aisinapse\.com\.br)?\/(amostras|pacote|piloto)\//,'https://n8n.produtodesaude.com.br/v/$3/');}
+ document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='VIDEO'&&t.getAttribute('data-orig')&&t.src!==t.getAttribute('data-orig')){t.src=t.getAttribute('data-orig');}},true);
  function mostrarVideo(url){
-  var v=$('video');v.src=url;
+  var v=$('video');v.setAttribute('data-orig',url);v.src=vpsUrl(url);
  }
  $('video').addEventListener('contextmenu',function(e){e.preventDefault()});
  function avisarWhats(){if(token){try{fetch(BASE+'sinapse-amostra-status?t='+encodeURIComponent(token)+'&whats=1',{keepalive:true})}catch(_){}}}

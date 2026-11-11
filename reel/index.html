@@ -116,6 +116,9 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
   function msg(texto) { espera.innerHTML = '<div>' + texto + '</div>'; espera.style.display = 'grid'; }
   if (!t) { msg('Este link é pessoal e não achamos um Reel nele. Confira o link do seu e-mail ou responda o e-mail que a gente te ajuda.'); return; }
 
+  // 11/11: vídeos moram na VPS (GitHub tem limite de 1 GB); se faltar lá, volta para o link original.
+  function vpsUrl(u){return String(u||'').replace(/^(https?:\/\/(www\.)?aisinapse\.com\.br)?\/(amostras|pacote|piloto)\//,'https://n8n.produtodesaude.com.br/v/$3/');}
+  document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='VIDEO'&&t.getAttribute('data-orig')&&t.src!==t.getAttribute('data-orig')){t.src=t.getAttribute('data-orig');}},true);
   var tentativas = 0;
   function buscar() {
     tentativas++;
@@ -125,7 +128,7 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
         if (d && d.ok && d.video) {
           var v = document.createElement('video');
           // Capa: o próprio Reel parado em 1s (gancho escrito na tela) + play grande.
-          v.src = d.video + (d.video.indexOf('#') < 0 ? '#t=1' : ''); v.playsInline = true; v.preload = 'auto'; v.muted = false;
+          v.setAttribute('data-orig', d.video + (d.video.indexOf('#') < 0 ? '#t=1' : '')); v.src = vpsUrl(d.video) + (d.video.indexOf('#') < 0 ? '#t=1' : ''); v.playsInline = true; v.preload = 'auto'; v.muted = false;
           v.setAttribute('playsinline', '');
           caixa.appendChild(v);
           espera.style.display = 'none';

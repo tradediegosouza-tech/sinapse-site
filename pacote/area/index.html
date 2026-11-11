@@ -111,14 +111,17 @@ h1{margin:0 0 8px;font-family:'Sora',sans-serif;font-weight:600;font-size:28px;l
       : 'Os que estão prontos já podem ser baixados. Os outros aparecem aqui em breve.';
     var html = '<div class="barra" aria-hidden="true"><i style="width:' + Math.min(100, Math.round(prontos * 100 / total)) + '%"></i></div>'
       + '<p class="conta">' + prontos + ' de ' + total + ' prontos</p><div class="lista">';
+    // 11/11: vídeos moram na VPS; se faltar lá, volta para o link original.
+    function vpsUrl(u){return String(u||'').replace(/^(https?:\/\/(www\.)?aisinapse\.com\.br)?\/(amostras|pacote|piloto)\//,'https://n8n.produtodesaude.com.br/v/$3/');}
+    document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='VIDEO'&&t.getAttribute('data-orig')&&t.src!==t.getAttribute('data-orig')){t.src=t.getAttribute('data-orig');}},true);
     (d.reels || []).forEach(function(r){
       html += '<article class="item' + (r.pronto ? ' pronto' : '') + '"><div class="cab"><span class="num">' + r.numero + '</span>'
         + '<div class="tit"><b>' + esc(r.tema) + '</b><span>' + (r.pronto ? 'Pronto ✓' : 'Em produção…') + '</span></div>'
         + (r.pronto ? '' : '<span class="giro" aria-hidden="true"></span>') + '</div>';
       var usado = (r.ajustes_usados || 0) >= (r.ajustes_limite || 1);
       if (r.pronto) {
-        html += '<div class="corpo"><video src="' + esc(r.video_url) + '" controls playsinline preload="metadata"></video>'
-          + '<div class="acoes"><a class="bt pri" href="' + esc(r.video_url) + '" download="Reel-' + r.numero + '.mp4">⬇️ Baixar</a>'
+        html += '<div class="corpo"><video src="' + esc(vpsUrl(r.video_url)) + '" data-orig="' + esc(r.video_url) + '" controls playsinline preload="metadata"></video>'
+          + '<div class="acoes"><a class="bt pri" href="' + esc(vpsUrl(r.video_url)) + '" download="Reel-' + r.numero + '.mp4">⬇️ Baixar</a>'
           + '<button class="bt" type="button" data-aj="' + r.numero + '">' + (usado ? '✓ Ajuste usado' : '✏️ Pedir ajuste') + '</button></div>'
           + (usado
             ? '<div class="ajuste" id="aj' + r.numero + '"><p class="msg">Você já usou o ajuste deste Reel. Se for um erro nosso (nome, CRP ou vídeo com defeito), fale com a gente no Direct que corrigimos sem custo.</p>' + PILOTO_HTML + '</div></div>'
