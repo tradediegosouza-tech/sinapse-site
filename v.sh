@@ -10,13 +10,27 @@ B=/opt/sinapse-videos
 C=n8n-main
 docker inspect "$C" >/dev/null 2>&1 || { echo "ERRO: container $C não achado"; docker ps --format '{{.Names}}'; exit 1; }
 L=$(docker inspect "$C" --format '{{range $k,$v := .Config.Labels}}{{$k}}={{$v}}{{"\n"}}{{end}}')
-RULE=$(echo "$L" | grep -m1 '^traefik\.http\.routers\..*\.rule=' | cut -d= -f2- || true)
-HOST=$(echo "$RULE" | sed -n 's/.*Host(`\([^`]*\)`).*/\1/p')
-EP=$(echo "$L" | grep -m1 '^traefik\.http\.routers\..*\.entrypoints=' | cut -d= -f2- || true)
-CR=$(echo "$L" | grep -m1 '\.tls\.certresolver=' | cut -d= -f2- || true)
+# escolhe o roteador do n8n que usa um DOMINIO (nao IP) e tem certificado
+HOST=""; EP=""; CR=""
+for R in $(echo "$L" | sed -n 's/^traefik\.http\.routers\.\([^.]*\)\.rule=.*/\1/p' | sort -u); do
+  RR=$(echo "$L" | grep -m1 "^traefik\.http\.routers\.$R\.rule=" | cut -d= -f2-)
+  H=$(echo "$RR" | sed -n 's/.*Host(`\([^`]*\)`).*/\1/p')
+  E=$(echo "$L" | grep -m1 "^traefik\.http\.routers\.$R\.entrypoints=" | cut -d= -f2- || true)
+  T=$(echo "$L" | grep -m1 "^traefik\.http\.routers\.$R\.tls\.certresolver=" | cut -d= -f2- || true)
+  echo "roteador $R: host=$H ep=$E cr=$T"
+  if echo "$H" | grep -q '[a-z]' && [ -n "$T" ]; then HOST=$H; EP=$E; CR=$T; fi
+done
+HOST=n8n.produtodesaude.com.br
+TR=$(docker ps --format '{{.Names}} {{.Image}}' | awk '/traefik/{print $1; exit}')
+TA=$(docker inspect "$TR" --format '{{join .Config.Cmd " "}} {{join .Args " "}}' 2>/dev/null | tr ' ' '\n')
+echo "--- traefik ($TR):"; echo "$TA" | grep -i 'entrypoints\|resolvers\|providers' | head -20 || true
+E443=$(echo "$TA" | grep -m1 -o 'entrypoints\.[^.]*\.address=:443' | cut -d. -f2 || true)
+R1=$(echo "$TA" | grep -m1 -o 'certificatesresolvers\.[^.]*\.' | cut -d. -f2 || true)
+[ -n "$E443" ] && EP=$E443
+[ -n "$EP" ] || EP=websecure
+[ -n "$CR" ] || CR=$R1
 NET=$(docker inspect "$C" --format '{{range $k,$v := .NetworkSettings.Networks}}{{$k}} {{end}}' | awk '{print $1}')
 echo "host=$HOST ep=$EP cr=$CR net=$NET"
-[ -n "$HOST" ] && [ -n "$EP" ] || { echo "ERRO: não achei as etiquetas do Traefik no n8n"; echo "$L" | grep -i traefik; exit 1; }
 mkdir -p "$B/data/v"
 chown -R 101:101 "$B/data"
 cat > "$B/default.conf" <<EOF
@@ -58,4 +72,4 @@ echo ok > "$B/data/v/teste.txt"; chown 101:101 "$B/data/v/teste.txt"
 R=$(curl -s -o /dev/null -w '%{http_code}' "https://$HOST/v/teste.txt" || true)
 echo "teste https = $R"
 df -h / | tail -1
-[ "$R" = "200" ] && echo "✅ SINAPSE VIDEOS OK" || { echo "⚠️ não respondeu 200"; docker logs --tail 20 sinapse-videos; }
+[ "$R" = "200" ] && echo "✅ SINAPSE VIDEOS OK" || { echo "⚠️ não respondeu 200"; docker logs --tail 5 sinapse-videos; docker logs --tail 40 "$TR" 2>&1 | grep -i 'sinvid\|error' | tail -8; }
