@@ -64,6 +64,7 @@ var a=document.getElementById('grupo');a.href=GRUPO||FALLBACK;
 a.addEventListener('click',function(){try{fbq('trackCustom','EntrouGrupo',{content_name:'Turma Fundadora'});fbq('track','Lead',{content_name:'Turma Fundadora'});}catch(e){}});
 var v=document.getElementById('v'),s=document.getElementById('som');
 document.getElementById('vsl').addEventListener('click',function(){v.muted=false;v.currentTime=0;v.loop=false;v.play();s.style.display='none';try{fbq('trackCustom','PlayVSLTurma');}catch(e){}});
+var marcos={25:0,50:0,75:0,95:0},somOn=false;document.getElementById('vsl').addEventListener('click',function(){somOn=true;});v.addEventListener('timeupdate',function(){if(!somOn||!v.duration)return;var pc=v.currentTime/v.duration*100;[25,50,75,95].forEach(function(m){if(pc>=m&&!marcos[m]){marcos[m]=1;try{fbq('trackCustom','VSLTurma'+m);}catch(e){}}});});
 </script>
 </body>
 </html>
