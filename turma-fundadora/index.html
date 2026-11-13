@@ -58,7 +58,7 @@ ul.ok li b{color:var(--ink)}
 </main>
 <script>
 // Link do grupo: troque GRUPO pelo convite do WhatsApp quando o grupo existir.
-var GRUPO='';
+var GRUPO='https://chat.whatsapp.com/LDLW7ILIEAh6NXt0wcU8eQ';
 var FALLBACK='https://wa.me/5511971125781?text='+encodeURIComponent('Oi! Quero entrar no grupo da Turma Fundadora da Sinapse');
 var a=document.getElementById('grupo');a.href=GRUPO||FALLBACK;
 a.addEventListener('click',function(){try{fbq('trackCustom','EntrouGrupo',{content_name:'Turma Fundadora'});fbq('track','Lead',{content_name:'Turma Fundadora'});}catch(e){}});
