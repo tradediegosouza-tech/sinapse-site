@@ -200,6 +200,13 @@ var WA = '5511971125781';
   }
   var pagar = document.getElementById('pagar');
   pagar.href = destino;
+  // 16/11: quem vem do Direct (origem dm-*) ja decidiu comprar; os botoes do topo, do hero e da barra levam direto ao checkout (sem rolar 7 telas).
+  if (origem.indexOf('dm') === 0) {
+    document.querySelectorAll('header.nav a[href="#oferta"], a.cta[href="#oferta"]').forEach(function(a){
+      a.href = destino;
+      a.addEventListener('click', function(){ try { fbq('trackCustom', 'CliqueComprar', {content_name:'Pacote 5 Reels', value:47, currency:'BRL', origem:origem, botao:'direto'}); } catch(e){} });
+    });
+  }
   pagar.addEventListener('click', function(){
     // evento próprio: o InitiateCheckout oficial vem da Cakto (evita contar em dobro)
     try { fbq('trackCustom', 'CliqueComprar', {content_name:'Pacote 5 Reels', value:47, currency:'BRL', origem:origem}); } catch(e){}
