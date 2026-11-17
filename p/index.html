@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Abrindo o pagamento…</title>
+<style>body{font-family:system-ui,sans-serif;background:#0f1115;color:#e9ecf1;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;text-align:center;padding:24px}a{color:#7fd6b4}</style>
+</head>
+<body>
+<p>Abrindo o pagamento seguro…<br><a id="go" href="https://pay.cakto.com.br/nfuxgwo_1238991">Se não abrir sozinho, toque aqui</a></p>
+<script>
+// 16/11: link rastreado do Pacote. Uso: aisinapse.com.br/p/?l=<lead>&o=<origem>
+// Registra 1 clique (lead, origem, aparelho) no n8n e leva ao checkout da Cakto. Sem dado pessoal além do apelido do lead que a Sinapse escolhe.
+(function(){
+  var PAY = 'https://pay.cakto.com.br/nfuxgwo_1238991';
+  var q = new URLSearchParams(location.search);
+  var lead = (q.get('l') || '').slice(0, 60);
+  var origem = (q.get('o') || 'dm').slice(0, 40);
+  var u = new URL(PAY);
+  u.searchParams.set('utm_source', q.get('utm_source') || 'meta');
+  u.searchParams.set('utm_medium', q.get('utm_medium') || 'dm');
+  u.searchParams.set('utm_campaign', q.get('utm_campaign') || 'pacote47');
+  u.searchParams.set('utm_content', 'link-' + origem);
+  u.searchParams.set('sck', 'link-' + (lead || origem));
+  if (q.get('fbclid')) u.searchParams.set('fbclid', q.get('fbclid'));
+  var destino = u.toString();
+  document.getElementById('go').href = destino;
+  var ir = function(){ location.replace(destino); };
+  var feito = false;
+  var seguir = function(){ if (feito) return; feito = true; ir(); };
+  if (!lead) { seguir(); return; }
+  try {
+    var ep = 'https://n8n.produtodesaude.com.br/webhook/sinapse-clique-pacote?l=' + encodeURIComponent(lead) +
+      '&o=' + encodeURIComponent(origem) + '&f=' + (q.get('fbclid') ? 'sim' : 'nao') +
+      '&d=' + (/Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : 'desktop');
+    var img = new Image();
+    img.onload = img.onerror = seguir;
+    img.src = ep;
+  } catch (e) { seguir(); return; }
+  setTimeout(seguir, 1200);
+})();
+</script>
+</body>
+</html>
