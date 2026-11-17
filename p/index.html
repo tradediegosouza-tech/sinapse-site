@@ -25,6 +25,8 @@
   u.searchParams.set('sck', 'link-' + (lead || origem));
   if (q.get('fbclid')) u.searchParams.set('fbclid', q.get('fbclid'));
   var destino = u.toString();
+  // d=pagina: registra o clique e leva a pagina de vendas /pacote (mesmo destino de antes), em vez de ir direto ao checkout. Mantem o caminho da lead igual e mede so o clique.
+  if (q.get('d') === 'pagina') destino = location.origin + '/pacote/?origem=' + encodeURIComponent(origem);
   document.getElementById('go').href = destino;
   var ir = function(){ location.replace(destino); };
   var feito = false;
