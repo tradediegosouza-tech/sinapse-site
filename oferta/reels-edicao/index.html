@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-(function(){var u={};try{var k='sx_id',x=localStorage.getItem(k);if(!x){x='sx'+Date.now().toString(36)+Math.random().toString(36).slice(2,12);localStorage.setItem(k,x);}u.external_id=x;['em','ph','fn'].forEach(function(c){var v=localStorage.getItem('sx_'+c);if(/^[a-f0-9]{64}$/.test(v||''))u[c]=v;});}catch(e){}window.sinapseUD=u;})();fbq('init','1715800203298037',window.sinapseUD);fbq('track','PageView');fbq('trackCustom','VerUpsell',{pagina:'reels-edicao'});
+(function(){var u={};try{var k='sx_id',x=localStorage.getItem(k);if(!x){x='sx'+Date.now().toString(36)+Math.random().toString(36).slice(2,12);localStorage.setItem(k,x);}u.external_id=x;['em','ph','fn'].forEach(function(c){var v=localStorage.getItem('sx_'+c);if(/^[a-f0-9]{64}$/.test(v||''))u[c]=v;});}catch(e){}window.sinapseUD=u;})();fbq('init','1715800203298037',window.sinapseUD);fbq('track','PageView');fbq('trackCustom','VerUpsell',{pagina:'edicao-expressa'});
 </script>
 <style>
 :root{--bg:#0B0F14;--card:#121A22;--line:#22303C;--ink:#EEF4F2;--soft:#B6C4C0;--muted:#83948F;--acc:#5EEAD4;--acc-ink:#0B0F14;--warn:#F5B971;--display:"Sora",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
@@ -99,25 +99,21 @@ cakto-upsell-buttons{display:block;width:100%}
 <body>
 <div class="w"><section style="padding-top:20px"><div class="box">
  <div class="ok">✅ Pagamento confirmado. Sua edição está garantida.<br><span style="font-weight:500;color:var(--soft);font-size:15px">Mande o seu vídeo no WhatsApp (<a href="https://wa.me/5511971125781?text=Oi!%20Paguei%20a%20edi%C3%A7%C3%A3o%2C%20vou%20mandar%20meu%20v%C3%ADdeo" style="color:var(--acc)">toque aqui</a>). A gente devolve pronto para postar.</span></div>
- <span class="eb" style="margin-top:22px">Enquanto o seu vídeo é editado</span>
- <h1>E se você tivesse <em style="font-style:normal;color:var(--acc)">5 Reels prontos</em> sem gravar nada?</h1>
- <p class="sub">Você escolhe 5 temas e recebe os vídeos prontos, com o seu nome e o seu registro, em até 48 h. Sem câmera, sem Canva, sem horas de edição. Só para quem acabou de comprar a edição: R$ 47, pagamento único.</p>
+ <span class="eb" style="margin-top:22px">Antes de mandar o seu vídeo</span>
+ <h1>Quer o seu vídeo pronto <em style="font-style:normal;color:var(--acc)">hoje mesmo</em>?</h1>
+ <p class="sub">Com a Edição Expressa, o seu vídeo passa na frente da fila e volta editado em até 3 horas depois que você enviar. Mesmo padrão: som, cor, frases na tela, logo e letreiro. Só por + R$ 27, aqui nesta página.</p>
  <ul class="lista">
-  <li>5 Reels em vídeo, com voz, legenda e trilha</li>
-  <li>Com o seu nome e registro profissional na tela</li>
-  <li>Temas que você escolhe, dentro das regras do seu conselho</li>
-  <li>Entrega no Direct e no e-mail em até 48 h</li>
+  <li>Entrega em até 3 h (vídeos enviados até as 18h)</li>
+  <li>Enviou depois das 18h? Recebe até as 12h do dia seguinte</li>
+  <li>Passa na frente da fila de edição</li>
+  <li>Continua com 1 ajuste incluso</li>
  </ul>
- <div class="vids" aria-label="Reels de exemplo feitos pela Sinapse">
- <figure class="rv"><video muted loop playsinline preload="none" poster="/reel-176.jpg" data-previa="/reel-176-previa.mp4" data-full="/reel-176.mp4"></video><span class="som">🔊 Toque para ouvir</span><figcaption>Ansiedade antecipatória</figcaption></figure>
- <figure class="rv"><video muted loop playsinline preload="none" poster="/reel-170.jpg" data-previa="/reel-170-previa.mp4" data-full="/reel-170.mp4"></video><span class="som">🔊 Toque para ouvir</span><figcaption>Checar o celular</figcaption></figure>
-</div>
  <div class="cta"><cakto-upsell-buttons>
- <cakto-upsell-accept bg-color="#FFB547" text-color="#0B0F14" upsell-accept-url="https://aisinapse.com.br/pacote/comecar/?origem=upsell-edicao-sim" offer-id="nfuxgwo" app-base-url="https://app.cakto.com.br" offer-type="upsell" upsell-reject-url="https://aisinapse.com.br/edicao/obrigado/?origem=upsell-edicao-nao">Sim, quero os 5 Reels por R$ 47</cakto-upsell-accept>
- <cakto-upsell-reject upsell-reject-url="https://aisinapse.com.br/edicao/obrigado/?origem=upsell-edicao-nao">Não, quero só a edição</cakto-upsell-reject>
+ <cakto-upsell-accept bg-color="#FFB547" text-color="#0B0F14" upsell-accept-url="https://aisinapse.com.br/edicao/obrigado/?origem=expressa-sim" offer-id="wuayojs" app-base-url="https://app.cakto.com.br" offer-type="upsell" upsell-reject-url="https://aisinapse.com.br/edicao/obrigado/?origem=upsell-edicao-nao">Sim, quero meu vídeo hoje por + R$ 27</cakto-upsell-accept>
+ <cakto-upsell-reject upsell-reject-url="https://aisinapse.com.br/edicao/obrigado/?origem=upsell-edicao-nao">Não, pode ser no prazo normal</cakto-upsell-reject>
 </cakto-upsell-buttons>
 <script type="text/javascript" src="https://caktoscripts.nyc3.cdn.digitaloceanspaces.com/upsell.js"></script></div>
- <p class="nota">Um clique, sem digitar o cartão de novo. Sua edição continua garantida, com ou sem os Reels.</p>
+ <p class="nota">Um clique, sem digitar o cartão de novo. Sua edição continua garantida, com ou sem a Expressa.</p>
 </div></section>
 <footer>© 2026 Sinapse · Conteúdo educativo feito com IA, revisado antes da entrega. Nunca promete cura ou resultado.</footer></div>
 <script>/* 31/10: Reels tocam sozinhos (prévia leve, sem som); toque = vídeo completo com som */
