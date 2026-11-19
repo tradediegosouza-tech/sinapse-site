@@ -9,7 +9,7 @@
 <meta property="og:description" content="Nunca mais trave no 'o que eu posto hoje?'. Abre, lê e grava.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aisinapse.com.br/roteiros/">
-<meta property="og:image" content="https://aisinapse.com.br/roteiros/vsl.jpg">
+<meta property="og:image" content="https://aisinapse.com.br/roteiros/anuncio/a.jpg">
 <link rel="canonical" href="https://aisinapse.com.br/roteiros/">
 <meta name="theme-color" content="#0B0F14">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%235EEAD4'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%230B0F14'/%3E%3C/svg%3E">
@@ -93,10 +93,6 @@ footer a{color:var(--muted)}
   <span class="eb">Para psicólogas e terapeutas</span>
   <h1>Nunca mais trave no <em>"o que eu posto hoje?"</em></h1>
   <p class="sub">100 roteiros de Reels prontos, por tema. Você abre, lê e grava.</p>
-  <div class="vsl" id="vsl">
-    <video id="v" src="vsl.mp4" poster="vsl.jpg" playsinline muted autoplay loop preload="metadata"></video>
-    <span class="som">🔊 Toque para ouvir (menos de 2 min)</span>
-  </div>
   <a class="btn comprar" href="https://pay.cakto.com.br/5tkr3wn_1344390">Quero os 100 roteiros por R$ 27<small>+ bônus: 1 Reel pronto com o seu nome</small></a>
   <ul class="selos"><li>Acesso na hora</li><li>Pix ou cartão</li><li>7 dias de garantia</li></ul>
 </div>
@@ -194,9 +190,9 @@ footer a{color:var(--muted)}
 var q=new URLSearchParams(location.search);var orig=q.get('origem')||q.get('utm_content')||'site';var src=q.get('utm_source')||'site';
 document.querySelectorAll('a.comprar').forEach(function(a){var u=new URL(a.href);u.searchParams.set('utm_source',src);u.searchParams.set('utm_content',orig);a.href=u.toString();
  a.addEventListener('click',function(){try{fbq('track','InitiateCheckout',{content_name:'100 Roteiros',value:27,currency:'BRL'})}catch(e){}});});
-var box=document.getElementById('vsl'),v=document.getElementById('v'),vistos={};
+var box=document.getElementById('vsl'),v=document.getElementById('v'),vistos={};if(box){
 box.addEventListener('click',function(){if(!box.classList.contains('on')){box.classList.add('on');v.loop=false;v.muted=false;v.currentTime=0;v.controls=true;v.play();try{fbq('trackCustom','VSLPlay',{origem:orig})}catch(e){}}});
-v.addEventListener('timeupdate',function(){if(!box.classList.contains('on')||!v.duration)return;var p=Math.floor(v.currentTime/v.duration*4)*25;if(p>0&&!vistos[p]){vistos[p]=1;try{fbq('trackCustom','VSL'+p,{origem:orig})}catch(e){}}});
+v.addEventListener('timeupdate',function(){if(!box.classList.contains('on')||!v.duration)return;var p=Math.floor(v.currentTime/v.duration*4)*25;if(p>0&&!vistos[p]){vistos[p]=1;try{fbq('trackCustom','VSL'+p,{origem:orig})}catch(e){}}});}
 var barra=document.getElementById('barra');window.addEventListener('scroll',function(){barra.classList.toggle('on',window.scrollY>600)},{passive:true});
 var fim=new Date('2026-11-24T02:59:00Z');if(Date.now()>fim){document.querySelectorAll('.prazo').forEach(function(e){e.remove()});return;}
 var shown=false;function show(){if(shown)return;try{if(sessionStorage.getItem('popR'))return;sessionStorage.setItem('popR','1')}catch(e){}shown=true;document.getElementById('pop').classList.add('on');try{fbq('trackCustom','ExitPopup')}catch(e){}}
