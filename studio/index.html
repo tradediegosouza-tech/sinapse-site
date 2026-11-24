@@ -148,6 +148,23 @@ cakto-upsell-buttons{display:block;width:100%}
 <footer>© 2026 Sinapse · Reels educativos feitos com IA. Você revisa e aprova cada um antes de postar. Nunca prometemos cura ou resultado. Dúvidas: contato@aisinapse.com.br</footer>
 </div>
 <div class="barra"><a class="btn" href="https://pay.cakto.com.br/pmbpk9v" data-ck>Quero meus Reels prontos · R$ 97/mês</a></div>
+<script>/* 24/11: teste A/B da VSL (v3 x v4) + segundos assistidos -> n8n sinapse-vsl-evento */
+(function(){var V={v3:'/studio/vsl-v3.mp4',v4:'/studio/vsl-v4.mp4'},URL='https://n8n.produtodesaude.com.br/webhook/sinapse-vsl-evento';
+var vid=document.getElementById('vsl');if(!vid)return;var q=new URLSearchParams(location.search),ver=q.get('vsl'),sid;
+try{if(!V[ver])ver=localStorage.getItem('sx_vsl');if(!V[ver]){ver=Math.random()<0.5?'v3':'v4';}localStorage.setItem('sx_vsl',ver);
+sid=localStorage.getItem('sx_id')||('s'+Date.now().toString(36));}catch(e){if(!V[ver])ver=Math.random()<0.5?'v3':'v4';sid='s'+Date.now().toString(36);}
+sid=sid+'x'+Math.random().toString(36).slice(2,6);
+var src=vid.querySelector('source');if(src&&src.getAttribute('src')!==V[ver]){src.setAttribute('src',V[ver]);vid.load();}
+var org=(q.get('utm_source')||q.get('origem')||document.referrer.split('/')[2]||'direto').slice(0,80),cel=/Mobi|Android|iPhone/i.test(navigator.userAgent);
+var max=0,ini=false,ult=-1;function env(e){var d={s:sid,v:ver,e:e,t:Math.round(max*10)/10,d:Math.round((vid.duration||0)*10)/10,o:org,m:cel};
+try{var b=JSON.stringify(d);if(!(navigator.sendBeacon&&navigator.sendBeacon(URL,b)))fetch(URL,{method:'POST',body:b,keepalive:true,mode:'no-cors'});}catch(_){}}
+vid.addEventListener('timeupdate',function(){if(vid.currentTime>max)max=vid.currentTime;});
+vid.addEventListener('play',function(){if(!ini){ini=true;env('inicio');try{fbq('trackCustom','VSLPlay',{versao:ver});}catch(_){}}});
+vid.addEventListener('ended',function(){max=vid.duration||max;env('fim');ult=max;});
+function sair(){if(ini&&max!==ult){env('saiu');ult=max;}}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')sair();});window.addEventListener('pagehide',sair);
+document.querySelectorAll('[data-ck]').forEach(function(a){a.addEventListener('click',function(){env('checkout');try{fbq('trackCustom','VSLCheckout',{versao:ver});}catch(_){}});});
+})();</script>
 <script>(function(){var q=location.search.replace(/^\?/,'');if(!q)return;document.querySelectorAll('[data-ck]').forEach(function(a){a.href+= (a.href.indexOf('?')<0?'?':'&')+q;});})();
 document.querySelectorAll('[data-ck]').forEach(function(a){a.addEventListener('click',function(){try{fbq('track','InitiateCheckout',{content_name:'Sinapse Studio',value:97,currency:'BRL'});}catch(_){}});});</script>
 <script>/* 31/10: Reels tocam sozinhos (prévia leve, sem som); toque = vídeo completo com som */
