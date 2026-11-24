@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /ops/
+Disallow: /lab/
+
+Sitemap: https://aisinapse.com.br/sitemap.xml
