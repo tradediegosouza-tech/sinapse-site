@@ -110,7 +110,7 @@ cakto-upsell-buttons{display:block;width:100%}
    <ul class="mini"><li>Garantia de 7 dias</li><li>Cancele quando quiser</li><li>1 ajuste por Reel sem gastar crédito</li></ul>
   </div>
  </div>
- <figure style="margin:0"><video id="vsl" controls playsinline preload="metadata" poster="/studio/vsl-capa.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:18px;background:#000;border:1px solid var(--line)"><source src="/studio/vsl-v4.mp4" type="video/mp4"></video>
+ <figure style="margin:0"><video id="vsl" controls playsinline preload="metadata" poster="/studio/vsl-capa.jpg" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:18px;background:#000;border:1px solid var(--line)"><source src="/studio/vsl-v5.mp4" type="video/mp4"></video>
  <figcaption style="font-size:13px;color:var(--muted);margin-top:6px">A Lívia é a assistente de IA da Sinapse. 1 minuto.</figcaption></figure>
 </section>
 <section>
@@ -148,8 +148,8 @@ cakto-upsell-buttons{display:block;width:100%}
 <footer>© 2026 Sinapse · Reels educativos feitos com IA. Você revisa e aprova cada um antes de postar. Nunca prometemos cura ou resultado. Dúvidas: contato@aisinapse.com.br</footer>
 </div>
 <div class="barra"><a class="btn" href="https://pay.cakto.com.br/pmbpk9v" data-ck>Quero meus Reels prontos · R$ 97/mês</a></div>
-<script>/* 24/11: teste A/B da VSL (v4 x v5; v3 só por ?vsl=v3) + segundos assistidos -> n8n sinapse-vsl-evento */
-(function(){var V={v3:'/studio/vsl-v3.mp4',v4:'/studio/vsl-v4.mp4',v5:'/studio/vsl-v5.mp4'},SORT=['v4','v5'],URL='https://n8n.produtodesaude.com.br/webhook/sinapse-vsl-evento';
+<script>/* 25/11: teste A/B da VSL (v5 x v6; v3 e v4 só por ?vsl=) + segundos assistidos -> n8n sinapse-vsl-evento */
+(function(){var V={v3:'/studio/vsl-v3.mp4',v4:'/studio/vsl-v4.mp4',v5:'/studio/vsl-v5.mp4',v6:'/studio/vsl-v6.mp4'},SORT=['v5','v6'],URL='https://n8n.produtodesaude.com.br/webhook/sinapse-vsl-evento';
 var vid=document.getElementById('vsl');if(!vid)return;var q=new URLSearchParams(location.search),ver=q.get('vsl'),sid;
 try{if(!V[ver]){ver=localStorage.getItem('sx_vsl');if(SORT.indexOf(ver)<0)ver=SORT[Math.random()<0.5?0:1];}localStorage.setItem('sx_vsl',ver);
 sid=localStorage.getItem('sx_id')||('s'+Date.now().toString(36));}catch(e){if(!V[ver])ver=SORT[Math.random()<0.5?0:1];sid='s'+Date.now().toString(36);}
